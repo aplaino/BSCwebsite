@@ -5,4 +5,8 @@
 @theme {
   --font-primary: "Staatliches", sans-serif;
   --font-secondary: "Hanken Grotesk", sans-serif;
+  --color-blue-primary: #2A4484;
+  --color-blue-secondary: #415CA3;
+  --color-beige-primary: #F7F3EB;
+  --color-beige-secondary: #B2968B;
 }
