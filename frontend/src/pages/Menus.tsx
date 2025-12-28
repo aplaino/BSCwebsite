@@ -1,4 +1,4 @@
-import { CateringMenu } from "../data/Menus.ts";
+import { CateringMenu } from "../Menus.ts";
 import { useState } from "react";
 
 export default function Menus() {
