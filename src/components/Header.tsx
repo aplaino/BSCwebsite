@@ -5,10 +5,11 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 export default function Header() {
   return (
     <header
-      className="h-20 w-screen p-4 relative
+      className="h-20 w-screen p-4
         bg-beige-primary border-b-2 border-beige-secondary
         flex justify-center items-center
         font-primary uppercase text-xl
+        fixed top-0 z-100
         "
     >
       <div

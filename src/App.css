@@ -9,4 +9,15 @@
   --color-blue-secondary: #415CA3;
   --color-beige-primary: #F7F3EB;
   --color-beige-secondary: #B2968B;
+
+  --animate-infinite-scroll: infinite-scroll 20s linear infinite;
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 }
