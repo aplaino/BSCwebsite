@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
+import Menus from "./pages/Menus";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/menus" element={<Menus />} />
         </Route>
       </Routes>
     </BrowserRouter>
