@@ -3,10 +3,17 @@ import { MdOutlineVerified } from "react-icons/md";
 import {Link} from "react-router-dom"
 
 export default function Contact() {
-    function handleSubmit(formData:FormData){
+    async function handleSubmit(formData:FormData){
         const input = Object.fromEntries(formData.entries());
 
-        console.log(input)
+        const result = await fetch("http://127.0.0.1:8000/api/contact/submit/",{
+          method:"POST",
+          headers: {'Content-Type': 'application/JSON'},
+          body:JSON.stringify(input)
+        });
+
+        const data = await result.json();
+        console.log(data)
     }
   return (
     <main
