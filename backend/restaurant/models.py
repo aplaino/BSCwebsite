@@ -33,3 +33,19 @@ class CateringRequest(models.Model):
 
     def __str__(self):
         return f"{self.full_name} - {self.event_date} ({self.get_service_type_display()})"
+    
+    
+class ContactInquiry(models.Model):
+    name = models.CharField(max_length=255)
+    email = models.EmailField()
+    phone = models.CharField(max_length=20)
+    message = models.TextField()
+    
+    created_at = models.DateTimeField(auto_now_add=True)
+    is_replied = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = "Contact Inquiries"
+
+    def __str__(self):
+        return f"Inquiry from {self.name} - {self.created_at.strftime('%Y-%m-%d')}"
