@@ -310,3 +310,31 @@ export const RESTAURANT_beverages = [
   { name: "Perrier Mineral Water", description: "", price: "$3.00" },
   { name: "Bottled Water", description: "", price: "$2.00" },
 ];
+
+export const FOOD_TRUCK_Tacos = [
+  { name: "Battered Haddock", description: "Set of 2", price: "" },
+  { name: "Crispy Jerk Shrimp", description: "Set of 2", price: "" },
+  { name: "Octopus (GF)", description: "Set of 2", price: "" },
+  { name: "Seared Ahi Tuna (GF)", description: "Set of 2", price: "" },
+  { name: "Veggie (V)", description: "Set of 2", price: "" },
+  { name: "Brisket", description: "Set of 2", price: "" },
+  { name: "Chicken (Halal)", description: "Set of 2", price: "" },
+  { name: "Pulled Pork", description: "Set of 2", price: "" },
+  { name: "Lobster (+$3pp.)", description: "Set of 2", price: "" },
+];
+
+export const FOOD_TRUCK_Sandwiches = [
+  { name: "Fried Halibut on a Bun", description: "", price: "" },
+  { name: "Shrimp Po' Boy", description: "", price: "" },
+  { name: "Texas Beef Brisket Sammy", description: "", price: "" },
+  { name: "Pulled Pork on a Bun", description: "", price: "" },
+  { name: "Grilled Chicken Club", description: "", price: "" },
+  { name: "Veggie Sandwich (V)", description: "", price: "" },
+];
+
+export const FOOD_TRUCK_AddOns = [
+  { name: "Appetizers ($7 tier)", description: "Pulled Pork Slider, Fried Chicken Bites, Turkey Club, Caprese Skewers, Fried Calamari", price: "$7 PP" },
+  { name: "Appetizers ($12 tier)", description: "Lobster Sliders, Mac N' Cheese Balls, Coconut Shrimp, Shrimp Skewers, Brisket Sliders", price: "$12 PP" },
+  { name: "Drinks", description: "Assorted beverages", price: "$2 PP" },
+];
+
