@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import CateringRequest
+from .models import CateringRequest, ContactInquiry
 
 
 @api_view(['POST'])
@@ -60,5 +60,44 @@ def submit_catering(request):
 
         return Response({"message": "Inquiry sent! Check your email."}, status=201)
 
+    except Exception as e:
+        return Response({"error": str(e)}, status=400)
+
+
+@api_view(['POST'])
+def submit_contact(request):
+    data = request.data
+    try:
+        # 1. Save to Database
+        inquiry = ContactInquiry.objects.create(
+            name=data.get('name'),
+            email=data.get('email'),
+            phone=data.get('phone'),
+            message=data.get('message')
+        )
+
+        # 2. Construct Email content
+        subject = f"New Website Inquiry: {inquiry.name}"
+        email_message = f"""
+        New message from the Buster's Sea Cove website:
+        
+        Name: {inquiry.name}
+        Email: {inquiry.email}
+        Phone: {inquiry.phone}
+        
+        Message:
+        {inquiry.message}
+        """
+
+        # 3. Send Email
+        send_mail(
+            subject,
+            email_message,
+            settings.DEFAULT_FROM_EMAIL,
+            ['bustersheadoffice@gmail.com'], # Sent to the address from your React code
+            fail_silently=False,
+        )
+
+        return Response({"message": "Message sent successfully!"}, status=201)
     except Exception as e:
         return Response({"error": str(e)}, status=400)

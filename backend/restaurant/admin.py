@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CateringRequest 
+from .models import CateringRequest, ContactInquiry
 
 # Register your models here.
 @admin.register(CateringRequest)
@@ -19,3 +19,9 @@ class CateringAdmin(admin.ModelAdmin):
             'fields': ('budget', 'notes', 'is_processed')
         }),
     )
+
+@admin.register(ContactInquiry)
+class ContactInquiryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'created_at', 'is_replied')
+    list_filter = ('is_replied', 'created_at')
+    search_fields = ('name', 'email', 'message')
