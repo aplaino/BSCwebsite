@@ -1,3 +1,6 @@
+import FoodTruck from "../components/FoodTruck";
+
+
 export default function Home() {
   return (
     <main
@@ -34,36 +37,10 @@ export default function Home() {
         <img src="./home-food-truck.svg" className="w-screen h-auto fit" />
       </section>
       {/* -------------- INFINITE SCROLL ----------------- **/}
-      <section
-        className="w-full h-20 bg-black overflow-hidden 
-      font-primary text-beige-primary uppercase text-4xl flex shrink-0 gap-8"
-      >
-        <ul
-          className="flex shrink-0 justify-center items-center gap-10 py-4 uppercase
-        animate-infinite-scroll"
-        >
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-        </ul>
-        <ul
-          className="flex shrink-0 justify-center items-center gap-10 py-4 uppercase
-        animate-infinite-scroll"
-        >
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-          <li>available&nbsp;&nbsp;now</li>
-        </ul>
-      </section>
 
+      <FoodTruck />
+
+      {/* -------------- FOOD TRUCK SCHEDULE ----------------- **/}
       {/* -------------- SERVING HOURS ----------------- **/}
 
       <section

@@ -10,7 +10,7 @@
   --color-beige-primary: #F7F3EB;
   --color-beige-secondary: #B2968B;
 
-  --animate-infinite-scroll: infinite-scroll 20s linear infinite;
+  --animate-infinite-scroll: infinite-scroll 60s linear infinite;
 
   @keyframes infinite-scroll {
     from {
