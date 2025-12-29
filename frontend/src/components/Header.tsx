@@ -50,6 +50,12 @@ export default function Header() {
               >
                 about us
               </Link>
+              <Link
+                to="/contact"
+                className="hover:bg-black/10 duration-300 py-2"
+              >
+                contact
+              </Link>
               <a
                 href="https://www.facebook.com/bustersseacove/"
                 target="_blank"
@@ -77,6 +83,7 @@ export default function Header() {
           <Link to="catering">catering</Link>
           <Link to="order">order</Link>
           <Link to="aboutus">about us</Link>
+          <Link to="contact">contact</Link>
           <a href="https://www.facebook.com/bustersseacove/" target="_blank">
             <img src="./facebook.svg" className="size-6" alt="facebook" />
           </a>

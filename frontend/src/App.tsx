@@ -3,6 +3,7 @@ import "./App.css";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Menus from "./pages/Menus";
+import Contact from "./pages/Contact";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/menus" element={<Menus />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </BrowserRouter>
