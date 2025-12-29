@@ -1,5 +1,5 @@
 import FoodTruck from "../components/FoodTruck";
-
+import {Link} from "react-router-dom"
 
 export default function Home() {
   return (
@@ -26,12 +26,13 @@ export default function Home() {
               The Foudners of Torontp's renowned seafood legacy. Restaurants,
               foot trucks & catering.
             </p>
-            <button
+            <Link 
+            to="/catering"
               className="font-primary text-beige-primary bg-blue-primary text-2xl p-4 ml-10
             w-40 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer"
             >
-              Order Now
-            </button>
+              Book Now
+            </Link>
           </div>
         </article>
         <img src="./home-food-truck.svg" className="w-screen h-auto fit" />
