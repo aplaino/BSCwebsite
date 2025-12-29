@@ -67,7 +67,7 @@ export default function Home() {
       {/* -------------- SERVING HOURS ----------------- **/}
 
       <section
-        className="bg-[url(./serving-hours-background.jpg)] w-full h-screen
+        className="bg-[url(./serving-hours-background.jpg)] w-full h-screen bg-cover
       flex justify-center items-center"
       >
         <img src="./serving-hours.svg" alt="serving hours" className="h-90 md:120 lg:150 w-auto"/>

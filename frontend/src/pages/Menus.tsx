@@ -1,5 +1,17 @@
-import { CateringMenu } from "../Menus.ts";
+import {
+  CATERING_bustersPlatterFavourites,
+  CATERING_bustersXStackdDeliKitchen,
+  CATERING_sides,
+  RESTAURANT_friedSandwichesAndPoBoys,
+  RESTAURANT_grilledSandwiches,
+  RESTAURANT_lobster,
+  RESTAURANT_fromTheGrill,
+  RESTAURANT_fishFry,
+  RESTAURANT_soups,
+  RESTAURANT_beverages,
+} from "../Menus.ts";
 import { useState } from "react";
+import MenuItem from "../components/MenuItem.tsx";
 
 export default function Menus() {
   const [menuType, setMenuType] = useState("catering");
@@ -43,14 +55,45 @@ export default function Menus() {
       </section>
 
       {/* --- MENU DETAIL --- **/}
-      <section className="w-full min-h-screen h-full bg-beige-primary
-      flex flex-col gap-10 justify-center items-center py-20">
-        {menuType == "catering" &&
-          CateringMenu.map((portion) => (
-            <div className="h-80 w-120 bg-white/70 drop-shadow-2xl">
-                <h2>{}</h2>
-            </div>
-          ))}
+      <section
+        className="w-full min-h-screen h-full bg-beige-primary p-4
+      flex flex-col gap-10 justify-center items-center py-20 font-secondary"
+      >
+        {/* --- Catering Menus  --- **/}
+        {menuType == "catering" && (
+          <div className="flex flex-col gap-12 size-full">
+            {/* --- portion card --- **/}
+            <MenuItem
+              title="Buster's Platter Favourites"
+              items={CATERING_bustersPlatterFavourites}
+            />
+            {/* --- portion card --- **/}
+            <MenuItem
+              title="Buster's X Stack'd Deli Kitchen"
+              items={CATERING_bustersXStackdDeliKitchen}
+            />
+            {/* --- portion card --- **/}
+            <MenuItem title="Sides" items={CATERING_sides} />
+          </div>
+        )}
+
+        {menuType === "restaurant" && (
+          <div className="flex flex-col gap-12 size-full">
+            <MenuItem
+              title="Fried Sandwiches & Po' Boys"
+              items={RESTAURANT_friedSandwichesAndPoBoys}
+            />
+            <MenuItem
+              title="Grilled Sandwiches"
+              items={RESTAURANT_grilledSandwiches}
+            />
+            <MenuItem title="Lobster" items={RESTAURANT_lobster} />
+            <MenuItem title="From The Grill" items={RESTAURANT_fromTheGrill} />
+            <MenuItem title="Fish Fry" items={RESTAURANT_fishFry} />
+            <MenuItem title="Soups" items={RESTAURANT_soups} />
+            <MenuItem title="Beverages" items={RESTAURANT_beverages} />
+          </div>
+        )}
       </section>
     </main>
   );
