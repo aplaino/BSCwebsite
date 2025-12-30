@@ -2,8 +2,9 @@ import { FaCheck } from "react-icons/fa6";
 export default function Catering() {
   async function handleSubmit(formData: FormData) {
     const input = Object.fromEntries(formData.entries());
+    console.log("SENDING TO DJANGO:", input); 
 
-    const result = await fetch("http://127.0.0.1:8000/api/contact/submit/", {
+    const result = await fetch("http://127.0.0.1:8000/api/catering/submit/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(input),
@@ -37,11 +38,11 @@ export default function Catering() {
         className="w-full max-w-140 h-full flex flex-col gap-2 bg-beige-primary px-8 py-20
       font-secondary text-[#876E64]" action={handleSubmit}
       >
-        <label htmlFor="name" className="font-bold">
+        <label htmlFor="fullName" className="font-bold">
           First & Last Name
         </label>
         <input
-          name="name"
+          name="fullName"
           type="text"
           placeholder="e.g. Helena Eagan"
           className="border-b-2 border-beige-secondary w-full h-8 
@@ -109,7 +110,7 @@ export default function Catering() {
         </label>
         <input
           name="eventAddress"
-          type="time"
+          type="text"
           placeholder="e.g. 123 Bay St, Toronto"
           className="border-b-2 border-beige-secondary w-full h-8 
                     outline-none! placeholder:italic mb-8"
