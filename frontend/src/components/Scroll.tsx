@@ -6,7 +6,7 @@ export default function Scroll({ text, rep }: ScrollText) {
   return (
     <section
       className="w-full h-30 bg-black overflow-hidden 
-      font-primary text-beige-primary/60 uppercase text-4xl md:text-8xl flex shrink-0 gap-8"
+      font-primary text-beige-primary/10 uppercase text-4xl md:text-8xl flex shrink-0 gap-8"
     >
       <ul
         className="flex shrink-0 justify-center items-center gap-10 uppercase

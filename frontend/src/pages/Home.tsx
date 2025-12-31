@@ -1,5 +1,6 @@
 import FoodTruck from "../components/FoodTruck";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import Gallery from "../components/Gallery";
 
 export default function Home() {
   return (
@@ -8,7 +9,6 @@ export default function Home() {
         flex flex-col justify-center"
     >
       {/* -------------- LANDING ----------------- **/}
-
       <section className="w-full h-full pt-20">
         <article
           className="flex flex-col gap-12 w-full h-160 p-4
@@ -26,8 +26,8 @@ export default function Home() {
               The Foudners of Torontp's renowned seafood legacy. Restaurants,
               foot trucks & catering.
             </p>
-            <Link 
-            to="/catering"
+            <Link
+              to="/catering"
               className="font-primary text-beige-primary bg-blue-primary text-2xl p-4 ml-10
             w-40 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer"
             >
@@ -37,18 +37,25 @@ export default function Home() {
         </article>
         <img src="./home-food-truck.svg" className="w-screen h-auto fit" />
       </section>
-      {/* -------------- INFINITE SCROLL ----------------- **/}
-
+      {/* -------------- FOOD TRUCK SCHEDULE ----------------- **/}
       <FoodTruck />
 
-      {/* -------------- FOOD TRUCK SCHEDULE ----------------- **/}
-      {/* -------------- SERVING HOURS ----------------- **/}
+      <section className="w-full h-4 bg-beige-secondary"></section>
 
+
+      {/* -------------- GALLERY ----------------- **/}
+      <Gallery />
+      
+       {/* -------------- SERVING HOURS ----------------- **/}
       <section
         className="bg-[url(./serving-hours-background.jpg)] w-full h-screen bg-cover
       flex justify-center items-center"
       >
-        <img src="./serving-hours.svg" alt="serving hours" className="h-90 md:120 lg:150 w-auto"/>
+        <img
+          src="./serving-hours.svg"
+          alt="serving hours"
+          className="h-90 md:120 lg:150 w-auto"
+        />
       </section>
     </main>
   );

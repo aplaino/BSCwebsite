@@ -2,7 +2,7 @@ import Scroll from "./Scroll";
 import { FaMapMarkerAlt } from "react-icons/fa";
 export default function FoodTruck() {
   return (
-    <section className="w-full h-200 flex flex-col relative bg-black py-5 md:py-10 ">
+    <section className="w-full h-240 flex flex-col relative bg-black py-5 md:py-10 ">
       <img
         src="./foodtruck.svg"
         className="absolute w-170 z-50
@@ -16,7 +16,7 @@ export default function FoodTruck() {
       <Scroll text="available now" rep={6} />
       <div
         className="w-full h-100 bg-black text-beige-primary p-6
-      flex flex-col text-left"
+      flex flex-col text-left justify-center"
       >
         <h1 className="font-secondary font-bold text-6xl ">
           Our <span className="text-blue-secondary underline">food truck</span> {" "}
