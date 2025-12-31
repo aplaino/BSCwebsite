@@ -1,6 +1,7 @@
 import { FaRegPaperPlane } from "react-icons/fa6";
 import { MdOutlineVerified } from "react-icons/md";
 import {Link} from "react-router-dom"
+import {useEffect} from "react"
 
 export default function Contact() {
     async function handleSubmit(formData:FormData){
@@ -15,6 +16,10 @@ export default function Contact() {
         const data = await result.json();
         console.log(data)
     }
+
+      useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <main
       className="bg-blue-primary w-screen min-h-screen h-full px-8 pt-40 pb-20

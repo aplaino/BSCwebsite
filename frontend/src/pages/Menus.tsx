@@ -13,11 +13,14 @@ import {
   FOOD_TRUCK_Sandwiches, 
   FOOD_TRUCK_AddOns 
 } from "../Menus.ts";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
 
 export default function Menus() {
   const [menuType, setMenuType] = useState("catering");
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
   return (
     <main
@@ -27,7 +30,7 @@ export default function Menus() {
       {/* --- MENU OPTIONS --- **/}
       <section
         className="size-full bg-[url(./menu-background.svg)] bg-cover px-4
-      flex flex-col justify-center items-center py-10 border-b-2 border-black"
+      flex flex-col justify-center items-center pb-10 border-b-2 border-black"
       >
         <div className="w-full h-30 flex justify-center items-center mt-40">
           <h1 className="font-primary uppercase text-6xl ">Our menus</h1>

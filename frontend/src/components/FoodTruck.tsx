@@ -1,5 +1,6 @@
 import Scroll from "./Scroll";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import {Link} from 'react-router-dom'
 export default function FoodTruck() {
   return (
     <section className="w-full h-240 flex flex-col relative bg-black py-5 md:py-10 ">
@@ -21,11 +22,11 @@ export default function FoodTruck() {
         <h1 className="font-secondary font-bold text-6xl ">
           Our <span className="text-blue-secondary underline">food truck</span> {" "}
           is always on the move. {" "}
-          <a href=""
+          <Link to="/schedule"
             className="bg-beige-primary text-blue-primary text-2xl md:text-4xl w-auto whitespace-nowrap rounded-3xl px-4 py-2
             duration-300 hover:bg-beige-primary/80
             inline-flex justify-center items-center gap-2"
-          >Check the schedule <FaMapMarkerAlt className="text-3xl" /></a>
+          >Check the schedule <FaMapMarkerAlt className="text-3xl" /></Link>
         </h1>
       </div>
     </section>

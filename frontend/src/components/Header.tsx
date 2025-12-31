@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
@@ -41,9 +41,13 @@ export default function Header() {
               >
                 catering
               </Link>
-              <Link to="/order" className="hover:bg-black/10 duration-300 py-2">
+              <a
+                href="https://sites.ambassador.ai/?s=busterscommissary"
+                target="_blank"
+                className="hover:bg-black/10 duration-300 py-2"
+              >
                 order
-              </Link>
+              </a>
               <Link
                 to="/aboutus"
                 className="hover:bg-black/10 duration-300 py-2"
@@ -79,11 +83,44 @@ export default function Header() {
           className="justify-around items-center w-100 
         hidden md:flex "
         >
-          <Link to="menus">menus</Link>
-          <Link to="catering">catering</Link>
-          <Link to="order">order</Link>
-          <Link to="about">about</Link>
-          <Link to="contact">contact</Link>
+          <NavLink
+            to="menus"
+            className={({ isActive }) =>
+              isActive ? "underline text-blue-secondary" : undefined
+            }
+          >
+            menus
+          </NavLink>
+          <NavLink
+            to="catering"
+            className={({ isActive }) =>
+              isActive ? "underline text-blue-secondary" : undefined
+            }
+          >
+            catering
+          </NavLink>
+          <a
+            href="https://sites.ambassador.ai/?s=busterscommissary"
+            target="_blank"
+          >
+            order
+          </a>
+          <NavLink
+            to="about"
+            className={({ isActive }) =>
+              isActive ? "underline text-blue-secondary" : undefined
+            }
+          >
+            about
+          </NavLink>
+          <NavLink
+            to="contact"
+            className={({ isActive }) =>
+              isActive ? "underline text-blue-secondary" : undefined
+            }
+          >
+            contact
+          </NavLink>
           <a href="https://www.facebook.com/bustersseacove/" target="_blank">
             <img src="./facebook.svg" className="size-6" alt="facebook" />
           </a>

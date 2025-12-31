@@ -1,8 +1,14 @@
 import { FaCheck } from "react-icons/fa6";
+import { useEffect } from "react";
 export default function Catering() {
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   async function handleSubmit(formData: FormData) {
     const input = Object.fromEntries(formData.entries());
-    console.log("SENDING TO DJANGO:", input); 
+    console.log("SENDING TO DJANGO:", input);
 
     const result = await fetch("http://127.0.0.1:8000/api/catering/submit/", {
       method: "POST",
@@ -36,7 +42,8 @@ export default function Catering() {
 
       <form
         className="w-full max-w-140 h-full flex flex-col gap-2 bg-beige-primary px-8 py-20
-      font-secondary text-[#876E64]" action={handleSubmit}
+      font-secondary text-[#876E64]"
+        action={handleSubmit}
       >
         <label htmlFor="fullName" className="font-bold">
           First & Last Name

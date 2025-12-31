@@ -1,8 +1,12 @@
 import FoodTruck from "../components/FoodTruck";
 import { Link } from "react-router-dom";
 import Gallery from "../components/Gallery";
+import {useEffect} from "react"
 
 export default function Home() {
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <main
       className="w-screen h-auto bg-beige-primary
