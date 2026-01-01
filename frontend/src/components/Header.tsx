@@ -31,48 +31,48 @@ export default function Header() {
           group-focus-within:right-0 group-focus-within:opacity-100
           flex justify-center items-center"
           >
-            <nav className="h-60 w-full flex flex-col gap-10">
-              <Link to="/menus" className="hover:bg-black/10 duration-300 py-2">
+            <nav className="h-full w-full flex flex-col gap-10 justify-center items-center text-2xl">
+              <Link to="/menus" className="hover:text-beige-primary duration-300 py-2">
                 menus
               </Link>
               <Link
                 to="/catering"
-                className="hover:bg-black/10 duration-300 py-2"
+                className="hover:text-beige-primary duration-300 py-2"
               >
                 catering
               </Link>
               <a
                 href="https://sites.ambassador.ai/?s=busterscommissary"
                 target="_blank"
-                className="hover:bg-black/10 duration-300 py-2"
+                className="hover:text-beige-primary duration-300 py-2"
               >
                 order
               </a>
               <Link
                 to="/aboutus"
-                className="hover:bg-black/10 duration-300 py-2"
+                className="hover:text-beige-primary duration-300 py-2"
               >
                 about
               </Link>
               <Link
                 to="/contact"
-                className="hover:bg-black/10 duration-300 py-2"
+                className="hover:text-beige-primary duration-300 py-2"
               >
                 contact
               </Link>
               <a
                 href="https://www.facebook.com/bustersseacove/"
                 target="_blank"
-                className="hover:bg-black/10 duration-300 py-2 flex justify-center items-center"
+                className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
               >
-                <FaFacebook className="text-black" />
+                <FaFacebook />
               </a>
               <a
                 href="https://www.facebook.com/bustersseacove/"
                 target="_blank"
-                className="hover:bg-black/10 duration-300 py-2 flex justify-center items-center"
+                className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
               >
-                <FaInstagram className="text-black" />
+                <FaInstagram/>
               </a>
             </nav>
           </div>

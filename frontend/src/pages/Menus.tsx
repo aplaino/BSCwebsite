@@ -9,18 +9,25 @@ import {
   RESTAURANT_fishFry,
   RESTAURANT_soups,
   RESTAURANT_beverages,
-  FOOD_TRUCK_Tacos, 
-  FOOD_TRUCK_Sandwiches, 
-  FOOD_TRUCK_AddOns 
+  FOOD_TRUCK_Tacos,
+  FOOD_TRUCK_Sandwiches,
+  FOOD_TRUCK_AddOns,
 } from "../Menus.ts";
 import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
 
+import { type MenuType } from "../Types.ts";
+
 export default function Menus() {
-  const [menuType, setMenuType] = useState("catering");
-    useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+  const [menus, setMenus] = useState<MenuType[]>([
+    { type: "catering", isActive: true, name: "Catering Menu" },
+    { type: "restaurant", isActive: false, name: "Restaurant Menu" },
+    { type: "foodTruck", isActive: false, name: "Food Truck Menu" },
+  ]);
+  const [menuType, setMenuType] = useState(menus[0].type);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <main
@@ -36,27 +43,29 @@ export default function Menus() {
           <h1 className="font-primary uppercase text-6xl ">Our menus</h1>
         </div>
         <div className="w-full h-full flex flex-col gap-6 md:flex-row md:gap-4 justify-center items-center">
-          <button
-            onClick={() => setMenuType("catering")}
-            className="font-primary text-beige-primary bg-blue-primary text-2xl p-4 
-            w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer"
-          >
-            Catering Menu
-          </button>
-          <button
-            onClick={() => setMenuType("restaurant")}
-            className="font-primary text-beige-primary bg-blue-primary text-2xl p-4 
-            w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer"
-          >
-            Restaurant Menu
-          </button>
-          <button
-            onClick={() => setMenuType("food truck")}
-            className="font-primary text-beige-primary bg-blue-primary text-2xl p-4 
-            w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer"
-          >
-            Food Truck Menu
-          </button>
+          {menus.map((menu, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                setMenuType(menu.type);
+                setMenus((prev) =>
+                  prev.map(
+                    (m): MenuType => ({ ...m, isActive: m.type === menu.type })
+                  )
+                );
+              }}
+              className={`${
+                menu.isActive
+                  ? `bg-blue-primary text-beige-primary`
+                  : `text-blue-primary bg-beige-primary border-2`
+              }
+              font-primary text-2xl p-4 
+              w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer
+            `}
+            >
+              {menu.name}
+            </button>
+          ))}
         </div>
       </section>
 
@@ -101,27 +110,45 @@ export default function Menus() {
           </div>
         )}
 
-        {menuType === "food truck" && (
+        {menuType === "foodTruck" && (
           <div className="flex flex-col gap-12 size-full">
-            
             {/* --- HOW IT WORKS SECTION --- */}
             <div className="w-full bg-blue-primary text-beige-primary p-8 rounded-3xl mb-10">
-              <h2 className="font-primary text-4xl uppercase mb-8 text-center">How It Works</h2>
+              <h2 className="font-primary text-4xl uppercase mb-8 text-center">
+                How It Works
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
                 <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">Step 1</span>
-                  <p>Fill out the contact form. Please provide as many details as possible!</p>
+                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
+                    Step 1
+                  </span>
+                  <p>
+                    Fill out the contact form. Please provide as many details as
+                    possible!
+                  </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">Step 2</span>
-                  <p>Build your menu: Choose 3 Mains & 1 Side. (Vegan, GF, Halal available).</p>
+                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
+                    Step 2
+                  </span>
+                  <p>
+                    Build your menu: Choose 3 Mains & 1 Side. (Vegan, GF, Halal
+                    available).
+                  </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">Step 3</span>
-                  <p>A member of our team will provide a quote and booking details.</p>
+                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
+                    Step 3
+                  </span>
+                  <p>
+                    A member of our team will provide a quote and booking
+                    details.
+                  </p>
                 </div>
                 <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">Step 4</span>
+                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
+                    Step 4
+                  </span>
                   <p>Relax, Eat, & Enjoy the Food Truck Experience!</p>
                 </div>
               </div>
@@ -129,16 +156,27 @@ export default function Menus() {
 
             {/* --- TACO MENU --- */}
             <div className="border-t-2 border-black pt-10">
-                <h2 className="font-primary text-3xl uppercase mb-2">Taco Catering Menu</h2>
-                <p className="mb-6 italic">$22 PP + Booking, Travel, & Gratuities</p>
-                <MenuItem title="Proteins (Select 3)" items={FOOD_TRUCK_Tacos} />
+              <h2 className="font-primary text-3xl uppercase mb-2">
+                Taco Catering Menu
+              </h2>
+              <p className="mb-6 italic">
+                $22 PP + Booking, Travel, & Gratuities
+              </p>
+              <MenuItem title="Proteins (Select 3)" items={FOOD_TRUCK_Tacos} />
             </div>
 
             {/* --- OG MENU --- */}
             <div className="border-t-2 border-black pt-10">
-                <h2 className="font-primary text-3xl uppercase mb-2">O.G. Catering Menu</h2>
-                <p className="mb-6 italic">$25 PP + Booking, Travel, & Gratuities</p>
-                <MenuItem title="Sandwiches & Mains" items={FOOD_TRUCK_Sandwiches} />
+              <h2 className="font-primary text-3xl uppercase mb-2">
+                O.G. Catering Menu
+              </h2>
+              <p className="mb-6 italic">
+                $25 PP + Booking, Travel, & Gratuities
+              </p>
+              <MenuItem
+                title="Sandwiches & Mains"
+                items={FOOD_TRUCK_Sandwiches}
+              />
             </div>
 
             {/* --- ADD ONS --- */}

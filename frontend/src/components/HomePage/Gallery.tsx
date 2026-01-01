@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
-  const modules = import.meta.glob("../gallery/*.jpg");
+  const modules = import.meta.glob("../../gallery/HomePageGallery/*.jpg");
   const [gallery, setGallery] = useState<string[]>([]);
 
-  const foo = () => {
+  const loadPhotos = () => {
     for (const path in modules) {
       modules[path]().then((mod: any) => {
         setGallery((prev) => [...prev, mod.default]);
@@ -13,12 +13,12 @@ export default function Gallery() {
   };
 
   useEffect(() => {
-    foo();
+    loadPhotos();
   }, []);
   return (
     <section
       className="bg-beige-primary w-screen min-h-screen h-full
-        flex flex-col p-8 gap-12 py-20"
+        flex flex-col p-8 gap-12 pb-20 "
     >
       <div className="flex flex-col w-full h-full gap-2 text-blue-primary">
         <h1 className="font-primary text-6xl ">Buster's Gallery</h1>
