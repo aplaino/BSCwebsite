@@ -2,19 +2,13 @@ import { FaRegPaperPlane } from "react-icons/fa6";
 import { MdOutlineVerified } from "react-icons/md";
 import {Link} from "react-router-dom"
 import {useEffect} from "react"
+import { submitContactForm } from "../services/api";
 
 export default function Contact() {
-    async function handleSubmit(formData:FormData){
-        const input = Object.fromEntries(formData.entries());
-
-        const result = await fetch("http://127.0.0.1:8000/api/contact/submit/",{
-          method:"POST",
-          headers: {'Content-Type': 'application/json'},
-          body:JSON.stringify(input)
-        });
-
-        const data = await result.json();
-        console.log(data)
+    async function handleSubmit(formData: FormData) {
+        const data = await submitContactForm(formData); // Just one line here
+        console.log("Success:", data);
+        // You could add a 'Success' message state here!
     }
 
       useEffect(() => {

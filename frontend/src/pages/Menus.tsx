@@ -9,13 +9,10 @@ import {
   RESTAURANT_fishFry,
   RESTAURANT_soups,
   RESTAURANT_beverages,
-  FOOD_TRUCK_Tacos,
-  FOOD_TRUCK_Sandwiches,
-  FOOD_TRUCK_AddOns,
 } from "../Menus.ts";
 import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
-
+import { fetchFoodTruckMenu } from "../services/api"; 
 import { type MenuType } from "../Types.ts";
 
 export default function Menus() {
@@ -25,8 +22,11 @@ export default function Menus() {
     { type: "foodTruck", isActive: false, name: "Food Truck Menu" },
   ]);
   const [menuType, setMenuType] = useState(menus[0].type);
+  const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchFoodTruckMenu().then(url => setPdfUrl(url));
   }, []);
 
   return (
@@ -91,7 +91,7 @@ export default function Menus() {
             <MenuItem title="Sides" items={CATERING_sides} />
           </div>
         )}
-
+        {/* --- Resturant Menu --- **/}
         {menuType === "restaurant" && (
           <div className="flex flex-col gap-12 size-full">
             <MenuItem
@@ -110,80 +110,47 @@ export default function Menus() {
           </div>
         )}
 
+        {/* --- Food Truck Menu --- **/}
         {menuType === "foodTruck" && (
-          <div className="flex flex-col gap-12 size-full">
-            {/* --- HOW IT WORKS SECTION --- */}
-            <div className="w-full bg-blue-primary text-beige-primary p-8 rounded-3xl mb-10">
-              <h2 className="font-primary text-4xl uppercase mb-8 text-center">
-                How It Works
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 text-sm">
-                <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
-                    Step 1
-                  </span>
-                  <p>
-                    Fill out the contact form. Please provide as many details as
-                    possible!
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
-                    Step 2
-                  </span>
-                  <p>
-                    Build your menu: Choose 3 Mains & 1 Side. (Vegan, GF, Halal
-                    available).
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
-                    Step 3
-                  </span>
-                  <p>
-                    A member of our team will provide a quote and booking
-                    details.
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <span className="font-primary text-3xl border-b border-beige-primary w-fit">
-                    Step 4
-                  </span>
-                  <p>Relax, Eat, & Enjoy the Food Truck Experience!</p>
-                </div>
+          <div className="flex flex-col items-center text-center gap-8 py-10 animate-fadeIn">
+            <div className="max-w-xl space-y-4">
+              <h2 className="font-primary text-4xl md:text-5xl text-blue-primary uppercase">Mobile Kitchen Menu</h2>
+              <p className="font-secondary text-blue-primary/70 text-lg italic">
+                Our food truck offerings vary by location and season. View or download our current 
+                PDF for the full street-side selection.
+              </p>
+            </div>
+
+            {pdfUrl ? (
+              <div className="flex flex-col md:flex-row gap-6 mt-4">
+                <a 
+                  href={pdfUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="bg-blue-primary text-beige-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-opacity-90 shadow-xl transition-all duration-300"
+                >
+                  View PDF
+                </a>
+                <a 
+                  href={pdfUrl} 
+                  download 
+                  className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
+                >
+                  Download
+                </a>
               </div>
-            </div>
-
-            {/* --- TACO MENU --- */}
-            <div className="border-t-2 border-black pt-10">
-              <h2 className="font-primary text-3xl uppercase mb-2">
-                Taco Catering Menu
-              </h2>
-              <p className="mb-6 italic">
-                $22 PP + Booking, Travel, & Gratuities
-              </p>
-              <MenuItem title="Proteins (Select 3)" items={FOOD_TRUCK_Tacos} />
-            </div>
-
-            {/* --- OG MENU --- */}
-            <div className="border-t-2 border-black pt-10">
-              <h2 className="font-primary text-3xl uppercase mb-2">
-                O.G. Catering Menu
-              </h2>
-              <p className="mb-6 italic">
-                $25 PP + Booking, Travel, & Gratuities
-              </p>
-              <MenuItem
-                title="Sandwiches & Mains"
-                items={FOOD_TRUCK_Sandwiches}
-              />
-            </div>
-
-            {/* --- ADD ONS --- */}
-            <MenuItem title="Add Ons & Extras" items={FOOD_TRUCK_AddOns} />
+            ) : (
+              <div className="flex flex-col items-center gap-4">
+                <div className="w-8 h-8 border-4 border-blue-primary border-t-transparent rounded-full animate-spin"></div>
+                <p className="text-blue-primary font-primary text-xl uppercase tracking-widest italic">
+                  Syncing with kitchen...
+                </p>
+              </div>
+            )}
           </div>
         )}
       </section>
+      <div className="w-full h-8 bg-blue-primary mt-auto" />
     </main>
   );
 }

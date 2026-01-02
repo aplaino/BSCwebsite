@@ -49,3 +49,11 @@ class ContactInquiry(models.Model):
 
     def __str__(self):
         return f"Inquiry from {self.name} - {self.created_at.strftime('%Y-%m-%d')}"
+
+class FoodTruckMenu(models.Model):
+    title = models.CharField(max_length=100, default="Current Food Truck Menu")
+    pdf_file = models.FileField(upload_to='menus/pdf/')
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.title} - {self.updated_at.strftime('%Y-%m-%d')}"

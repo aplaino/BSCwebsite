@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from django.core.mail import send_mail
 from django.conf import settings
 from .models import CateringRequest, ContactInquiry
+from .models import FoodTruckMenu
+from django.http import JsonResponse
 
 
 @api_view(['POST'])
@@ -14,17 +16,17 @@ def submit_catering(request):
     try:
         # 1. Save to Database
         new_lead = CateringRequest.objects.create(
-            full_name=data.get('fullName'),
-            email=data.get('email'),
-            phone=data.get('phone'),
-            company_name=data.get('companyName'),
-            service_type=data.get('serviceType'),
-            event_date=data.get('eventDate'),
-            event_address=data.get('eventAddress'),
-            start_time=data.get('startTime'),
-            end_time=data.get('endTime'),
-            budget=data.get('budget'),
-            notes=data.get('notes')
+            full_name=data.get('fullName', 'N/A'), # Default to 'N/A' if missing
+            email=data.get('email', ''),
+            phone=data.get('phone', ''),
+            company_name=data.get('companyName', ''),
+            service_type=data.get('serviceType', 'FOOD_TRUCK'),
+            event_date=data.get('eventDate') or None, # If string is empty, send None
+            event_address=data.get('eventAddress', ''),
+            start_time=data.get('startTime') or None,
+            end_time=data.get('endTime') or None,
+            budget=data.get('budget', ''),
+            notes=data.get('notes', '')
         )
 
         # 2. Construct the Email Content
@@ -101,3 +103,20 @@ def submit_contact(request):
         return Response({"message": "Message sent successfully!"}, status=201)
     except Exception as e:
         return Response({"error": str(e)}, status=400)
+
+@api_view(['GET'])
+def get_food_truck_menu(request):
+    # Grab the latest menu entry
+    menu = FoodTruckMenu.objects.order_by('-updated_at').first()
+    
+    if menu:
+        data = [{
+            "id": menu.id,
+            "title": menu.title,
+            # This builds the full http://127.0.0.1:8000/media/... URL
+            "pdf_file": request.build_absolute_uri(menu.pdf_file.url),
+            "updated_at": menu.updated_at
+        }]
+        return JsonResponse(data, safe=False)
+    
+    return JsonResponse([], safe=False)

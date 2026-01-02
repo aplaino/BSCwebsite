@@ -133,3 +133,15 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'your-restaurant-email@gmail.com'
 EMAIL_HOST_PASSWORD = 'your-app-specific-password' # Not your regular login password!
 DEFAULT_FROM_EMAIL = 'Buster’s Sea Cove <your-restaurant-email@gmail.com>'
+
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = 'static/'
+
+# --- ADD THESE LINES BELOW ---
+
+# The URL prefix used to access media files in the browser
+MEDIA_URL = '/media/'
+
+# The actual directory on your system where the files will be stored
+MEDIA_ROOT = BASE_DIR / 'media'
