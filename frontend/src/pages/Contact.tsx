@@ -90,7 +90,7 @@ export default function Contact() {
           </div>
           <div className="size-full flex flex-col font-secondary text-sm">
             <h3 className="font-bold">Buster's Food Truck</h3>
-            <Link to="schedule">Cick to view our schedule</Link>
+            <Link to="/schedule">Cick to view our schedule</Link>
           </div>
         </section>
 

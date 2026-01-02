@@ -58,7 +58,7 @@ export default function Header() {
                 order
               </a>
               <Link
-                to="/aboutus"
+                to="/about"
                 className="hover:text-beige-primary duration-300 py-2"
               >
                 about
@@ -117,7 +117,7 @@ export default function Header() {
             schedule
           </NavLink>
           <a
-            href="https://sites.ambassador.ai/?s=busterscommissary"
+            href="https://sites.ambassador.ai/?s=bustercommercecourt"
             target="_blank"
           >
             order
