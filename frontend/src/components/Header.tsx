@@ -51,7 +51,7 @@ export default function Header() {
                 schedule
               </Link>
               <a
-                href="https://sites.ambassador.ai/?s=busterscommissary"
+                href="https://sites.ambassador.ai/?s=bustercommercecourt"
                 target="_blank"
                 className="hover:text-beige-primary duration-300 py-2"
               >
