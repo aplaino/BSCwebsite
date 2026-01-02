@@ -9,7 +9,7 @@ import {
   RESTAURANT_fishFry,
   RESTAURANT_soups,
   RESTAURANT_beverages,
-} from "../Menus.ts";
+} from "../Data/Menus.ts";
 import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
 import { fetchFoodTruckMenu } from "../services/api"; 
