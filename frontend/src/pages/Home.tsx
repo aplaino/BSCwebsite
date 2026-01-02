@@ -2,7 +2,7 @@ import FoodTruck from "../components/HomePage/FoodTruck";
 import { Link } from "react-router-dom";
 import Gallery from "../components/HomePage/Gallery";
 import { useEffect } from "react";
-import HomeNave from "../components/HomePage/HomeNav";
+import HomeNav from "../components/HomePage/HomeNav";
 
 export default function Home() {
   useEffect(() => {
@@ -19,14 +19,16 @@ export default function Home() {
           className="flex flex-col gap-2 w-full h-120 p-4
       justify-center items-center "
         >
-          <p className="font-secondary text-beige-secondary">S I N C E 1992:</p>
+          <p className="font-secondary text-[#876E64] text-xl">
+            S I N C E 1992:
+          </p>
           <h1 className="font-primary uppercase text-8xl md:text-9xl text-blue-primary text-center">
             buster's sea cove
           </h1>
           <div className="h-40 w-full flex justify-center items-center">
             <p
-              className="font-secondary text-beige-secondary pr-10 border-r-beige-secondary border-r-2
-          text-right w-80"
+              className="font-secondary text-[#876E64] text-md md:text-lg pr-10 border-r-beige-secondary border-r-2
+          text-right w-90"
             >
               The Foudners of Torontp's renowned seafood legacy. Restaurants,
               foot trucks & catering.
@@ -48,18 +50,13 @@ export default function Home() {
           Placeholder image / video
         </div>
       </section>
+      {/* -------------- Home navs **/}
+      <HomeNav />
       {/* -------------- FOOD TRUCK SCHEDULE ----------------- **/}
       <FoodTruck />
-
       <section className="w-full h-4 bg-beige-secondary"></section>
-
-      {/* -------------- FOOD TRUCK SCHEDULE ----------------- **/}
-
-      <HomeNave />
-
       {/* -------------- GALLERY ----------------- **/}
       <Gallery />
-
       {/* -------------- SERVING HOURS ----------------- **/}
       <section
         className="bg-[url(./serving-hours-background.jpg)] w-full h-screen bg-cover
