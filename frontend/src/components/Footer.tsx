@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <footer className="w-screen min-h-80  bg-[#111B36] p-4 flex justify-center items-center">
@@ -7,15 +9,21 @@ export default function Footer() {
         <section className="w-full flex flex-col gap-10 md:gap-0 md:flex-row justify-between">
           <div className="w-auto h-full flex flex-col gap-2 font-secondary ">
             <h2 className=" font-bold">Services</h2>
-            <p>Food Truck Catering</p>
-            <p>Drop Off Catering</p>
-            <p>Pick Up Catering</p>
-            <p>Full-Service Catering</p>
+            <Link to={`/menus/foodTruck`}>Food Truck Catering</Link>
+            <a href="https://sites.ambassador.ai/?s=busterscommissary">
+              Drop Off Catering
+            </a>
+            <a href="https://sites.ambassador.ai/?s=busterscommissary">
+              Pick Up Catering
+            </a>
+            <Link to={`/menus/catering`}>Full-Service Catering</Link>
           </div>
           <div className="w-auto h-full flex flex-col gap-2 font-secondary">
             <h2 className=" font-bold">Contact</h2>
-            <p>416-319-2957</p>
-            <p>bustersheadoffice@gmail.com</p>
+            <a href="tel:4163192957">416-319-2957</a>
+            <a href="mailto:bustersheadoffice@gmail.com">
+              bustersheadoffice@gmail.com
+            </a>
           </div>
 
           <div className="w-auto h-full flex flex-col gap-2 font-secondary">

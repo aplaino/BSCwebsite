@@ -14,14 +14,24 @@ import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
 import { fetchFoodTruckMenu } from "../services/api"; 
 import { type MenuType } from "../Types.ts";
+import {useParams} from "react-router-dom"
 
 export default function Menus() {
+
+  const { typeParam } = useParams<{ typeParam: string }>();
+  if (typeParam == undefined) {
+    console.error("Menu Type is Undefined")
+    return;
+  }
+
+  console.log(typeParam)
+
   const [menus, setMenus] = useState<MenuType[]>([
-    { type: "catering", isActive: true, name: "Large Orders" },
-    { type: "restaurant", isActive: false, name: "Restaurant" },
-    { type: "foodTruck", isActive: false, name: "Food Truck" },
+    { type: "catering", isActive: typeParam == "catering", name: "Large Orders" },
+    { type: "restaurant", isActive: typeParam == "restaurant", name: "Restaurant" },
+    { type: "foodTruck", isActive: typeParam == "foodTruck", name: "Food Truck" },
   ]);
-  const [menuType, setMenuType] = useState(menus[0].type);
+  const [menuType, setMenuType] = useState(typeParam);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   useEffect(() => {
