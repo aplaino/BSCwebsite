@@ -32,7 +32,10 @@ export default function Header() {
           flex justify-center items-center"
           >
             <nav className="h-full w-full flex flex-col gap-10 justify-center items-center text-2xl">
-              <Link to="/menus/catering" className="hover:text-beige-primary duration-300 py-2">
+              <Link
+                to="/menus/catering"
+                className="hover:text-beige-primary duration-300 py-2"
+              >
                 menus
               </Link>
               <Link
@@ -40,6 +43,12 @@ export default function Header() {
                 className="hover:text-beige-primary duration-300 py-2"
               >
                 catering
+              </Link>
+              <Link
+                to="/schedule"
+                className="hover:text-beige-primary duration-300 py-2"
+              >
+                schedule
               </Link>
               <a
                 href="https://sites.ambassador.ai/?s=busterscommissary"
@@ -72,7 +81,7 @@ export default function Header() {
                 target="_blank"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
               >
-                <FaInstagram/>
+                <FaInstagram />
               </a>
             </nav>
           </div>
@@ -80,7 +89,7 @@ export default function Header() {
 
         {/* --- NAV BAR EXTENDED --- **/}
         <nav
-          className="justify-around items-center w-100 
+          className="justify-around items-center w-120
         hidden md:flex "
         >
           <NavLink
@@ -98,6 +107,14 @@ export default function Header() {
             }
           >
             catering
+          </NavLink>
+          <NavLink
+            to="schedule"
+            className={({ isActive }) =>
+              isActive ? "underline text-blue-secondary" : undefined
+            }
+          >
+            schedule
           </NavLink>
           <a
             href="https://sites.ambassador.ai/?s=busterscommissary"
