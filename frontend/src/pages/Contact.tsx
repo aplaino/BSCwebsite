@@ -24,7 +24,10 @@ export default function Contact() {
         <h1 className="font-primary uppercase text-blue-primary text-6xl">
           let's get in touch
         </h1>
-        <form className="flex flex-col md:flex-row gap-10" action={handleSubmit}>
+        <form
+          className="flex flex-col md:flex-row gap-10"
+          action={handleSubmit}
+        >
           {/** form info */}
           <div
             className="h-90 md:h-full w-full md:w-90
@@ -82,8 +85,8 @@ export default function Contact() {
         <section className="flex flex-col max-w-50 justify-around gap-6 size-full ">
           <h1 className="font-primary uppercase text-2xl">Address</h1>
           <div className="size-full flex flex-col font-secondary text-sm">
-            <h3 className="font-bold">Buster's Commerce Court</h3>
-            <p>199 Bay St. SUITE C-150 Toronto, ON M5L 1E9</p>
+            <h3 className="font-bold">Home Office</h3>
+            <p>305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7</p>
           </div>
           <div className="size-full flex flex-col font-secondary text-sm">
             <h3 className="font-bold">Buster's Food Truck</h3>
