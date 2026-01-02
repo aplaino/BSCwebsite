@@ -17,9 +17,9 @@ import { type MenuType } from "../Types.ts";
 
 export default function Menus() {
   const [menus, setMenus] = useState<MenuType[]>([
-    { type: "catering", isActive: true, name: "Catering Menu" },
-    { type: "restaurant", isActive: false, name: "Restaurant Menu" },
-    { type: "foodTruck", isActive: false, name: "Food Truck Menu" },
+    { type: "catering", isActive: true, name: "Large Orders" },
+    { type: "restaurant", isActive: false, name: "Restaurant" },
+    { type: "foodTruck", isActive: false, name: "Food Truck" },
   ]);
   const [menuType, setMenuType] = useState(menus[0].type);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
