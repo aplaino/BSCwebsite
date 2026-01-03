@@ -11,6 +11,7 @@
   --color-beige-secondary: #B2968B;
 
   --animate-infinite-scroll: infinite-scroll 60s linear infinite;
+  --animate-infinite-scroll-2: infinite-scroll2 60s linear infinite;
 
   @keyframes infinite-scroll {
     from {
@@ -18,6 +19,14 @@
     }
     to {
       transform: translateX(-100%);
+    }
+  }
+    @keyframes infinite-scroll2 {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
     }
   }
 }
