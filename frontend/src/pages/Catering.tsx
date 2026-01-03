@@ -1,6 +1,7 @@
 import { FaCheck } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { companies } from "../Data/Events";
+import CateringScroll from "../components/CateringScroll";
 export default function Catering() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -195,6 +196,12 @@ export default function Catering() {
           </div>
         </form>
       </section>
+
+      {/** --------- PARTERS (SCROLL) ------------- */}
+
+      <CateringScroll />
+
+      {/** --------- RECENT EVENTS ------------- */}
 
       <section
         className="w-full min-h-200 h-full flex flex-col gap-12 py-20 px-6
