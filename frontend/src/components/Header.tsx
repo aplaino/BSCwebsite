@@ -36,7 +36,7 @@ export default function Header() {
                 to="/menus/catering"
                 className="hover:text-beige-primary duration-300 py-2"
               >
-                menus
+                menu
               </Link>
               <Link
                 to="/catering"
@@ -98,7 +98,7 @@ export default function Header() {
               isActive ? "underline text-blue-secondary" : undefined
             }
           >
-            menus
+            menu
           </NavLink>
           <NavLink
             to="catering"

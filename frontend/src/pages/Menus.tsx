@@ -167,7 +167,7 @@ export default function Menus() {
                     </p>
                   </div>
                 )}
-              <OrderButton url={RESTAURANT_ORDER_URL} />
+              <OrderButton url={CATERING_ORDER_URL} />
               </div>
             )}
           </motion.div>

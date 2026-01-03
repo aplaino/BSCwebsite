@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="w-screen min-h-80  bg-[#111B36] p-4 flex justify-center items-center">
       <article className="w-full max-w-300 flex flex-col gap-10 text-beige-primary">
-        <h1 className="font-primary uppercase text-4xl">buster's sea cave</h1>
+        <h1 className="font-primary uppercase text-4xl">buster's sea cove</h1>
 
         <section className="w-full flex flex-col gap-10 md:gap-0 md:flex-row justify-between">
           <div className="w-auto h-full flex flex-col gap-2 font-secondary ">
