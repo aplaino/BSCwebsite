@@ -5,7 +5,7 @@ export default function CateringInfo(){
         <div className="max-w-5xl mx-auto flex flex-col gap-16">
           <article className="flex flex-col lg:flex-row gap-10 items-start">
             <div className="lg:w-1/2">
-              <h2 className="font-primary text-5xl md:text-7xl uppercase leading-tight">
+              <h2 className="font-primary text-4xl md:text-6xl uppercase leading-tight">
                 Exceptional Seafood <br /> For Every Occasion
               </h2>
             </div>

@@ -1,18 +1,18 @@
 export default function CateringScroll() {
   return (
-    <section className="w-full h-80 flex flex-col gap-12  justify-center items-center">
+    <section className="w-full h-100 flex flex-col gap-12  justify-center items-center">
       <h1 className="font-primary uppercase text-6xl text-[#876E64]">
         Our Partners
       </h1>
 
-      <div className="h-44  flex flex-col gap-12 relative">
+      <div className="h-44 w-full max-w-240 flex flex-col gap-12 relative justify-center items-center">
         {/** ---- 2 absolute gradient blocks at either side of the scroll ---- */}
         <div
-          className="h-44 w-40 bg-linear-to-r from-beige-primary to-transparent z-52
+          className="h-44 w-40 border-l-2 border-beige-secondary bg-linear-to-r from-beige-primary to-transparent z-52
         absolute left-0 top-0"
         ></div>
         <div
-          className="h-44 w-40 bg-linear-to-l from-beige-primary to-transparent z-52
+          className="h-44 w-40 border-r-2 border-beige-secondary bg-linear-to-l from-beige-primary to-transparent z-52
         absolute right-0 top-0"
         ></div>
         {/** ---- Row 1 ---- */}
