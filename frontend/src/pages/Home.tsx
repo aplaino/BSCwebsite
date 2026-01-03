@@ -52,20 +52,26 @@ export default function Home() {
           animate="visible"
           className="flex flex-col gap-2 w-full h-120 p-4 justify-center items-center"
         >
-          <motion.p variants={itemVariants} className="font-secondary text-[#876E64] text-xl">
+          <motion.p
+            variants={itemVariants}
+            className="font-secondary text-[#876E64] text-xl"
+          >
             S I N C E 1992:
           </motion.p>
-          
-          <motion.h1 
+
+          <motion.h1
             variants={itemVariants}
             className="font-primary uppercase text-8xl md:text-9xl text-blue-primary text-center"
           >
             buster's sea cove
           </motion.h1>
 
-          <motion.div variants={itemVariants} className="h-40 w-full flex justify-center items-center">
+          <motion.div
+            variants={itemVariants}
+            className="h-40 w-full flex justify-center items-center"
+          >
             <p className="font-secondary text-[#876E64] text-md md:text-lg pr-10 border-r-beige-secondary border-r-2 text-right w-90">
-              The founders of Toronto's renowned seafood legacy. Restaurants, 
+              The founders of Toronto's renowned seafood legacy. Restaurants,
               food trucks & catering.
             </p>
             <Link
@@ -81,10 +87,18 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="h-80 w-full bg-amber-400 flex justify-center items-center"
+          transition={{ delay: 0.1, duration: 1 }}
+          className="h-80 w-full flex justify-center items-center"
         >
-          Placeholder image / video
+          <video
+            autoPlay
+            loop
+            muted
+            className="max-h-80 w-full object-cover  border-t-4 border-b-4 border-[#876E64]"
+          >
+            <source src="./Landing.mp4" type="video/mp4" />
+            Your Browser Does Not Support Videos :(
+          </video>
         </motion.div>
       </section>
 
