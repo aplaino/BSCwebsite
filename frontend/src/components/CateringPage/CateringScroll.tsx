@@ -2,7 +2,7 @@ export default function CateringScroll() {
   return (
     <section className="w-full h-100 flex flex-col gap-12  justify-center items-center">
       <h1 className="font-primary uppercase text-6xl text-[#876E64]">
-        Our Partners
+        Passed Clients
       </h1>
 
       <div className="h-44 w-full max-w-240 flex flex-col gap-12 relative justify-center items-center">

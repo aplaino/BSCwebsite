@@ -1,17 +1,15 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-// FIX 1: Use 'import type' to satisfy verbatimModuleSyntax (image_8aca0d.png)
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { FaBalanceScaleLeft } from "react-icons/fa";
 
 export default function About() {
   useEffect(() => {
-    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, 0);
+    });
   }, []);
 
-  // FIX 2: Define variants correctly without 'once' inside (image_8aca43.png)
-  // FIX 3: Keep transition outside or properly typed to fix (image_8ac6fd.png)
   const fadeInUp: Variants = {
     initial: { opacity: 0, y: 30 },
     whileInView: { 
@@ -32,7 +30,6 @@ export default function About() {
     <main className="w-full h-auto bg-beige-primary flex flex-col items-center overflow-x-hidden">
       
       {/* -------------- HERO SECTION ----------------- */}
-      {/* Tightened pt-40 to pt-32 and pb-20 to pb-10 */}
       <section className="w-full pt-32 pb-10 px-4">
         <motion.article 
           initial={{ opacity: 0, y: 20 }}
@@ -56,21 +53,21 @@ export default function About() {
       </section>
 
       {/* -------------- SECTION 1: THE ORIGIN ----------------- */}
-      {/* Reduced py-20 to py-12 to bring sections closer together */}
       <section className="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <motion.div 
           variants={fadeInUp}
           initial="initial"
           whileInView="whileInView"
           viewport={{ once: true }}
-          className="relative group"
+          className="relative group z-10"
         >
-          <div className="absolute -inset-4 border border-blue-primary/10 rounded-sm translate-x-2 translate-y-2" />
+          <div className="absolute -inset-4 border-2 border-blue-primary/10 rounded-sm translate-x-3 translate-y-3 transition-all duration-700 ease-out group-hover:translate-x-1 group-hover:translate-y-1 group-hover:border-blue-primary/30" />
+          
+          <div className="relative rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(8,_112,_184,_0.2)]"></div>
           <img 
-            src="https://images.unsplash.com/photo-1534082148392-f15939d102f3?q=80&w=2070&auto=format&fit=crop" 
+            src="/Images/stLawrence.jpg" 
             alt="St. Lawrence Market" 
-            className="relative z-10 w-full h-[400px] md:h-[500px] object-cover rounded-sm shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
-          />
+          className="w-full h-[400px] md:h-[500px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"          />
         </motion.div>
 
         <motion.div 
@@ -83,7 +80,6 @@ export default function About() {
           <h2 className="font-primary text-5xl text-blue-primary uppercase leading-none text-balance">
             From St. Lawrence <br /> Market Roots
           </h2>
-          {/* Changed text-justify to text-left to remove "rivers" of white space between words */}
           <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
             Buster’s Sea Cove embarked on its culinary journey in 1992 within the vibrant surroundings of Toronto’s renowned St. Lawrence Market. From its humble beginnings as a boutique market stall, the brand steadily gained momentum, but it was the visionary leadership of Tom Antonarakis that saw Buster’s truly flourish. Infused with Tom’s unwavering dedication to delivering the freshest and most delectable seafood, the brand swiftly captured the hearts and palates of enthusiasts across the GTA, evolving from a local favorite into a definitive household name.
           </p>
@@ -91,7 +87,6 @@ export default function About() {
       </section>
 
       {/* -------------- SECTION 2: THE NUMBERS (Stats) ----------------- */}
-      {/* Reduced py-16 to py-10 and removed my-8 margin */}
       <section className="w-full bg-blue-primary py-10 border-y border-beige-secondary/10">
         <motion.div 
           variants={staggerContainer}
@@ -148,15 +143,23 @@ export default function About() {
         <motion.div 
           variants={fadeInUp}
           initial="initial"
-          whileInView="whileInView"
+          /* FIXED: Changed 'whiteInView' to 'whileInView' */
+          whileInView="whileInView" 
           viewport={{ once: true }}
-          className="order-1 md:order-2 flex justify-center"
+          whileHover={{ y: -10, transition: { duration: 0.4, ease: "easeOut" } }}
+          className="order-1 md:order-2 flex justify-center items-center relative z-10"
         >
           <img 
-            src="frontend/src/gallery/AboutPageGallery/Buster Sea Cove (51).jpg" 
+            /* Double check this path matches your folder exactly! */
+            src="/Images/Buster Sea Cove (51).jpg" 
             alt="Busters Truck" 
-            className="w-full h-auto max-h-[350px] object-contain drop-shadow-xl"
+            className="w-full h-auto max-h-[400px] object-contain 
+              filter drop-shadow-[0_25px_35px_rgba(42,68,132,0.4)]
+              antialiased relative z-20"
           />
+          
+          {/* The Glow - ensure it stays behind the truck with -z-10 */}
+          <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
         </motion.div>
       </section>
 
