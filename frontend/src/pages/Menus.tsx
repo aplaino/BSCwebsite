@@ -12,15 +12,15 @@ import {
 } from "../Data/Menus.ts";
 import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
-import { fetchFoodTruckMenu } from "../services/api"; 
+import { fetchFoodTruckMenu } from "../services/api";
 import { type MenuType } from "../Types.ts";
-import {useParams} from "react-router-dom"
+import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion"; // Added for animations
 
 // Reusable Order Button Component
 const OrderButton = ({ url }: { url: string }) => (
   <div className="w-full flex justify-center py-8">
-    <a 
+    <a
       href={url}
       target="_blank" // Opens in a new tab so they don't lose the menu
       rel="noopener noreferrer"
@@ -32,26 +32,38 @@ const OrderButton = ({ url }: { url: string }) => (
 );
 
 export default function Menus() {
-
   const { typeParam } = useParams<{ typeParam: string }>();
   if (typeParam == undefined) {
-    console.error("Menu Type is Undefined")
+    console.error("Menu Type is Undefined");
     return;
   }
 
-  console.log(typeParam)
+  console.log(typeParam);
 
   const [menus, setMenus] = useState<MenuType[]>([
-    { type: "catering", isActive: typeParam == "catering", name: "Large Orders" },
-    { type: "restaurant", isActive: typeParam == "restaurant", name: "Restaurant" },
-    { type: "foodTruck", isActive: typeParam == "foodTruck", name: "Food Truck" },
+    {
+      type: "restaurant",
+      isActive: typeParam == "restaurant",
+      name: "Restaurant",
+    },
+    {
+      type: "catering",
+      isActive: typeParam == "catering",
+      name: "Large Orders",
+    },
+
+    {
+      type: "foodTruck",
+      isActive: typeParam == "foodTruck",
+      name: "Food Truck",
+    },
   ]);
   const [menuType, setMenuType] = useState(typeParam);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchFoodTruckMenu().then(url => setPdfUrl(url));
+    fetchFoodTruckMenu().then((url) => setPdfUrl(url));
   }, []);
 
   // Animation variants
@@ -59,11 +71,12 @@ export default function Menus() {
     initial: { opacity: 0, y: 10 },
     animate: { opacity: 1, y: 0 },
     exit: { opacity: 0, y: -10 },
-    transition: { duration: 0.3 }
+    transition: { duration: 0.3 },
   };
 
   // Define your different links here
-  const RESTAURANT_ORDER_URL = "https://sites.ambassador.ai/?s=bustercommercecourt";
+  const RESTAURANT_ORDER_URL =
+    "https://sites.ambassador.ai/?s=bustercommercecourt";
   const CATERING_ORDER_URL = "/catering"; // Or a full URL
 
   return (
@@ -80,7 +93,9 @@ export default function Menus() {
               onClick={() => {
                 setMenuType(menu.type);
                 setMenus((prev) =>
-                  prev.map((m): MenuType => ({ ...m, isActive: m.type === menu.type }))
+                  prev.map(
+                    (m): MenuType => ({ ...m, isActive: m.type === menu.type })
+                  )
                 );
               }}
               className={`${
@@ -110,10 +125,15 @@ export default function Menus() {
             {menuType === "catering" && (
               <div className="flex flex-col gap-12 size-full">
                 <OrderButton url={CATERING_ORDER_URL} />
-                <MenuItem title="Buster's Platter Favourites" items={CATERING_bustersPlatterFavourites} />
-                <MenuItem title="Buster's X Stack'd Deli Kitchen" items={CATERING_bustersXStackdDeliKitchen} />
+                <MenuItem
+                  title="Buster's Platter Favourites"
+                  items={CATERING_bustersPlatterFavourites}
+                />
+                <MenuItem
+                  title="Buster's X Stack'd Deli Kitchen"
+                  items={CATERING_bustersXStackdDeliKitchen}
+                />
                 <MenuItem title="Sides" items={CATERING_sides} />
-
               </div>
             )}
 
@@ -121,10 +141,19 @@ export default function Menus() {
             {menuType === "restaurant" && (
               <div className="flex flex-col gap-12 size-full">
                 <OrderButton url={RESTAURANT_ORDER_URL} />
-                <MenuItem title="Fried Sandwiches & Po' Boys" items={RESTAURANT_friedSandwichesAndPoBoys} />
-                <MenuItem title="Grilled Sandwiches" items={RESTAURANT_grilledSandwiches} />
+                <MenuItem
+                  title="Fried Sandwiches & Po' Boys"
+                  items={RESTAURANT_friedSandwichesAndPoBoys}
+                />
+                <MenuItem
+                  title="Grilled Sandwiches"
+                  items={RESTAURANT_grilledSandwiches}
+                />
                 <MenuItem title="Lobster" items={RESTAURANT_lobster} />
-                <MenuItem title="From The Grill" items={RESTAURANT_fromTheGrill} />
+                <MenuItem
+                  title="From The Grill"
+                  items={RESTAURANT_fromTheGrill}
+                />
                 <MenuItem title="Fish Fry" items={RESTAURANT_fishFry} />
                 <MenuItem title="Soups" items={RESTAURANT_soups} />
                 <MenuItem title="Beverages" items={RESTAURANT_beverages} />
@@ -136,24 +165,27 @@ export default function Menus() {
             {menuType === "foodTruck" && (
               <div className="flex flex-col items-center text-center gap-8 py-10">
                 <div className="max-w-xl space-y-4">
-                  <h2 className="font-primary text-4xl md:text-5xl text-blue-primary uppercase">Mobile Kitchen Menu</h2>
+                  <h2 className="font-primary text-4xl md:text-5xl text-blue-primary uppercase">
+                    Mobile Kitchen Menu
+                  </h2>
                   <p className="font-secondary text-blue-primary/70 text-lg italic">
-                    Our food truck offerings vary by location and season. View or download our current PDF.
+                    Our food truck offerings vary by location and season. View
+                    or download our current PDF.
                   </p>
                 </div>
                 {pdfUrl ? (
                   <div className="flex flex-col md:flex-row gap-6 mt-4">
-                    <a 
-                      href={pdfUrl} 
-                      target="_blank" 
+                    <a
+                      href={pdfUrl}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
                     >
                       View PDF
                     </a>
-                    <a 
-                      href={pdfUrl} 
-                      download 
+                    <a
+                      href={pdfUrl}
+                      download
                       className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
                     >
                       Download
@@ -167,7 +199,7 @@ export default function Menus() {
                     </p>
                   </div>
                 )}
-              <OrderButton url={CATERING_ORDER_URL} />
+                <OrderButton url={CATERING_ORDER_URL} />
               </div>
             )}
           </motion.div>

@@ -39,7 +39,7 @@ export default function Header() {
                 menu
               </Link>
               <Link
-                to="/catering"
+                to="/restaurant"
                 className="hover:text-beige-primary duration-300 py-2"
               >
                 catering
@@ -93,7 +93,7 @@ export default function Header() {
         hidden md:flex "
         >
           <NavLink
-            to="menus/catering"
+            to="menus/restaurant"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
