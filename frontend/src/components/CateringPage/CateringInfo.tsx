@@ -56,7 +56,7 @@ export default function CateringInfo() {
         {/* Dessert Section */}
         <div className="flex flex-col items-center gap-6">
           <h3 className="font-secondary font-semibold italic text-3xl md:text-4xl uppercase">
-            Need dessert?
+            Complete your menu
           </h3>
           <a
             href="https://dolcellagelato.com/"
