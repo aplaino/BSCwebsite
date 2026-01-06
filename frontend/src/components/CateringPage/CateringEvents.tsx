@@ -4,8 +4,8 @@ import { companies } from "../../Data/Events";
 export default function CateringEvents() {
   return (
     <section
-      className="w-full min-h-200 h-full flex flex-col gap-12 py-20 px-6
-       items-center "
+      className="w-full min-h-200 h-full flex flex-col gap-12 py-20 px-8 md:px-12
+        "
     >
       <article
         className="w-full max-w-140 h-full flex flex-col gap-6

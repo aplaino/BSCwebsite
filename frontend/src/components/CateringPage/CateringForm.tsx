@@ -28,7 +28,7 @@ export default function CateringForm({
           flex flex-col gap-10 justify-center items-center ${
             minimalForm ? "" : "pt-40 pb-20"
           }
-          border-b-4 border-beige-secondary`}
+          `}
     >
       <article
         className="w-full max-w-140 h-full flex flex-col gap-6
