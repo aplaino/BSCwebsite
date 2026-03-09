@@ -3,13 +3,36 @@ import { useEffect, useState } from "react";
 export default function Gallery() {
   const modules = import.meta.glob("../../gallery/HomePageGallery/*.jpg");
   const [gallery, setGallery] = useState<string[]>([]);
+  const menuGallery = [
+    "/Images/Menu/Calamari & Chips .jpg",
+    "/Images/Menu/Gr Calamari .jpg",
+    "/Images/Menu/Gr Halibut .jpg",
+    "/Images/Menu/Haddock & Chips .jpg",
+    "/Images/Menu/Halibut & Chips .jpg",
+    "/Images/Menu/Lobster Grilled Cheese Closeup .jpg",
+    "/Images/Menu/Lobster Roll .jpg",
+    "/Images/Menu/Octopus .jpg",
+    "/Images/Menu/Rainbow Trout .jpg",
+    "/Images/Menu/Rainbow Trout closeup.jpg",
+    "/Images/Menu/Salmon .jpg",
+    "/Images/Menu/Seared Ahi Tuna salad (1).jpg",
+    "/Images/Menu/Seared Ahi Tuna salad.jpg",
+    "/Images/Menu/Snapper .jpg",
+    "/Images/Menu/Snapper Sandwich .jpg",
+    "/Images/Menu/Soups .jpg",
+    "/Images/Menu/Swordfish .jpg",
+    "/Images/Menu/Tilapia .jpg",
+  ];
 
-  const loadPhotos = () => {
-    for (const path in modules) {
-      modules[path]().then((mod: any) => {
-        setGallery((prev) => [...prev, mod.default]);
-      });
-    }
+  const loadPhotos = async () => {
+    const sortedPaths = Object.keys(modules).sort();
+    const homeGallery = await Promise.all(
+      sortedPaths.map(async (path) => {
+        const mod = (await modules[path]()) as { default: string };
+        return mod.default;
+      })
+    );
+    setGallery([...menuGallery, ...homeGallery]);
   };
 
   useEffect(() => {

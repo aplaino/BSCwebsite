@@ -1,5 +1,4 @@
 import Scroll from "./Scroll";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 export default function FoodTruck() {
   return (
@@ -21,15 +20,21 @@ export default function FoodTruck() {
       flex flex-col text-left justify-center"
       >
         <h1 className="font-secondary font-bold text-6xl ">
-          Our <span className="text-blue-secondary underline">food truck</span>{" "}
-          is always on the move.{" "}
+          Our{" "}
           <Link
             to="/schedule"
-            className="bg-beige-primary text-blue-primary text-2xl md:text-4xl w-auto whitespace-nowrap rounded-3xl px-4 py-2
-            duration-300 hover:bg-beige-primary/80
+            className="text-blue-secondary underline decoration-3 underline-offset-4 hover:text-blue-primary transition-colors"
+          >
+            food truck
+          </Link>{" "}
+          is always on the move.{" "}
+          <Link
+            to="/catering"
+            className="bg-blue-primary text-beige-primary text-2xl md:text-4xl w-auto whitespace-nowrap rounded-[3rem] px-7 py-3 md:px-8 md:py-4 ml-2
+            border-2 border-beige-primary shadow-[0_8px_20px_rgba(0,0,0,0.35)] duration-300 hover:bg-blue-secondary hover:scale-105
             inline-flex justify-center items-center gap-2"
           >
-            Check the schedule <FaMapMarkerAlt className="text-3xl" />
+            Book our food truck
           </Link>
         </h1>
       </div>
