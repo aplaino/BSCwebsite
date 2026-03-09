@@ -5,7 +5,8 @@ export default function FoodTruck() {
   return (
     <section className="w-full h-240 flex flex-col relative bg-black py-5 md:py-10 ">
       <img
-        src="./foodtruck.svg"
+        src="/foodtruck.svg"
+        alt=""
         className="absolute w-170 z-50
         top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3"
       />

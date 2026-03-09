@@ -27,9 +27,11 @@ export default function CateringScroll() {
             className="flex shrink-0 justify-center items-center gap-10 
         animate-infinite-scroll"
           >
-            {[...Array(4)].map((k, index) => (
+            {[...Array(4)].map((_, index) => (
               <img
-                src={`./CateringScroll/${index}.svg`}
+                key={`row1a-${index}`}
+                src={`/CateringScroll/${index}.svg`}
+                alt={`Client logo ${index + 1}`}
                 className="w-40 h-20"
               />
             ))}
@@ -38,9 +40,11 @@ export default function CateringScroll() {
             className="flex shrink-0 justify-center items-center gap-10 uppercase
         animate-infinite-scroll"
           >
-            {[...Array(4)].map((k, index) => (
+            {[...Array(4)].map((_, index) => (
               <img
-                src={`./CateringScroll/${index}.svg`}
+                key={`row1b-${index}`}
+                src={`/CateringScroll/${index}.svg`}
+                alt={`Client logo ${index + 1}`}
                 className="w-40 h-20"
               />
             ))}
@@ -56,9 +60,11 @@ export default function CateringScroll() {
             className="flex shrink-0 justify-center items-center gap-10 
         animate-infinite-scroll-2"
           >
-            {[...Array(5)].map((k, index) => (
+            {[...Array(5)].map((_, index) => (
               <img
-                src={`./CateringScroll/${index + 4}.svg`}
+                key={`row2a-${index}`}
+                src={`/CateringScroll/${index + 4}.svg`}
+                alt={`Client logo ${index + 5}`}
                 className="w-40 h-20"
               />
             ))}
@@ -67,9 +73,11 @@ export default function CateringScroll() {
             className="flex shrink-0 justify-center items-center gap-10 uppercase
         animate-infinite-scroll-2"
           >
-            {[...Array(5)].map((k, index) => (
+            {[...Array(5)].map((_, index) => (
               <img
-                src={`./CateringScroll/${index + 4}.svg`}
+                key={`row2b-${index}`}
+                src={`/CateringScroll/${index + 4}.svg`}
+                alt={`Client logo ${index + 5}`}
                 className="w-40 h-20"
               />
             ))}

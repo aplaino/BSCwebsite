@@ -1,4 +1,6 @@
 import { FaCheck } from "react-icons/fa6";
+import { useState } from "react";
+import { submitCateringForm } from "../../services/api";
 
 interface CateringFormInterface {
   minimalForm: boolean;
@@ -8,23 +10,23 @@ export default function CateringForm({
   minimalForm,
   setMinimalForm,
 }: CateringFormInterface) {
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
   async function handleSubmit(formData: FormData) {
-    const input = Object.fromEntries(formData.entries());
-    console.log("SENDING TO DJANGO:", input);
-
-    const result = await fetch("http://127.0.0.1:8000/api/catering/submit/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(input),
-    });
-
-    const data = await result.json();
-    console.log(data);
+    try {
+      setSubmitState("submitting");
+      await submitCateringForm(formData);
+      setSubmitState("success");
+    } catch {
+      setSubmitState("error");
+    }
   }
 
   return (
     <section
-      className={`w-full min-h-200 h-full bg-[url(./catering-background.svg)] bg-cover px-6
+      className={`w-full min-h-200 h-full bg-[url(/catering-background.svg)] bg-cover px-6
           flex flex-col gap-10 justify-center items-center ${
             minimalForm ? "" : "pt-40 pb-20"
           }
@@ -76,6 +78,7 @@ export default function CateringForm({
             name="fullName"
             type="text"
             placeholder="e.g. Helena Eagan"
+            required
             className="border-b-2 border-beige-secondary w-full h-8 
                         outline-none! placeholder:italic mb-8"
           />
@@ -84,8 +87,9 @@ export default function CateringForm({
           </label>
           <input
             name="email"
-            type="text"
+            type="email"
             placeholder="e.g. helena123@gmail.com"
+            required
             className="border-b-2 border-beige-secondary w-full h-8 
                         outline-none! placeholder:italic mb-8"
           />
@@ -96,6 +100,7 @@ export default function CateringForm({
             name="phone"
             type="text"
             placeholder="e.g. 1234567890"
+            required
             className="border-b-2 border-beige-secondary w-full h-8 
                         outline-none! placeholder:italic mb-8"
           />
@@ -133,6 +138,7 @@ export default function CateringForm({
             name="eventDate"
             type="date"
             placeholder="e.g. 2025-07-20"
+            required
             className="border-b-2 border-beige-secondary w-full h-8 
                         outline-none! placeholder:italic mb-8"
           />
@@ -143,6 +149,7 @@ export default function CateringForm({
             name="eventAddress"
             type="text"
             placeholder="e.g. 123 Bay St, Toronto"
+            required
             className="border-b-2 border-beige-secondary w-full h-8 
                         outline-none! placeholder:italic mb-8"
           />
@@ -186,12 +193,23 @@ export default function CateringForm({
 
           <button
             type="submit"
+            disabled={submitState === "submitting"}
             className="font-primary text-beige-primary bg-[#876E64] text-xl p-4 gap-3 mt-6
                         w-full h-12 flex justify-center items-center rounded-[4rem] cursor-pointer
                         duration-300 hover:bg-beige-primary hover:border  hover:text-[#876E64]"
           >
-            Send <FaCheck />
+            {submitState === "submitting" ? "Sending..." : "Send"} <FaCheck />
           </button>
+          {submitState === "success" && (
+            <p className="text-sm text-green-700 font-secondary text-center">
+              Catering request sent successfully.
+            </p>
+          )}
+          {submitState === "error" && (
+            <p className="text-sm text-red-700 font-secondary text-center">
+              Something went wrong. Please try again.
+            </p>
+          )}
         </div>
       </form>
     </section>

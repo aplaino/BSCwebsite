@@ -96,7 +96,7 @@ export default function Home() {
             muted
             className="max-h-80 w-full object-cover  border-t-4 border-b-4 border-[#876E64]"
           >
-            <source src="./Landing.mp4" type="video/mp4" />
+            <source src="/Landing.mp4" type="video/mp4" />
             Your Browser Does Not Support Videos :(
           </video>
         </motion.div>
@@ -128,13 +128,13 @@ export default function Home() {
       </motion.div>
 
       {/* -------------- SERVING HOURS ----------------- */}
-      <section className="bg-[url(./serving-hours-background.jpg)] w-full h-screen bg-cover flex justify-center items-center">
+      <section className="bg-[url(/serving-hours-background.jpg)] w-full h-screen bg-cover flex justify-center items-center">
         <motion.img
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          src="./serving-hours.svg"
+          src="/serving-hours.svg"
           alt="serving hours"
           className="h-90 md:120 lg:150 w-auto"
         />

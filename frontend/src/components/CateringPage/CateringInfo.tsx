@@ -61,6 +61,7 @@ export default function CateringInfo() {
           <a
             href="https://dolcellagelato.com/"
             target="_blank"
+            rel="noopener noreferrer"
             className="w-full max-w-md bg-beige-primary/10 p-8 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
           >
             <h3

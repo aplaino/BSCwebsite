@@ -23,31 +23,30 @@ export default function MenuItem({ title, items }:MenuSectionProps) {
         {items.map((item, index) => (
           <div
             key={`${title}-${item.name}-${index}`}
-            className="w-full h-full gap-7
-                      flex flex-col justify-between py-2 border-b-2 border-black/30"
+            className="w-full h-full flex flex-col gap-4 p-4 rounded-2xl bg-white/60 border border-black/10"
           >
             <div className="w-full">
               {item.imageUrl ? (
                 <img
                   src={item.imageUrl}
                   alt={item.name}
-                  className="w-24 h-24 object-cover rounded-lg border border-black/15"
+                  className="w-full h-56 md:h-52 object-cover rounded-xl border border-black/15"
                   loading="lazy"
                 />
               ) : (
-                <div className="w-24 h-24 rounded-lg border border-dashed border-black/30 bg-beige-primary/50 flex items-center justify-center text-[10px] text-blue-primary/70 uppercase tracking-wider text-center px-2">
+                <div className="w-full h-56 md:h-52 rounded-xl border border-dashed border-black/30 bg-beige-primary/50 flex items-center justify-center text-xs text-blue-primary/70 uppercase tracking-wider text-center px-2">
                   Photo coming soon
                 </div>
               )}
             </div>
-            <div className="w-full h-full flex flex-col justify-between">
+            <div className="w-full h-full flex flex-col gap-2">
               <h2 className="font-bold text-xl">{item.name}</h2>
               {item.description ? (
-                <h2 className=" text-md">{item.description}</h2>
+                <h2 className="text-md">{item.description}</h2>
               ) : null}
             </div>
 
-            <h2 className="text-md text-right">{item.price}</h2>
+            <h2 className="text-md text-right mt-auto">{item.price}</h2>
           </div>
         ))}
       </div>

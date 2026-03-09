@@ -1,7 +1,7 @@
 import { FaRegPaperPlane } from "react-icons/fa6";
 import { MdOutlineVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { submitContactForm } from "../services/api";
 // 1. Framer Motion Imports
 import { motion } from "framer-motion";
@@ -26,9 +26,18 @@ const staggerContainer: Variants = {
 };
 
 export default function Contact() {
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+
   async function handleSubmit(formData: FormData) {
-    const data = await submitContactForm(formData);
-    console.log("Success:", data);
+    try {
+      setSubmitState("submitting");
+      await submitContactForm(formData);
+      setSubmitState("success");
+    } catch {
+      setSubmitState("error");
+    }
   }
 
   useEffect(() => {
@@ -62,23 +71,27 @@ export default function Contact() {
               name="name"
               type="text"
               placeholder="Name"
+              required
               className="border-b-2 border-beige-secondary w-full h-10 text-blue-primary bg-transparent outline-none placeholder:italic placeholder:text-beige-secondary/60 mb-4"
             />
             <input
               name="email"
               type="email"
               placeholder="Email"
+              required
               className="border-b-2 border-beige-secondary w-full h-10 text-blue-primary bg-transparent outline-none placeholder:italic placeholder:text-beige-secondary/60 mb-4"
             />
             <input
               name="phone"
               type="text"
               placeholder="Phone"
+              required
               className="border-b-2 border-beige-secondary w-full h-10 text-blue-primary bg-transparent outline-none placeholder:italic placeholder:text-beige-secondary/60 mb-4"
             />
             <textarea
               name="message"
               placeholder="Enter your message here..."
+              required
               className="border-2 border-beige-secondary w-full h-40 text-blue-primary bg-transparent outline-none placeholder:italic p-4 mt-4"
             />
           </div>
@@ -89,10 +102,22 @@ export default function Contact() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               type="submit"
+              disabled={submitState === "submitting"}
               className="font-primary text-beige-primary bg-blue-primary text-xl px-8 py-4 gap-3 w-full flex justify-center items-center rounded-[4rem] cursor-pointer duration-300 hover:bg-white hover:text-blue-primary border-2 border-transparent hover:border-blue-primary shadow-lg"
             >
-              Send <FaRegPaperPlane />
+              {submitState === "submitting" ? "Sending..." : "Send"}{" "}
+              <FaRegPaperPlane />
             </motion.button>
+            {submitState === "success" && (
+              <p className="text-sm text-green-700 font-secondary text-center">
+                Message sent successfully.
+              </p>
+            )}
+            {submitState === "error" && (
+              <p className="text-sm text-red-700 font-secondary text-center">
+                Something went wrong. Please try again.
+              </p>
+            )}
           </div>
         </form>
       </motion.div>

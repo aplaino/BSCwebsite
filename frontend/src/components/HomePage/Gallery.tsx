@@ -32,7 +32,7 @@ export default function Gallery() {
       [&>img:not(:first-child)]:mt-4"
       >
         {gallery.map((p, index) => (
-          <img src={p} key={index} className="rounded-2xl" />
+          <img src={p} key={index} alt={`Gallery item ${index + 1}`} className="rounded-2xl" />
         ))}
       </div>
     </section>

@@ -12,7 +12,7 @@ export default function Scroll({ text, rep }: ScrollText) {
         className="flex shrink-0 justify-center items-center gap-10 uppercase
         animate-infinite-scroll"
       >
-        {[...Array(rep)].map((k, index) => (
+        {[...Array(rep)].map((_, index) => (
           <li key={index}>{text}</li>
         ))}
       </ul>
@@ -20,7 +20,7 @@ export default function Scroll({ text, rep }: ScrollText) {
         className="flex shrink-0 justify-center items-center gap-10 uppercase
         animate-infinite-scroll"
       >
-        {[...Array(rep)].map((k, index) => (
+        {[...Array(rep)].map((_, index) => (
           <li key={index}>{text}</li>
         ))}
       </ul>

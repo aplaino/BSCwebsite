@@ -88,7 +88,7 @@ export default function Menus() {
   return (
     <main className="w-screen h-full min-h-screen flex flex-col bg-beige-primary">
       {/* --- MENU OPTIONS --- */}
-      <section className="size-full bg-[url(./menu-background.svg)] bg-cover px-4 flex flex-col justify-center items-center pb-10 border-b-2 border-black">
+      <section className="size-full bg-[url(/menu-background.svg)] bg-cover px-4 flex flex-col justify-center items-center pb-10 border-b-2 border-black">
         <div className="w-full h-30 flex justify-center items-center mt-40">
           <h1 className="font-primary uppercase text-6xl">Our menus</h1>
         </div>

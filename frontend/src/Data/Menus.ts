@@ -9,33 +9,39 @@ export const CATERING_bustersPlatterFavourites = [
     name: "Atlantic Salmon Platter",
     description: "5 oz per serving. Side lemon.",
     price: "$15 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Salmon .jpg",
   },
   {
     name: "Grilled Calamari Platter",
     description: "6 oz per serving. Side lemon and tzatziki.",
     price: "$18 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Gr Calamari .jpg",
   },
   {
     name: "BBQ'd Moroccan Octopus Platter",
     description: "4-5 oz per serving. Side lemon and tzatziki.",
     price: "$22 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Octopus .jpg",
   },
   {
     name: "Grilled Rainbow Trout Platter",
     description: "5 oz per serving. Side lemon.",
     price: "$18 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Rainbow Trout .jpg",
   },
   {
     name: "Lobster Roll Platter",
     description:
       "Atlantic Lobster stuffed in a perfectly toasted potato bun. 1 Roll per serving. Side lemon and pickle spear.",
     price: "$24 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Lobster Roll .jpg",
   },
   {
     name: "Lobster Grilled Cheese Platter",
     description:
       "Atlantic Lobster stuffed in a traditional grilled cheese. 1 Grilled Cheese per serving.",
     price: "$25 per person. Minimum of 4",
+    imageUrl: "/Images/Menu/Lobster Grilled Cheese Closeup .jpg",
   },
   {
     name: "Grilled Jumbo Shrimp Skewers",
@@ -150,35 +156,41 @@ export const RESTAURANT_grilledSandwiches = [
     description:
       "Atlantic Salmon grilled to perfection & served atop a scrumptious sandwich.",
     price: "$13.95",
+    imageUrl: "/Images/Menu/Salmon .jpg",
   },
   {
     name: "Grilled Swordfish Sandwich",
     description:
       "Sashimi grade Swordfish grilled to perfection & served atop a delicious sandwich.",
     price: "$14.95",
+    imageUrl: "/Images/Menu/Swordfish .jpg",
   },
   {
     name: "Grilled Tilapia Sandwich",
     description:
       "Fresh Tilapia, grilled to perfection & served atop a scrumptious sandwich.",
     price: "$12.95",
+    imageUrl: "/Images/Menu/Tilapia .jpg",
   },
   {
     name: "Grilled Rainbow Trout Sandwich",
     description:
       "Fresh rainbow Trout, grilled to perfection & served as a delicious sandwich.",
     price: "$14.95",
+    imageUrl: "/Images/Menu/Rainbow Trout closeup.jpg",
   },
   {
     name: "Grilled Snapper Sandwich",
     description:
       "Fresh Red Snapper, grilled to perfection & served atop a scrumptious sandwich.",
     price: "$13.95",
+    imageUrl: "/Images/Menu/Snapper Sandwich .jpg",
   },
   {
     name: "Grilled Halibut Sandwich",
     description: "Perfectly grilled halibut. Served as a delicious sandwich.",
     price: "$15.95",
+    imageUrl: "/Images/Menu/Gr Halibut .jpg",
   },
 ];
 
@@ -187,11 +199,13 @@ export const RESTAURANT_lobster = [
     name: "Lobster Roll",
     description: "Atlantic Lobster stuffed in a perfectly toasted potato bun.",
     price: "$23.95",
+    imageUrl: "/Images/Menu/Lobster Roll .jpg",
   },
   {
     name: "Lobster Grilled Cheese",
     description: "Atlantic Lobster stuffed in a traditional grilled cheese.",
     price: "$24.95",
+    imageUrl: "/Images/Menu/Lobster Grilled Cheese Closeup .jpg",
   },
 ];
 
@@ -200,46 +214,55 @@ export const RESTAURANT_fromTheGrill = [
     name: "Seared Ahi Tuna",
     description: "Pan seared rare Ahi Tuna.",
     price: "$19.95",
+    imageUrl: "/Images/Menu/Seared Ahi Tuna salad.jpg",
   },
   {
     name: "Grilled Atlantic Salmon",
     description: "Atlantic Salmon grilled to perfection.",
     price: "$17.95",
+    imageUrl: "/Images/Menu/Salmon .jpg",
   },
   {
     name: "Grilled Tilapia",
     description: "Fresh grilled Tilapia.",
     price: "$16.95",
+    imageUrl: "/Images/Menu/Tilapia .jpg",
   },
   {
     name: "Grilled Red Snapper",
     description: "Slightly sweet grilled Red Snapper.",
     price: "$17.95",
+    imageUrl: "/Images/Menu/Snapper .jpg",
   },
   {
     name: "Grilled Halibut",
     description: "Very lean grilled Halibut.",
     price: "$19.95",
+    imageUrl: "/Images/Menu/Gr Halibut .jpg",
   },
   {
     name: "Grilled Swordfish",
     description: "Mild meaty grilled Swordfish.",
     price: "$18.95",
+    imageUrl: "/Images/Menu/Swordfish .jpg",
   },
   {
     name: "Grilled Rainbow Trout",
     description: "Mildly grilled Rainbow Trout.",
     price: "$18.95",
+    imageUrl: "/Images/Menu/Rainbow Trout .jpg",
   },
   {
     name: "Grilled Octopus",
     description: "BBQ'd Moroccan Octopus.",
     price: "$23.95",
+    imageUrl: "/Images/Menu/Octopus .jpg",
   },
   {
     name: "Grilled Calamari",
     description: "Perfectly grilled tender Calamari.",
     price: "$17.95",
+    imageUrl: "/Images/Menu/Gr Calamari .jpg",
   },
   {
     name: "Grilled Mahi Mahi",
@@ -259,18 +282,21 @@ export const RESTAURANT_fishFry = [
     description:
       "Battered and deep fried Halibut. Served with fries and coleslaw.",
     price: "$19.95",
+    imageUrl: "/Images/Menu/Halibut & Chips .jpg",
   },
   {
     name: "Calamari & Chips",
     description:
       "Lightly breaded and deep fried calamari. Served with fries and coleslaw.",
     price: "$16.95",
+    imageUrl: "/Images/Menu/Calamari & Chips .jpg",
   },
   {
     name: "Haddock & Chips",
     description:
       "Freshly breaded and deep fried haddock. Served with fries and coleslaw.",
     price: "$15.95",
+    imageUrl: "/Images/Menu/Haddock & Chips .jpg",
   },
   {
     name: "Shrimp & Chips",
@@ -285,16 +311,19 @@ export const RESTAURANT_soups = [
     name: "Chicken Shrimp Gumbo",
     description: "",
     price: "$7.75",
+    imageUrl: "/Images/Menu/Soups .jpg",
   },
   {
     name: "Lobster Bisque",
     description: "",
     price: "$9.95",
+    imageUrl: "/Images/Menu/Soups .jpg",
   },
   {
     name: "New England Clam Chowder",
     description: "",
     price: "$8.25",
+    imageUrl: "/Images/Menu/Soups .jpg",
   },
 ];
 
@@ -337,4 +366,3 @@ export const FOOD_TRUCK_AddOns = [
   { name: "Appetizers ($12 tier)", description: "Lobster Sliders, Mac N' Cheese Balls, Coconut Shrimp, Shrimp Skewers, Brisket Sliders", price: "$12 PP" },
   { name: "Drinks", description: "Assorted beverages", price: "$2 PP" },
 ];
-

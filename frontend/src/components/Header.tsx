@@ -39,7 +39,7 @@ export default function Header() {
                 menu
               </Link>
               <Link
-                to="/restaurant"
+                to="/catering"
                 className="hover:text-beige-primary duration-300 py-2"
               >
                 catering
@@ -53,6 +53,7 @@ export default function Header() {
               <a
                 href="https://sites.ambassador.ai/?s=bustercommercecourt"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2"
               >
                 order
@@ -72,13 +73,15 @@ export default function Header() {
               <a
                 href="https://www.facebook.com/bustersseacove/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
               >
                 <FaFacebook />
               </a>
               <a
-                href="https://www.facebook.com/bustersseacove/"
+                href="https://www.instagram.com/bustersseacove/?hl=en"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
               >
                 <FaInstagram />
@@ -93,7 +96,7 @@ export default function Header() {
         hidden md:flex "
         >
           <NavLink
-            to="menus/restaurant"
+            to="/menus/restaurant"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
@@ -101,7 +104,7 @@ export default function Header() {
             menu
           </NavLink>
           <NavLink
-            to="catering"
+            to="/catering"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
@@ -109,7 +112,7 @@ export default function Header() {
             catering
           </NavLink>
           <NavLink
-            to="schedule"
+            to="/schedule"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
@@ -119,11 +122,12 @@ export default function Header() {
           <a
             href="https://sites.ambassador.ai/?s=bustercommercecourt"
             target="_blank"
+            rel="noopener noreferrer"
           >
             order
           </a>
           <NavLink
-            to="about"
+            to="/about"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
@@ -131,19 +135,24 @@ export default function Header() {
             about
           </NavLink>
           <NavLink
-            to="contact"
+            to="/contact"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }
           >
             contact
           </NavLink>
-          <a href="https://www.facebook.com/bustersseacove/" target="_blank">
+          <a
+            href="https://www.facebook.com/bustersseacove/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <img src="/facebook.svg" className="size-6" alt="facebook" />
           </a>
           <a
             href="https://www.instagram.com/bustersseacove/?hl=en"
             target="_blank"
+            rel="noopener noreferrer"
           >
             <img src="/instagram.svg" className="size-6" alt="instagram" />
           </a>
