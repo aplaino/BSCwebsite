@@ -1,73 +1,111 @@
-# React + TypeScript + Vite
+# Buster's Sea Cove Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Production-style restaurant website with:
+- React + TypeScript + Vite frontend
+- Django + Django REST Framework backend
+- Catering/contact lead capture
+- Food truck PDF menu support
 
-Currently, two official plugins are available:
+## Repository Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+BSCwebsite/
+  backend/    # Django API + admin + media
+  frontend/   # React app (Vite)
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Prerequisites
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Node.js 18+ and npm
+- Python 3.11+ (3.12/3.13 also fine)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Quick Start (Local Development)
+
+### 1. Start Backend (Django)
+
+```bash
+cd backend
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env
+python manage.py migrate
+python manage.py runserver
 ```
+
+Backend will run on:
+- `http://127.0.0.1:8000`
+
+### 2. Start Frontend (Vite)
+
+Open a second terminal:
+
+```bash
+cd frontend
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Frontend will run on:
+- `http://localhost:5173`
+
+## Environment Variables
+
+### Backend (`backend/.env`)
+Use `backend/.env.example` as the base.
+
+Important keys:
+- `DJANGO_SECRET_KEY`
+- `DJANGO_DEBUG`
+- `DJANGO_ALLOWED_HOSTS`
+- `DJANGO_CORS_ALLOWED_ORIGINS`
+- `DJANGO_CSRF_TRUSTED_ORIGINS`
+- `DJANGO_EMAIL_*`
+
+### Frontend (`frontend/.env`)
+Use `frontend/.env.example` as the base.
+
+Important key:
+- `VITE_API_BASE_URL` (example: `http://127.0.0.1:8000/api`)
+
+## Email Behavior
+
+By default, backend email uses console mode (safe for local testing):
+- `DJANGO_EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend`
+
+To send real emails, switch to SMTP in `backend/.env` and set valid credentials.
+
+## Common Commands
+
+### Frontend
+
+```bash
+cd frontend
+npm run dev
+npm run build
+npm run lint
+```
+
+### Backend
+
+```bash
+cd backend
+source .venv/bin/activate
+python manage.py runserver
+python manage.py check
+python manage.py migrate
+```
+
+## API Endpoints
+
+- `POST /api/contact/submit/`
+- `POST /api/catering/submit/`
+- `GET /api/restaurant/foodtruckmenu/`
+
+## Deployment Notes
+
+- Set `DJANGO_DEBUG=False` in production.
+- Set a strong production `DJANGO_SECRET_KEY`.
+- Configure `DJANGO_ALLOWED_HOSTS`, `DJANGO_CORS_ALLOWED_ORIGINS`, and `DJANGO_CSRF_TRUSTED_ORIGINS` for your domain.
+- Use HTTPS in production and configure reverse proxy/static hosting accordingly.
