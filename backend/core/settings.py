@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-&m)klkdwy=ox*!!l)9mw(e$%jqt7ks#_prb2%488eddetcxmw)'
+SECRET_KEY = os.getenv(
+    "DJANGO_SECRET_KEY",
+    "django-insecure-local-dev-only-change-me",
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DJANGO_DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = []
+
+def get_env_list(key: str, default: str) -> list[str]:
+    raw = os.getenv(key, default)
+    return [item.strip() for item in raw.split(",") if item.strip()]
+
+
+ALLOWED_HOSTS = get_env_list("DJANGO_ALLOWED_HOSTS", "localhost,127.0.0.1")
 
 
 # Application definition
@@ -53,16 +63,21 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173", # Standard Vite port
-    "http://127.0.0.1:5173",
-    "http://localhost:3000", # Standard CRA port
-]
+CORS_ALLOWED_ORIGINS = get_env_list(
+    "DJANGO_CORS_ALLOWED_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000",
+)
+
+CSRF_TRUSTED_ORIGINS = get_env_list(
+    "DJANGO_CSRF_TRUSTED_ORIGINS",
+    "http://localhost:5173,http://127.0.0.1:5173",
+)
 
 # Allow embedding media/PDF previews in local frontend during development.
 # Do not keep this in production without tighter framing rules.
-if DEBUG:
-    X_FRAME_OPTIONS = "ALLOWALL"
+X_FRAME_OPTIONS = "ALLOWALL" if DEBUG else "DENY"
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 ROOT_URLCONF = 'core.urls'
 
@@ -126,27 +141,20 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.0/howto/static-files/
-
 STATIC_URL = 'static/'
-# for email
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-restaurant-email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your-app-specific-password' # Not your regular login password!
-DEFAULT_FROM_EMAIL = 'Buster’s Sea Cove <your-restaurant-email@gmail.com>'
+EMAIL_BACKEND = os.getenv(
+    "DJANGO_EMAIL_BACKEND",
+    "django.core.mail.backends.console.EmailBackend",
+)
+EMAIL_HOST = os.getenv("DJANGO_EMAIL_HOST", "smtp.gmail.com")
+EMAIL_PORT = int(os.getenv("DJANGO_EMAIL_PORT", "587"))
+EMAIL_USE_TLS = os.getenv("DJANGO_EMAIL_USE_TLS", "True").lower() == "true"
+EMAIL_HOST_USER = os.getenv("DJANGO_EMAIL_HOST_USER", "your-restaurant-email@gmail.com")
+EMAIL_HOST_PASSWORD = os.getenv("DJANGO_EMAIL_HOST_PASSWORD", "your-app-specific-password")
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DJANGO_DEFAULT_FROM_EMAIL",
+    "Buster's Sea Cove <your-restaurant-email@gmail.com>",
+)
 
-
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
-
-# --- ADD THESE LINES BELOW ---
-
-# The URL prefix used to access media files in the browser
 MEDIA_URL = '/media/'
-
-# The actual directory on your system where the files will be stored
 MEDIA_ROOT = BASE_DIR / 'media'

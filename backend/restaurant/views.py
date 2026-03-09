@@ -1,12 +1,14 @@
-from django.core.mail import send_mail
+import logging
+
 from django.conf import settings
+from django.core.mail import send_mail
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from django.core.mail import send_mail
-from django.conf import settings
-from .models import CateringRequest, ContactInquiry
-from .models import FoodTruckMenu
-from django.http import JsonResponse
+
+from .models import CateringRequest, ContactInquiry, FoodTruckMenu
+
+logger = logging.getLogger(__name__)
 
 
 @api_view(['POST'])
@@ -56,14 +58,18 @@ def submit_catering(request):
             subject,
             message,
             settings.DEFAULT_FROM_EMAIL,
-            ['owner-email@example.com'], # The restaurant owner's inbox
+            ['bustersheadoffice@gmail.com'], # The restaurant owner's inbox
             fail_silently=False,
         )
 
         return Response({"message": "Inquiry sent! Check your email."}, status=201)
 
-    except Exception as e:
-        return Response({"error": str(e)}, status=400)
+    except Exception:
+        logger.exception("Failed to handle catering submission")
+        return Response(
+            {"error": "Unable to submit catering inquiry right now."},
+            status=400,
+        )
 
 
 @api_view(['POST'])
@@ -101,8 +107,12 @@ def submit_contact(request):
         )
 
         return Response({"message": "Message sent successfully!"}, status=201)
-    except Exception as e:
-        return Response({"error": str(e)}, status=400)
+    except Exception:
+        logger.exception("Failed to handle contact submission")
+        return Response(
+            {"error": "Unable to submit contact request right now."},
+            status=400,
+        )
 
 @api_view(['GET'])
 def get_food_truck_menu(request):

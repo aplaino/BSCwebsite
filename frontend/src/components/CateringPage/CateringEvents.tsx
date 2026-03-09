@@ -21,19 +21,22 @@ export default function CateringEvents() {
 
       <div className="w-full min-h-400 h-full grid grid-cols-1 lg:grid-cols-2 gap-8">
         {companies.map((c, i) => (
-          <div
+          <a
             key={i}
-            className={`rounded-2xl bg-cover`}
-            style={{ backgroundImage: `url('/EventsGallery/${c.imageUrl}')` }}
+            href={c.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-2xl bg-cover bg-center min-h-72"
+            style={{ backgroundImage: `url('${c.imageUrl}')` }}
           >
             <h1
               className="font-primary uppercase text-white size-full rounded-2xl cursor-pointer
-              flex justify-center items-center bg-black/60 duration-300 hover:opacity-0
+              flex justify-center items-center bg-black/60 duration-300 hover:bg-black/20
               text-2xl"
             >
               {c.name}
             </h1>
-          </div>
+          </a>
         ))}
       </div>
     </section>

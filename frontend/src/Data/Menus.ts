@@ -1,11 +1,5 @@
 export const CATERING_bustersPlatterFavourites = [
   {
-    name: "Fried Calamari & Shrimp Platter",
-    description:
-      "4 oz Calamari & 3-4 Tail on Shrimps. Served with lemon and Tzatziki.",
-    price: "$17 per person. Minimum of 4",
-  },
-  {
     name: "Atlantic Salmon Platter",
     description: "5 oz per serving. Side lemon.",
     price: "$15 per person. Minimum of 4",
@@ -47,6 +41,12 @@ export const CATERING_bustersPlatterFavourites = [
     name: "Grilled Jumbo Shrimp Skewers",
     description: "1 skewer per serving. Served with lemon and tzatziki.",
     price: "$20 per person. Minimum of 4",
+  },
+  {
+    name: "Fried Calamari & Shrimp Platter",
+    description:
+      "4 oz Calamari & 3-4 Tail on Shrimps. Served with lemon and Tzatziki.",
+    price: "$17 per person. Minimum of 4",
   },
   {
     name: "Lobster Mac N' Cheese",

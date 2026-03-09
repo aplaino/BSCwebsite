@@ -1,10 +1,47 @@
 export const companies = [
-  { name: "Vantage Stream", imageUrl: "0.jpg" },
-  { name: "Nebula Logistics", imageUrl: "1.jpg" },
-  { name: "Ironbound Security", imageUrl: "2.jpg" },
-  { name: "Evergreen Analytics", imageUrl: "3.jpg" },
-  { name: "Solis Renewables", imageUrl: "4.jpg" },
-  { name: "Aetheric BioTech", imageUrl: "5.jpg" },
-  { name: "Summit Peak Capital", imageUrl: "6.jpg" },
-  { name: "Lumina Creative", imageUrl: "7.jpg" },
+  {
+    name: "Aviva",
+    imageUrl: "/Images/Sponsors/Aviva.jpg",
+    website: "https://www.aviva.ca/",
+  },
+  {
+    name: "Branksome Hall",
+    imageUrl: "/Images/Sponsors/BranksomeHall.jpg",
+    website: "https://branksome.on.ca/",
+  },
+  {
+    name: "Enercare",
+    imageUrl: "/Images/Sponsors/enercare.jpg",
+    website: "https://www.enercare.ca/",
+  },
+  {
+    name: "IBM",
+    imageUrl: "/Images/Sponsors/IBM-802332088.png",
+    website: "https://www.ibm.com/ca-en",
+  },
+  {
+    name: "President's Choice",
+    imageUrl: "/Images/Sponsors/presedentsChoice.jpg",
+    website: "https://www.presidentschoice.ca/",
+  },
+  {
+    name: "Seneca Polytechnic",
+    imageUrl: "/Images/Sponsors/senneca.png",
+    website: "https://www.senecapolytechnic.ca/",
+  },
+  {
+    name: "Shopify",
+    imageUrl: "/Images/Sponsors/shopify.jpg",
+    website: "https://www.shopify.com/ca",
+  },
+  {
+    name: "TransPower",
+    imageUrl: "/Images/Sponsors/transpower.jpg",
+    website: "https://www.transpower.co.nz/",
+  },
+  {
+    name: "Tridel",
+    imageUrl: "/Images/Sponsors/tridel.jpg",
+    website: "https://www.tridel.com/",
+  },
 ];

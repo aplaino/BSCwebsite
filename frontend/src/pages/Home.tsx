@@ -10,6 +10,10 @@ export default function Home() {
     window.scrollTo(0, 0);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // 1. Animation variants for the Hero section
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -29,18 +33,6 @@ export default function Home() {
       transition: { duration: 0.6, ease: "easeOut" } 
     },
   };
-
-
-  // 2. Variants for scroll-reveal sections
-   const revealVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { 
-      opacity: 1, 
-      scale: 1, 
-      transition: { duration: 0.8 } 
-    },
-  };
-
 
   return (
     <main className="w-screen h-auto bg-beige-primary flex flex-col justify-center overflow-x-hidden">
@@ -90,15 +82,11 @@ export default function Home() {
           transition={{ delay: 0.1, duration: 1 }}
           className="h-80 w-full flex justify-center items-center"
         >
-          <video
-            autoPlay
-            loop
-            muted
-            className="max-h-80 w-full object-cover  border-t-4 border-b-4 border-[#876E64]"
-          >
-            <source src="/Landing.mp4" type="video/mp4" />
-            Your Browser Does Not Support Videos :(
-          </video>
+          <img
+            src="/Landing.png"
+            alt="Buster's Sea Cove landing"
+            className="max-h-80 w-full object-cover border-t-4 border-b-4 border-[#876E64]"
+          />
         </motion.div>
       </section>
 
@@ -106,26 +94,16 @@ export default function Home() {
       <HomeNav />
 
       {/* -------------- FOOD TRUCK SCHEDULE (Scroll Reveal) -------------- */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={revealVariants}
-      >
+      <div>
         <FoodTruck />
-      </motion.div>
+      </div>
 
       <section className="w-full h-4 bg-beige-secondary"></section>
 
       {/* -------------- GALLERY (Scroll Reveal) -------------- */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={revealVariants}
-      >
+      <div>
         <Gallery />
-      </motion.div>
+      </div>
 
       {/* -------------- SERVING HOURS ----------------- */}
       <section className="bg-[url(/serving-hours-background.jpg)] w-full h-screen bg-cover flex justify-center items-center">
@@ -139,6 +117,16 @@ export default function Home() {
           className="h-90 md:120 lg:150 w-auto"
         />
       </section>
+
+      <div className="w-full bg-beige-primary py-8 flex justify-center items-center">
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="font-primary uppercase text-beige-primary bg-blue-primary px-8 py-3 rounded-[3rem] border-2 border-blue-primary hover:bg-beige-primary hover:text-blue-primary transition-colors duration-300"
+        >
+          Return To Top
+        </button>
+      </div>
     </main>
   );
 }

@@ -1,8 +1,5 @@
 from django.db import models
 
-# Create your models here.
-from django.db import models
-
 class CateringRequest(models.Model):
     SERVICE_OPTIONS = [
         ('FOOD_TRUCK', 'Food Truck'),

@@ -55,20 +55,29 @@ export default function CateringInfo() {
 
         {/* Dessert Section */}
         <div className="flex flex-col items-center gap-6">
-          <h3 className="font-secondary font-semibold italic text-3xl md:text-4xl uppercase">
-            Complete your menu
+          <h3 className="font-primary text-3xl md:text-4xl uppercase tracking-wide text-beige-primary">
+            Complete your meal
           </h3>
           <a
             href="https://dolcellagelato.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full max-w-md bg-beige-primary/10 p-8 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
+            className="w-full max-w-md bg-beige-primary/10 px-8 py-5 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
           >
             <h3
-              className="font-primary flex justify-around
-             text-3xl uppercase w-full  text-beige-secondary group-hover:text-beige-primary transition-colors "
+              className="font-primary flex justify-around items-center
+             text-3xl uppercase w-full leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
             >
-              Our dessert service <FaArrowRightLong />
+              <span>Our dessert service</span>
+              <span className="flex items-center gap-3">
+                <FaArrowRightLong />
+                <img
+                  src="/IceCreamLogo.png"
+                  alt="Dessert service logo"
+                  className="w-14 h-14 object-contain"
+                  loading="lazy"
+                />
+              </span>
             </h3>
           </a>
         </div>

@@ -17,6 +17,10 @@ export default function Catering() {
 
   const [minimalForm, setMinimalForm] = useState<boolean>(true);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   // 2. Define reusable animation variants
   // Standard fade-up used across the site for consistency
   const fadeInUp: Variants = {
@@ -83,6 +87,16 @@ export default function Catering() {
       >
         <CateringEvents />
       </motion.div>
+
+      <div className="w-full bg-beige-primary py-8 flex justify-center items-center">
+        <button
+          type="button"
+          onClick={scrollToTop}
+          className="font-primary uppercase text-beige-primary bg-blue-primary px-8 py-3 rounded-[3rem] border-2 border-blue-primary hover:bg-beige-primary hover:text-blue-primary transition-colors duration-300"
+        >
+          Return To Top
+        </button>
+      </div>
       
     </motion.main>
   );

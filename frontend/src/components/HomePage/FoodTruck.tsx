@@ -34,7 +34,7 @@ export default function FoodTruck() {
             border-2 border-beige-primary shadow-[0_8px_20px_rgba(0,0,0,0.35)] duration-300 hover:bg-blue-secondary hover:scale-105
             inline-flex justify-center items-center gap-2"
           >
-            Book our food truck
+            Click Here!
           </Link>
         </h1>
       </div>

@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
 import { fetchFoodTruckMenu } from "../services/api";
 import { type MenuType } from "../Types.ts";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion"; // Added for animations
 
 // Reusable Order Button Component
@@ -30,7 +30,7 @@ const OrderButton = ({
       href={url}
       target="_blank" // Opens in a new tab so they don't lose the menu
       rel="noopener noreferrer"
-      className="bg-blue-primary text-beige-primary font-primary text-xl md:text-2xl px-10 py-4 rounded-[4rem] hover:scale-105 transition-transform shadow-lg border-2 border-blue-primary text-center"
+      className="bg-blue-primary text-beige-primary font-primary text-xl md:text-2xl px-10 py-4 rounded-[4rem] hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-[0_10px_22px_rgba(17,27,54,0.24)] border-2 border-blue-primary text-center"
     >
       {label}
     </a>
@@ -38,13 +38,14 @@ const OrderButton = ({
 );
 
 export default function Menus() {
+  const validMenuTypes = ["restaurant", "catering", "foodTruck"] as const;
   const { typeParam } = useParams<{ typeParam: string }>();
-  if (typeParam == undefined) {
-    console.error("Menu Type is Undefined");
-    return;
+  if (
+    typeParam === undefined ||
+    !validMenuTypes.includes(typeParam as (typeof validMenuTypes)[number])
+  ) {
+    return <Navigate to="/menus/restaurant" replace />;
   }
-
-  console.log(typeParam);
 
   const [menus, setMenus] = useState<MenuType[]>([
     {
@@ -69,8 +70,17 @@ export default function Menus() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchFoodTruckMenu().then((url) => setPdfUrl(url));
+    fetchFoodTruckMenu()
+      .then((url) => setPdfUrl(url))
+      .catch(() => setPdfUrl(null));
   }, []);
+
+  useEffect(() => {
+    setMenuType(typeParam);
+    setMenus((prev) =>
+      prev.map((m): MenuType => ({ ...m, isActive: m.type === typeParam }))
+    );
+  }, [typeParam]);
 
   // Animation variants
   const fadeVariant = {
@@ -106,9 +116,9 @@ export default function Menus() {
               }}
               className={`${
                 menu.isActive
-                  ? `bg-blue-primary text-beige-primary`
-                  : `text-blue-primary bg-beige-primary border-2`
-              } font-primary text-2xl p-4 w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer hover:bg-blue-primary/10 transition-colors`}
+                  ? `bg-blue-primary text-beige-primary shadow-[0_10px_20px_rgba(17,27,54,0.25)] -translate-y-0.5`
+                  : `text-blue-primary bg-beige-primary/85 border-2 border-blue-primary/20 shadow-[0_8px_18px_rgba(17,27,54,0.12)]`
+              } font-primary text-2xl p-4 w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer hover:bg-blue-primary/10 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(17,27,54,0.2)] transition-all duration-300`}
             >
               {menu.name}
             </button>
@@ -148,10 +158,6 @@ export default function Menus() {
               <div className="flex flex-col gap-12 size-full">
                 <OrderButton url={RESTAURANT_ORDER_URL} />
                 <MenuItem
-                  title="Fried Sandwiches & Po' Boys"
-                  items={RESTAURANT_friedSandwichesAndPoBoys}
-                />
-                <MenuItem
                   title="Grilled Sandwiches"
                   items={RESTAURANT_grilledSandwiches}
                 />
@@ -161,6 +167,10 @@ export default function Menus() {
                   items={RESTAURANT_fromTheGrill}
                 />
                 <MenuItem title="Fish Fry" items={RESTAURANT_fishFry} />
+                <MenuItem
+                  title="Fried Sandwiches & Po' Boys"
+                  items={RESTAURANT_friedSandwichesAndPoBoys}
+                />
                 <MenuItem title="Soups" items={RESTAURANT_soups} />
                 <MenuItem title="Beverages" items={RESTAURANT_beverages} />
                 <OrderButton url={RESTAURANT_ORDER_URL} />
@@ -193,14 +203,14 @@ export default function Menus() {
                         href={pdfUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
+                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_18px_rgba(17,27,54,0.16)]"
                       >
                         Open in New Tab
                       </a>
                       <a
                         href={pdfUrl}
                         download
-                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
+                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary hover:-translate-y-0.5 transition-all duration-300 shadow-[0_8px_18px_rgba(17,27,54,0.16)]"
                       >
                         Download
                       </a>

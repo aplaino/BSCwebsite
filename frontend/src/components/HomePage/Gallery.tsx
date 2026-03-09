@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 export default function Gallery() {
   const modules = import.meta.glob("../../gallery/HomePageGallery/*.jpg");
-  const [gallery, setGallery] = useState<string[]>([]);
   const menuGallery = [
     "/Images/Menu/Calamari & Chips .jpg",
     "/Images/Menu/Gr Calamari .jpg",
@@ -23,6 +22,7 @@ export default function Gallery() {
     "/Images/Menu/Swordfish .jpg",
     "/Images/Menu/Tilapia .jpg",
   ];
+  const [gallery, setGallery] = useState<string[]>(menuGallery);
 
   const loadPhotos = async () => {
     const sortedPaths = Object.keys(modules).sort();
@@ -32,7 +32,7 @@ export default function Gallery() {
         return mod.default;
       })
     );
-    setGallery([...menuGallery, ...homeGallery]);
+    setGallery((prev) => [...prev, ...homeGallery]);
   };
 
   useEffect(() => {
@@ -51,11 +51,18 @@ export default function Gallery() {
       </div>
 
       <div
-        className="columns-1 sm:columns-2 lg:colums-3 xl:columns-4
+        className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4
       [&>img:not(:first-child)]:mt-4"
       >
         {gallery.map((p, index) => (
-          <img src={p} key={index} alt={`Gallery item ${index + 1}`} className="rounded-2xl" />
+          <img
+            src={encodeURI(p)}
+            key={`${p}-${index}`}
+            alt={`Gallery item ${index + 1}`}
+            loading={index < 8 ? "eager" : "lazy"}
+            decoding="async"
+            className="rounded-2xl"
+          />
         ))}
       </div>
     </section>

@@ -131,7 +131,14 @@ export default function Contact() {
           <h1 className="font-primary uppercase text-2xl text-beige-secondary">Address</h1>
           <div className="flex flex-col font-secondary text-sm gap-1">
             <h3 className="font-bold">Home Office</h3>
-            <p className="opacity-80">305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7</p>
+            <a
+              href="https://maps.google.com/?q=305+Industrial+Pkwy+S+Unit+6,+Aurora,+ON+L4G+6X7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-80 underline underline-offset-2 hover:text-beige-secondary transition-colors"
+            >
+              305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7
+            </a>
           </div>
           <div className="flex flex-col font-secondary text-sm gap-1">
             <h3 className="font-bold">Buster's Food Truck</h3>
@@ -145,11 +152,18 @@ export default function Contact() {
           <h1 className="font-primary uppercase text-2xl text-beige-secondary">Contact</h1>
           <div className="flex flex-col font-secondary text-sm gap-1">
             <h3 className="font-bold">Phone</h3>
-            <p className="opacity-80">416-319-2957</p>
+            <a href="tel:4163192957" className="opacity-80 underline underline-offset-2 hover:text-beige-secondary transition-colors">
+              416-319-2957
+            </a>
           </div>
           <div className="flex flex-col font-secondary text-sm gap-1">
             <h3 className="font-bold">Email</h3>
-            <p className="opacity-80">bustersheadoffice@gmail.com</p>
+            <a
+              href="mailto:bustersheadoffice@gmail.com"
+              className="opacity-80 underline underline-offset-2 hover:text-beige-secondary transition-colors"
+            >
+              bustersheadoffice@gmail.com
+            </a>
           </div>
         </section>
       </motion.div>

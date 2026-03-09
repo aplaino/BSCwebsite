@@ -1,6 +1,10 @@
 // src/services/api.ts
 const BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ?? "http://127.0.0.1:8000/api";
+  import.meta.env.VITE_API_BASE_URL ??
+  (window.location.hostname === "localhost" ||
+  window.location.hostname === "127.0.0.1"
+    ? "http://127.0.0.1:8000/api"
+    : "/api");
 
 // 1. Contact Form Logic
 export const submitContactForm = async (formData: FormData) => {
