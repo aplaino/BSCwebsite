@@ -11,8 +11,8 @@ export default function About() {
   }, []);
 
   const fadeInUp: Variants = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { 
+    hidden: { opacity: 0, y: 30 },
+    show: {
       opacity: 1, 
       y: 0,
       transition: { duration: 0.8, ease: "easeOut" } 
@@ -20,9 +20,9 @@ export default function About() {
   };
 
   const staggerContainer: Variants = {
-    initial: {},
-    whileInView: { 
-      transition: { staggerChildren: 0.2 } 
+    hidden: {},
+    show: {
+      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
     }
   };
 
@@ -56,25 +56,27 @@ export default function About() {
       <section className="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <motion.div 
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           className="relative group z-10"
         >
           <div className="absolute -inset-4 border-2 border-blue-primary/10 rounded-sm translate-x-3 translate-y-3 transition-all duration-700 ease-out group-hover:translate-x-1 group-hover:translate-y-1 group-hover:border-blue-primary/30" />
           
-          <div className="relative rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(8,_112,_184,_0.2)]"></div>
-          <img 
-            src="/Images/stLawrence.jpg" 
-            alt="St. Lawrence Market" 
-          className="w-full h-[400px] md:h-[500px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"          />
+          <div className="relative rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(8,_112,_184,_0.2)]">
+            <img 
+              src="/Images/stLawrence.jpg" 
+              alt="St. Lawrence Market" 
+              className="w-full h-[400px] md:h-[500px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"
+            />
+          </div>
         </motion.div>
 
         <motion.div 
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           className="space-y-4" 
         >
           <h2 className="font-primary text-5xl text-blue-primary uppercase leading-none text-balance">
@@ -90,12 +92,11 @@ export default function About() {
       <section className="w-full bg-blue-primary py-10 border-y border-beige-secondary/10">
         <motion.div 
           variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-y-8 text-center"
         >
-          {/* Stats content stays the same, just tighter gap-y */}
           {[
             { val: "100%", label: "Always Fresh Catch" },
             { val: "30+", label: "Years of Heritage" },
@@ -119,9 +120,9 @@ export default function About() {
       <section className="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <motion.div 
           variants={fadeInUp}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
           className="space-y-4 order-2 md:order-1"
         >
           <h2 className="font-primary text-5xl text-blue-primary uppercase leading-none text-balance">
@@ -142,15 +143,13 @@ export default function About() {
 
         <motion.div 
           variants={fadeInUp}
-          initial="initial"
-          /* FIXED: Changed 'whiteInView' to 'whileInView' */
-          whileInView="whileInView" 
-          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="show" 
+          viewport={{ once: true, amount: 0.2 }}
           whileHover={{ y: -10, transition: { duration: 0.4, ease: "easeOut" } }}
           className="order-1 md:order-2 flex justify-center items-center relative z-10"
         >
           <img 
-            /* Double check this path matches your folder exactly! */
             src="/Images/Buster Sea Cove (51).jpg" 
             alt="Busters Truck" 
             className="w-full h-auto max-h-[400px] object-contain 
@@ -158,7 +157,6 @@ export default function About() {
               antialiased relative z-20"
           />
           
-          {/* The Glow - ensure it stays behind the truck with -z-10 */}
           <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
         </motion.div>
       </section>

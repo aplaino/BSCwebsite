@@ -18,7 +18,13 @@ import { useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion"; // Added for animations
 
 // Reusable Order Button Component
-const OrderButton = ({ url }: { url: string }) => (
+const OrderButton = ({
+  url,
+  label = "To place an order click here",
+}: {
+  url: string;
+  label?: string;
+}) => (
   <div className="w-full flex justify-center py-8">
     <a
       href={url}
@@ -26,7 +32,7 @@ const OrderButton = ({ url }: { url: string }) => (
       rel="noopener noreferrer"
       className="bg-blue-primary text-beige-primary font-primary text-xl md:text-2xl px-10 py-4 rounded-[4rem] hover:scale-105 transition-transform shadow-lg border-2 border-blue-primary text-center"
     >
-      To place an order click here
+      {label}
     </a>
   </div>
 );
@@ -174,22 +180,31 @@ export default function Menus() {
                   </p>
                 </div>
                 {pdfUrl ? (
-                  <div className="flex flex-col md:flex-row gap-6 mt-4">
-                    <a
-                      href={pdfUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
-                    >
-                      View PDF
-                    </a>
-                    <a
-                      href={pdfUrl}
-                      download
-                      className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
-                    >
-                      Download
-                    </a>
+                  <div className="w-full flex flex-col items-center gap-6 mt-4">
+                    <div className="w-full max-w-5xl h-[70vh] min-h-[500px] rounded-2xl overflow-hidden border-2 border-blue-primary/20 shadow-lg bg-white">
+                      <iframe
+                        src={`${pdfUrl}#toolbar=0&navpanes=0`}
+                        title="Food Truck Menu PDF"
+                        className="w-full h-full"
+                      />
+                    </div>
+                    <div className="flex flex-col md:flex-row gap-6">
+                      <a
+                        href={pdfUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
+                      >
+                        Open in New Tab
+                      </a>
+                      <a
+                        href={pdfUrl}
+                        download
+                        className="border-2 border-blue-primary text-blue-primary font-primary text-2xl px-14 py-4 rounded-[4rem] hover:bg-blue-primary hover:text-beige-primary transition-all duration-300"
+                      >
+                        Download
+                      </a>
+                    </div>
                   </div>
                 ) : (
                   <div className="flex flex-col items-center gap-4">
@@ -199,7 +214,10 @@ export default function Menus() {
                     </p>
                   </div>
                 )}
-                <OrderButton url={CATERING_ORDER_URL} />
+                <OrderButton
+                  url={CATERING_ORDER_URL}
+                  label="Click to book our food truck"
+                />
               </div>
             )}
           </motion.div>

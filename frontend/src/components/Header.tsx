@@ -17,7 +17,7 @@ export default function Header() {
       w-full max-w-300"
       >
         <Link to="/" className="flex justify-center items-center gap-3 w-60">
-          <img src="./logo.svg" className="size-18" alt="site-logo" />
+          <img src="/logo.svg" className="size-18" alt="site-logo" />
           <h1 className="">buster's sea cove</h1>
         </Link>
 
@@ -139,13 +139,13 @@ export default function Header() {
             contact
           </NavLink>
           <a href="https://www.facebook.com/bustersseacove/" target="_blank">
-            <img src="./facebook.svg" className="size-6" alt="facebook" />
+            <img src="/facebook.svg" className="size-6" alt="facebook" />
           </a>
           <a
             href="https://www.instagram.com/bustersseacove/?hl=en"
             target="_blank"
           >
-            <img src="./instagram.svg" className="size-6" alt="instagram" />
+            <img src="/instagram.svg" className="size-6" alt="instagram" />
           </a>
         </nav>
       </div>

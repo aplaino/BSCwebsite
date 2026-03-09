@@ -59,6 +59,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000", # Standard CRA port
 ]
 
+# Allow embedding media/PDF previews in local frontend during development.
+# Do not keep this in production without tighter framing rules.
+if DEBUG:
+    X_FRAME_OPTIONS = "ALLOWALL"
+
 ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
