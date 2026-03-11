@@ -1,5 +1,6 @@
 import FoodTruck from "../components/HomePage/FoodTruck";
 import { Link } from "react-router-dom";
+import EventNewsBubble from "../components/HomePage/EventNewsBubble";
 import Gallery from "../components/HomePage/Gallery";
 import { useEffect } from "react";
 import HomeNav from "../components/HomePage/HomeNav";
@@ -42,7 +43,7 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="flex flex-col gap-2 w-full h-120 p-4 justify-center items-center"
+          className="relative flex flex-col gap-2 w-full min-h-[32rem] p-4 justify-center items-center"
         >
           <motion.p
             variants={itemVariants}
@@ -73,6 +74,9 @@ export default function Home() {
               Book Now
             </Link>
           </motion.div>
+          <div className="mt-4 flex w-full justify-center px-4 min-[1815px]:mt-0 min-[1815px]:w-auto min-[1815px]:px-0 min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:right-[5%]">
+            <EventNewsBubble />
+          </div>
         </motion.article>
 
         {/* Video Placeholder with a fade-in */}

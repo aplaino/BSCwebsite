@@ -30,3 +30,25 @@
     }
   }
 }
+
+html {
+  font-size: 100%;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 93.75%;
+  }
+}
+
+@media (min-width: 1440px) {
+  html {
+    font-size: 90.625%;
+  }
+}

@@ -2,17 +2,10 @@ import {
   CATERING_bustersPlatterFavourites,
   CATERING_bustersXStackdDeliKitchen,
   CATERING_sides,
-  RESTAURANT_friedSandwichesAndPoBoys,
-  RESTAURANT_grilledSandwiches,
-  RESTAURANT_lobster,
-  RESTAURANT_fromTheGrill,
-  RESTAURANT_fishFry,
-  RESTAURANT_soups,
-  RESTAURANT_beverages,
 } from "../Data/Menus.ts";
 import { useState, useEffect } from "react";
 import MenuItem from "../components/MenuItem.tsx";
-import { fetchFoodTruckMenu } from "../services/api";
+import { fetchFoodTruckMenu, fetchRestaurantMenu, type RestaurantMenuSection } from "../services/api";
 import { type MenuType } from "../Types.ts";
 import { Navigate, useParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion"; // Added for animations
@@ -62,17 +55,23 @@ export default function Menus() {
     {
       type: "foodTruck",
       isActive: typeParam == "foodTruck",
-      name: "Food Truck",
+      name: "Food Truck Catering",
     },
   ]);
   const [menuType, setMenuType] = useState(typeParam);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [restaurantSections, setRestaurantSections] = useState<RestaurantMenuSection[]>([]);
+  const [restaurantSectionsLoaded, setRestaurantSectionsLoaded] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     fetchFoodTruckMenu()
       .then((url) => setPdfUrl(url))
       .catch(() => setPdfUrl(null));
+    fetchRestaurantMenu()
+      .then((sections) => setRestaurantSections(sections))
+      .catch(() => setRestaurantSections([]))
+      .finally(() => setRestaurantSectionsLoaded(true));
   }, []);
 
   useEffect(() => {
@@ -157,22 +156,33 @@ export default function Menus() {
             {menuType === "restaurant" && (
               <div className="flex flex-col gap-12 size-full">
                 <OrderButton url={RESTAURANT_ORDER_URL} />
-                <MenuItem
-                  title="Grilled Sandwiches"
-                  items={RESTAURANT_grilledSandwiches}
-                />
-                <MenuItem title="Lobster" items={RESTAURANT_lobster} />
-                <MenuItem
-                  title="From The Grill"
-                  items={RESTAURANT_fromTheGrill}
-                />
-                <MenuItem title="Fish Fry" items={RESTAURANT_fishFry} />
-                <MenuItem
-                  title="Fried Sandwiches & Po' Boys"
-                  items={RESTAURANT_friedSandwichesAndPoBoys}
-                />
-                <MenuItem title="Soups" items={RESTAURANT_soups} />
-                <MenuItem title="Beverages" items={RESTAURANT_beverages} />
+                {restaurantSectionsLoaded ? (
+                  restaurantSections.length > 0 ? (
+                    restaurantSections.map((section) => (
+                      <MenuItem
+                        key={section.id}
+                        title={section.title}
+                        items={section.items}
+                      />
+                    ))
+                  ) : (
+                    <div className="rounded-[2rem] border border-blue-primary/15 bg-white/70 px-8 py-16 text-center shadow-[0_14px_30px_rgba(17,27,54,0.12)]">
+                      <h2 className="font-primary text-4xl uppercase text-blue-primary">
+                        Restaurant menu unavailable
+                      </h2>
+                      <p className="mt-3 text-lg text-blue-primary/70">
+                        Add menu sections and items in the admin to publish them here.
+                      </p>
+                    </div>
+                  )
+                ) : (
+                  <div className="flex flex-col items-center gap-4 py-14">
+                    <div className="w-8 h-8 border-4 border-blue-primary border-t-transparent rounded-full animate-spin"></div>
+                    <p className="text-blue-primary font-primary text-xl uppercase tracking-widest italic">
+                      Loading restaurant menu...
+                    </p>
+                  </div>
+                )}
                 <OrderButton url={RESTAURANT_ORDER_URL} />
               </div>
             )}
@@ -182,7 +192,7 @@ export default function Menus() {
               <div className="flex flex-col items-center text-center gap-8 py-10">
                 <div className="max-w-xl space-y-4">
                   <h2 className="font-primary text-4xl md:text-5xl text-blue-primary uppercase">
-                    Mobile Kitchen Menu
+                    Food Truck Catering
                   </h2>
                   <p className="font-secondary text-blue-primary/70 text-lg italic">
                     Our food truck offerings vary by location and season. View

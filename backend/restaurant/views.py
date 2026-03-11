@@ -1,12 +1,21 @@
 import logging
 
 from django.conf import settings
+from django.db.models import Prefetch
+from django.db.utils import OperationalError, ProgrammingError
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import CateringRequest, ContactInquiry, FoodTruckMenu
+from .models import (
+    CateringRequest,
+    ContactInquiry,
+    EventNews,
+    FoodTruckMenu,
+    RestaurantMenuItem,
+    RestaurantMenuSection,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -130,3 +139,60 @@ def get_food_truck_menu(request):
         return JsonResponse(data, safe=False)
     
     return JsonResponse([], safe=False)
+
+
+@api_view(['GET'])
+def get_event_news(request):
+    try:
+        story = EventNews.objects.filter(is_active=True).order_by('-event_date', '-updated_at').first()
+    except (OperationalError, ProgrammingError):
+        logger.exception("Event news table is unavailable")
+        return JsonResponse({}, safe=False)
+
+    if not story:
+        return JsonResponse({}, safe=False)
+
+    data = {
+        "id": story.id,
+        "title": story.title,
+        "summary": story.summary,
+        "badge": story.badge,
+        "event_date": story.event_date.isoformat() if story.event_date else None,
+        "cta_label": story.cta_label,
+        "cta_url": story.cta_url,
+    }
+    return JsonResponse(data)
+
+
+@api_view(['GET'])
+def get_restaurant_menu(request):
+    try:
+        sections = RestaurantMenuSection.objects.filter(is_active=True).prefetch_related(
+            Prefetch(
+                "items",
+                queryset=RestaurantMenuItem.objects.filter(is_active=True).order_by("display_order", "name"),
+            )
+        ).order_by("display_order", "title")
+    except (OperationalError, ProgrammingError):
+        logger.exception("Restaurant menu tables are unavailable")
+        return JsonResponse([], safe=False)
+
+    data = [
+        {
+            "id": section.id,
+            "title": section.title,
+            "slug": section.slug,
+            "items": [
+                {
+                    "id": item.id,
+                    "name": item.name,
+                    "description": item.description or None,
+                    "price": item.price,
+                    "imageUrl": item.image_url or None,
+                }
+                for item in section.items.all()
+            ],
+        }
+        for section in sections
+    ]
+    return JsonResponse(data, safe=False)

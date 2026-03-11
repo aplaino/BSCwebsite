@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 .vite/
+
+# Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+.venv/
+venv/

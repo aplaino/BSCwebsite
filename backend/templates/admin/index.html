@@ -1,0 +1,50 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+
+{% block content %}
+<section class="dashboard-hero">
+  <div>
+    <p class="dashboard-kicker">Control Room</p>
+    <p class="dashboard-copy">
+      Use the shortcuts below to upload menus, review catering requests, answer contact inquiries, and update the homepage news bubble.
+    </p>
+  </div>
+</section>
+
+<section class="quick-grid">
+  <a class="quick-card" href="{% url 'admin:restaurant_foodtruckmenu_add' %}">
+    <span class="quick-card__eyebrow">Menu</span>
+    <strong>Upload a new menu PDF</strong>
+    <span>Replace the current food truck menu shown on the site.</span>
+  </a>
+  <a class="quick-card" href="{% url 'admin:restaurant_restaurantmenuitem_changelist' %}">
+    <span class="quick-card__eyebrow">Menu Items</span>
+    <strong>Manage individual dishes</strong>
+    <span>Manage individual dishes, prices, and descriptions.</span>
+  </a>
+  <a class="quick-card" href="{% url 'admin:restaurant_restaurantmenusection_changelist' %}">
+    <span class="quick-card__eyebrow">Menu Sections</span>
+    <strong>Organize menu categories</strong>
+    <span>Organize items into categories like Lobster, Fish Fry, and more.</span>
+  </a>
+  <a class="quick-card" href="{% url 'admin:restaurant_cateringrequest_changelist' %}">
+    <span class="quick-card__eyebrow">Catering</span>
+    <strong>Review catering requests</strong>
+    <span>See event details, contact info, and mark requests as processed.</span>
+  </a>
+  <a class="quick-card" href="{% url 'admin:restaurant_contactinquiry_changelist' %}">
+    <span class="quick-card__eyebrow">Contact</span>
+    <strong>Open contact form inbox</strong>
+    <span>Reply faster and mark website inquiries as handled.</span>
+  </a>
+  <a class="quick-card" href="{% url 'admin:restaurant_eventnews_changelist' %}">
+    <span class="quick-card__eyebrow">Homepage</span>
+    <strong>Edit news bubble posts</strong>
+    <span>Control the upcoming event bubble shown on the front page.</span>
+  </a>
+</section>
+
+<div id="content-main">
+  {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+</div>
+{% endblock %}

@@ -1,4 +1,5 @@
 import { FaArrowRightLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function CateringInfo() {
   return (
@@ -28,8 +29,8 @@ export default function CateringInfo() {
             </h3>
             <p className="font-secondary text-sm opacity-90">
               Our iconic mobile kitchen brings the street-side experience to
-              your doorstep. Perfect for outdoor festivals, film sets, and large
-              corporate rallies.
+              your doorstep. Perfect for weddings, film sets, golf courses,
+              and large corporate rallies.
             </p>
           </div>
           <div className="bg-beige-primary/10 p-8 rounded-2xl border border-beige-primary/20 backdrop-blur-sm">
@@ -58,28 +59,44 @@ export default function CateringInfo() {
           <h3 className="font-primary text-3xl md:text-4xl uppercase tracking-wide text-beige-primary">
             Complete your meal
           </h3>
-          <a
-            href="https://dolcellagelato.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full max-w-md bg-beige-primary/10 px-8 py-5 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
-          >
-            <h3
-              className="font-primary flex justify-around items-center
-             text-3xl uppercase w-full leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
+          <div className="flex w-full flex-col items-stretch gap-4 lg:flex-row lg:justify-center">
+            <Link
+              to="/menus/foodTruck"
+              className="flex w-full max-w-md bg-beige-primary/10 px-8 py-5 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
             >
-              <span>Our dessert service</span>
-              <span className="flex items-center gap-3">
-                <FaArrowRightLong />
-                <img
-                  src="/IceCreamLogo.png"
-                  alt="Dessert service logo"
-                  className="w-14 h-14 object-contain"
-                  loading="lazy"
-                />
-              </span>
-            </h3>
-          </a>
+              <h3
+                className="font-primary flex w-full justify-between items-center
+             text-3xl uppercase w-full leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
+              >
+                <span>See our menu</span>
+                <span className="flex items-center gap-3">
+                  <FaArrowRightLong />
+                </span>
+              </h3>
+            </Link>
+            <a
+              href="https://dolcellagelato.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex w-full max-w-md bg-beige-primary/10 px-8 py-5 rounded-2xl border border-beige-primary/20 backdrop-blur-sm transition-all cursor-pointer hover:bg-beige-primary/20 group"
+            >
+              <h3
+                className="font-primary flex w-full justify-between items-center
+             text-3xl uppercase leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
+              >
+                <span>Our dessert service</span>
+                <span className="flex items-center gap-3">
+                  <FaArrowRightLong />
+                  <img
+                    src="/IceCreamLogo.png"
+                    alt="Dessert service logo"
+                    className="w-14 h-14 object-contain"
+                    loading="lazy"
+                  />
+                </span>
+              </h3>
+            </a>
+          </div>
         </div>
       </div>
     </section>

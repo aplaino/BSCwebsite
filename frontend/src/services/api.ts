@@ -6,6 +6,31 @@ const BASE_URL =
     ? "http://127.0.0.1:8000/api"
     : "/api");
 
+export type EventNewsItem = {
+  id: number;
+  title: string;
+  summary: string;
+  badge: string;
+  event_date: string | null;
+  cta_label: string;
+  cta_url: string;
+};
+
+export type RestaurantMenuItem = {
+  id: number;
+  name: string;
+  description: string | null;
+  price: string;
+  imageUrl?: string | null;
+};
+
+export type RestaurantMenuSection = {
+  id: number;
+  title: string;
+  slug: string;
+  items: RestaurantMenuItem[];
+};
+
 // 1. Contact Form Logic
 export const submitContactForm = async (formData: FormData) => {
   const input = Object.fromEntries(formData.entries());
@@ -42,4 +67,24 @@ export const fetchFoodTruckMenu = async () => {
   const data = await response.json();
   // Returns the latest PDF URL
   return data[0]?.pdf_file || null;
+};
+
+export const fetchEventNews = async (): Promise<EventNewsItem | null> => {
+  const response = await fetch(`${BASE_URL}/news/event/`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch event news");
+  }
+  const data = (await response.json()) as Partial<EventNewsItem>;
+  if (!data || !data.id) {
+    return null;
+  }
+  return data as EventNewsItem;
+};
+
+export const fetchRestaurantMenu = async (): Promise<RestaurantMenuSection[]> => {
+  const response = await fetch(`${BASE_URL}/restaurant/menu/`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch restaurant menu");
+  }
+  return (await response.json()) as RestaurantMenuSection[];
 };

@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}Buster's Sea Cove Admin{% endblock %}
+
+{% block extrastyle %}
+{{ block.super }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&family=Staatliches&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'restaurant/admin.css' %}">
+{% endblock %}
+
+{% block branding %}
+<div class="brand-shell">
+  <div class="brand-mark">B</div>
+  <div>
+    <h1 id="site-name"><a href="{% url 'admin:index' %}">Buster's Sea Cove</a></h1>
+    <p class="brand-subtitle">Commerce Court updates, catering leads, contact inbox, and menu uploads.</p>
+  </div>
+</div>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

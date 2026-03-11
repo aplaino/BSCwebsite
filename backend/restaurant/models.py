@@ -52,5 +52,66 @@ class FoodTruckMenu(models.Model):
     pdf_file = models.FileField(upload_to='menus/pdf/')
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = "Menu Upload"
+        verbose_name_plural = "Menu Uploads"
+
     def __str__(self):
         return f"{self.title} - {self.updated_at.strftime('%Y-%m-%d')}"
+
+
+class EventNews(models.Model):
+    title = models.CharField(max_length=120)
+    summary = models.TextField()
+    badge = models.CharField(max_length=40, blank=True, default="Coming Up")
+    event_date = models.DateField(blank=True, null=True)
+    cta_label = models.CharField(max_length=40, blank=True)
+    cta_url = models.CharField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["-event_date", "-updated_at"]
+        verbose_name = "Event News"
+        verbose_name_plural = "Event News"
+
+    def __str__(self):
+        return self.title
+
+
+class RestaurantMenuSection(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True)
+    display_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["display_order", "title"]
+        verbose_name = "Restaurant Menu Section"
+        verbose_name_plural = "Restaurant Menu Sections"
+
+    def __str__(self):
+        return self.title
+
+
+class RestaurantMenuItem(models.Model):
+    section = models.ForeignKey(
+        RestaurantMenuSection,
+        on_delete=models.CASCADE,
+        related_name="items",
+    )
+    name = models.CharField(max_length=120)
+    description = models.TextField(blank=True)
+    price = models.CharField(max_length=40)
+    image_url = models.CharField(max_length=255, blank=True)
+    display_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ["display_order", "name"]
+        verbose_name = "Restaurant Menu Item"
+        verbose_name_plural = "Restaurant Menu Items"
+
+    def __str__(self):
+        return self.name

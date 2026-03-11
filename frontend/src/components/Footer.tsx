@@ -30,6 +30,8 @@ export default function Footer() {
             <h2 className=" font-bold">Locations</h2>
             <p>Commerce Court</p>
             <p>199 Bay St. SUITE C-150, Toronto, ON M5L 1E9</p>
+            <p>Mon - Fri 11:00 am - 3:00 pm</p>
+            <p>Closed Weekends & Stat Holidays</p>
             <p>Head Office</p>
             <p>305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7</p>
           </div>

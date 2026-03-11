@@ -3,7 +3,7 @@ interface MenuItem {
   name: string;
   description: string | null;
   price: string;
-  imageUrl?: string;
+  imageUrl?: string | null;
 }
 
 // 2. Define the props for the component
