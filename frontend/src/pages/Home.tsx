@@ -110,7 +110,7 @@ export default function Home() {
       </div>
 
       {/* -------------- SERVING HOURS ----------------- */}
-      <section className="bg-[url(/serving-hours-background.jpg)] w-full h-screen bg-cover flex justify-center items-center">
+      <section className="bg-[url('/Commerce%20Court%20Photo_edited.jpg')] bg-center w-full h-[70vh] min-h-[32rem] bg-cover flex justify-center items-center">
         <motion.img
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function Home() {
           transition={{ duration: 1 }}
           src="/serving-hours.svg"
           alt="serving hours"
-          className="h-90 md:120 lg:150 w-auto"
+          className="h-72 md:h-96 lg:h-[34rem] w-auto"
         />
       </section>
 
