@@ -2,7 +2,7 @@ from datetime import date
 
 from django.test import TestCase
 
-from .models import EventNews, RestaurantMenuItem, RestaurantMenuSection
+from .models import EventNews, HeroReview, RestaurantMenuItem, RestaurantMenuSection
 
 
 class EventNewsApiTests(TestCase):
@@ -73,3 +73,35 @@ class RestaurantMenuApiTests(TestCase):
         self.assertEqual(data[0]["title"], "Grilled Sandwiches")
         self.assertEqual(len(data[0]["items"]), 1)
         self.assertEqual(data[0]["items"][0]["name"], "Grilled Atlantic Salmon Sandwich")
+
+
+class HeroReviewApiTests(TestCase):
+    def test_returns_first_active_hero_review(self):
+        HeroReview.objects.create(
+            quote="Hidden review",
+            attribution="Google Reviews",
+            rating=4,
+            display_order=2,
+            is_active=False,
+        )
+        HeroReview.objects.create(
+            quote="Best lobster roll in Toronto! Fresh, fast, and always consistent.",
+            attribution="Google Reviews",
+            rating=5,
+            display_order=1,
+            is_active=True,
+        )
+
+        response = self.client.get("/api/reviews/hero/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["attribution"], "Google Reviews")
+        self.assertEqual(response.json()["rating"], 5)
+
+    def test_returns_empty_object_when_no_active_hero_review_exists(self):
+        HeroReview.objects.all().delete()
+
+        response = self.client.get("/api/reviews/hero/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {})

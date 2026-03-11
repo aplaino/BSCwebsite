@@ -115,3 +115,21 @@ class RestaurantMenuItem(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class HeroReview(models.Model):
+    quote = models.TextField()
+    attribution = models.CharField(max_length=80, default="Google Reviews")
+    rating = models.PositiveSmallIntegerField(default=5)
+    display_order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ["display_order", "-updated_at"]
+        verbose_name = "Hero Review"
+        verbose_name_plural = "Hero Reviews"
+
+    def __str__(self):
+        return f"{self.attribution}: {self.quote[:40]}"

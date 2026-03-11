@@ -31,6 +31,13 @@ export type RestaurantMenuSection = {
   items: RestaurantMenuItem[];
 };
 
+export type HeroReview = {
+  id: number;
+  quote: string;
+  attribution: string;
+  rating: number;
+};
+
 // 1. Contact Form Logic
 export const submitContactForm = async (formData: FormData) => {
   const input = Object.fromEntries(formData.entries());
@@ -87,4 +94,16 @@ export const fetchRestaurantMenu = async (): Promise<RestaurantMenuSection[]> =>
     throw new Error("Failed to fetch restaurant menu");
   }
   return (await response.json()) as RestaurantMenuSection[];
+};
+
+export const fetchHeroReview = async (): Promise<HeroReview | null> => {
+  const response = await fetch(`${BASE_URL}/reviews/hero/`);
+  if (!response.ok) {
+    throw new Error("Failed to fetch hero review");
+  }
+  const data = (await response.json()) as Partial<HeroReview>;
+  if (!data || !data.id) {
+    return null;
+  }
+  return data as HeroReview;
 };

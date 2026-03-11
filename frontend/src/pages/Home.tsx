@@ -2,6 +2,7 @@ import FoodTruck from "../components/HomePage/FoodTruck";
 import { Link } from "react-router-dom";
 import EventNewsBubble from "../components/HomePage/EventNewsBubble";
 import Gallery from "../components/HomePage/Gallery";
+import ReviewBubble from "../components/HomePage/ReviewBubble";
 import { useEffect } from "react";
 import HomeNav from "../components/HomePage/HomeNav";
 import { motion, type Variants} from "framer-motion"; // Add this
@@ -74,8 +75,13 @@ export default function Home() {
               Book Now
             </Link>
           </motion.div>
-          <div className="mt-4 flex w-full justify-center px-4 min-[1815px]:mt-0 min-[1815px]:w-auto min-[1815px]:px-0 min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:right-[5%]">
-            <EventNewsBubble />
+          <div className="mt-4 flex w-full flex-col items-center gap-4 px-4 sm:flex-row sm:justify-center min-[1815px]:contents">
+            <div className="order-1 sm:order-2 flex w-full justify-center min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:right-[5%] min-[1815px]:w-auto">
+              <EventNewsBubble />
+            </div>
+            <div className="order-2 sm:order-1 flex w-full justify-center min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:left-[5%] min-[1815px]:w-auto">
+              <ReviewBubble />
+            </div>
           </div>
         </motion.article>
 

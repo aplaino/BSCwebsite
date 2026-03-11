@@ -13,6 +13,7 @@ from .models import (
     ContactInquiry,
     EventNews,
     FoodTruckMenu,
+    HeroReview,
     RestaurantMenuItem,
     RestaurantMenuSection,
 )
@@ -196,3 +197,23 @@ def get_restaurant_menu(request):
         for section in sections
     ]
     return JsonResponse(data, safe=False)
+
+
+@api_view(['GET'])
+def get_hero_review(request):
+    try:
+        review = HeroReview.objects.filter(is_active=True).order_by("display_order", "-updated_at").first()
+    except (OperationalError, ProgrammingError):
+        logger.exception("Hero review table is unavailable")
+        return JsonResponse({}, safe=False)
+
+    if not review:
+        return JsonResponse({}, safe=False)
+
+    data = {
+        "id": review.id,
+        "quote": review.quote,
+        "attribution": review.attribution,
+        "rating": review.rating,
+    }
+    return JsonResponse(data)

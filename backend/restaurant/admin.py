@@ -6,6 +6,7 @@ from .models import (
     ContactInquiry,
     EventNews,
     FoodTruckMenu,
+    HeroReview,
     RestaurantMenuItem,
     RestaurantMenuSection,
 )
@@ -32,6 +33,16 @@ def activate_news_posts(modeladmin, request, queryset):
 
 @admin.action(description="Deactivate selected news posts")
 def deactivate_news_posts(modeladmin, request, queryset):
+    queryset.update(is_active=False)
+
+
+@admin.action(description="Activate selected hero reviews")
+def activate_hero_reviews(modeladmin, request, queryset):
+    queryset.update(is_active=True)
+
+
+@admin.action(description="Deactivate selected hero reviews")
+def deactivate_hero_reviews(modeladmin, request, queryset):
     queryset.update(is_active=False)
 
 
@@ -150,6 +161,29 @@ class EventNewsAdmin(admin.ModelAdmin):
         if not obj.cta_url:
             return "Add a CTA URL to show a homepage action button."
         return format_html('<a href="{}" target="_blank">Open linked page</a>', obj.cta_url)
+
+
+@admin.register(HeroReview)
+class HeroReviewAdmin(admin.ModelAdmin):
+    list_display = ("short_quote", "attribution", "rating", "display_order", "is_active")
+    list_editable = ("rating", "display_order", "is_active")
+    search_fields = ("quote", "attribution")
+    list_filter = ("is_active", "rating")
+    ordering = ("display_order", "-updated_at")
+    readonly_fields = ("created_at", "updated_at")
+    actions = (activate_hero_reviews, deactivate_hero_reviews)
+    fieldsets = (
+        ("Review", {
+            "fields": ("quote", "attribution", "rating", "display_order", "is_active")
+        }),
+        ("Admin", {
+            "fields": ("created_at", "updated_at")
+        }),
+    )
+
+    @admin.display(description="Quote")
+    def short_quote(self, obj):
+        return obj.quote[:60]
 
 
 class RestaurantMenuItemInline(admin.TabularInline):
