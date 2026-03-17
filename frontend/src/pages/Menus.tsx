@@ -97,11 +97,11 @@ export default function Menus() {
   return (
     <main className="w-screen h-full min-h-screen flex flex-col bg-beige-primary">
       {/* --- MENU OPTIONS --- */}
-      <section className="size-full bg-[url(/menu-background.svg)] bg-cover px-4 flex flex-col justify-center items-center pb-10 border-b-2 border-black">
-        <div className="w-full h-30 flex justify-center items-center mt-40">
-          <h1 className="font-primary uppercase text-6xl">Our menus</h1>
+      <section className="w-full bg-[url(/menu-background.svg)] bg-cover px-4 pt-28 pb-6 flex flex-col justify-center items-center gap-4 border-b-2 border-black">
+        <div className="w-full h-20 flex justify-center items-center mt-10">
+          <h1 className="font-primary uppercase text-4xl md:text-5xl">Our menus</h1>
         </div>
-        <div className="w-full h-full flex flex-col gap-6 md:flex-row md:gap-4 justify-center items-center">
+        <div className="w-full h-full flex flex-row flex-wrap gap-3 justify-center items-center">
           {menus.map((menu, i) => (
             <button
               key={i}
@@ -117,7 +117,7 @@ export default function Menus() {
                 menu.isActive
                   ? `bg-blue-primary text-beige-primary shadow-[0_10px_20px_rgba(17,27,54,0.25)] -translate-y-0.5`
                   : `text-blue-primary bg-beige-primary/85 border-2 border-blue-primary/20 shadow-[0_8px_18px_rgba(17,27,54,0.12)]`
-              } font-primary text-2xl p-4 w-80 h-16 flex justify-center items-center rounded-[4rem] cursor-pointer hover:bg-blue-primary/10 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(17,27,54,0.2)] transition-all duration-300`}
+              } font-primary text-lg md:text-xl px-4 py-2 min-w-42 md:min-w-48 h-12 flex justify-center items-center rounded-[4rem] cursor-pointer hover:bg-blue-primary/10 hover:-translate-y-0.5 hover:shadow-[0_10px_20px_rgba(17,27,54,0.2)] transition-all duration-300`}
             >
               {menu.name}
             </button>
@@ -126,7 +126,7 @@ export default function Menus() {
       </section>
 
       {/* --- MENU DETAIL WITH ANIMATION --- */}
-      <section className="w-full min-h-screen h-full bg-beige-primary p-4 flex flex-col gap-10 justify-center items-center py-20 font-secondary">
+      <section className="w-full min-h-screen h-full bg-beige-primary p-2 md:p-4 flex flex-col gap-8 justify-start items-center py-10 md:py-14 font-secondary">
         <AnimatePresence mode="wait">
           <motion.div
             key={menuType} // Key tells Framer which element is which to trigger exit/enter
@@ -134,7 +134,7 @@ export default function Menus() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full max-w-6xl"
+            className="w-full max-w-[95vw] origin-top scale-[0.7] sm:scale-[0.8] md:scale-[0.9]"
           >
             {/* --- Catering Menus --- */}
             {menuType === "catering" && (

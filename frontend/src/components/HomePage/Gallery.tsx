@@ -51,7 +51,7 @@ export default function Gallery() {
       </div>
 
       <div
-        className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4
+        className="columns-2 sm:columns-2 lg:columns-3 xl:columns-4
       [&>img:not(:first-child)]:mt-4"
       >
         {gallery.map((p, index) => (
@@ -61,7 +61,7 @@ export default function Gallery() {
             alt={`Gallery item ${index + 1}`}
             loading={index < 8 ? "eager" : "lazy"}
             decoding="async"
-            className="rounded-2xl"
+            className="w-full rounded-2xl"
           />
         ))}
       </div>

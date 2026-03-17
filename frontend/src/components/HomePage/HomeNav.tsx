@@ -10,16 +10,13 @@ export default function HomeNav() {
   ];
 
   return (
-    <section className="h-120 md:h-140 w-full flex justify-center items-center gap-4 p-6">
+    <section className="w-full grid grid-cols-2 lg:grid-cols-4 gap-4 p-6">
       {navCards.map((card, index) => (
         <Link
           key={card.title}
           to={card.route}
           style={{ backgroundImage: `url('${encodeURI(card.image)}')` }}
-          className={`h-80 lg:h-100 w-full bg-cover bg-center rounded-2xl ${
-            index === 3 ? "hidden sm:flex" : "flex"
-          }
-          flex flex-col justify-between hover:scale-105 duration-300 cursor-pointer`}
+          className="aspect-square w-full bg-cover bg-center rounded-2xl flex flex-col justify-between hover:scale-105 duration-300 cursor-pointer"
         >
           <div className="w-full h-auto flex justify-end">
             <GoArrowUpRight className="text-5xl bg-beige-primary p-2 rounded-md" />

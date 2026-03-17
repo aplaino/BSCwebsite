@@ -48,7 +48,7 @@ export default function EventNewsBubble() {
       initial={{ opacity: 0, y: 18, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.35 }}
-      className="w-full max-w-md rounded-[2rem] border border-black/10 bg-[rgba(247,243,235,0.82)] p-5 shadow-[0_8px_18px_rgba(17,27,54,0.08)] backdrop-blur-sm"
+      className="w-full max-w-[22rem] rounded-[2rem] border border-black/10 bg-[rgba(247,243,235,0.82)] p-5 shadow-[0_8px_18px_rgba(17,27,54,0.08)] backdrop-blur-sm"
     >
       <div className="mb-3 flex items-center gap-3">
         <span className="rounded-full border border-black/10 bg-[rgba(178,150,139,0.26)] px-4 py-1 font-primary text-lg uppercase tracking-wide text-[#4f5968]">
