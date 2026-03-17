@@ -26,20 +26,20 @@ export default function CateringForm({
 
   return (
     <section
-      className={`w-full min-h-200 h-full bg-[url(/catering-background.svg)] bg-cover px-6
+      className={`w-full min-h-160 h-full bg-[url(/catering-background.svg)] bg-cover px-6
           flex flex-col gap-10 justify-center items-center ${
             minimalForm ? "" : "pt-40 pb-20"
           }
           `}
     >
       <article
-        className="w-full max-w-140 h-full flex flex-col gap-6
+        className="w-full max-w-120 h-full flex flex-col gap-4
                 text-beige-primary"
       >
-        <h1 className="font-primary uppercase text-6xl">
+        <h1 className="font-primary uppercase text-4xl md:text-5xl">
           Buster's Sea Cove Catering Request Form
         </h1>
-        <p className="font-secondary ">
+        <p className="font-secondary text-sm md:text-base">
           We're thrilled you found us! Please fill out the form below with as
           much detail as possible. Any Corporate Events, Golf Courses, House
           Parties, Weddings, Birthday Parties, Film Sets, and SO much more! We
@@ -48,18 +48,18 @@ export default function CateringForm({
       </article>
 
       <form
-        className={`w-full max-w-140 h-full flex flex-col bg-beige-primary px-8
+        className={`w-full max-w-120 h-full flex flex-col bg-beige-primary px-6
           font-secondary text-[#876E64]  ${
             minimalForm
               ? "hover:bg-beige-secondary/80 hover:text-beige-primary duration-300"
-              : "pt-8 pb-20 gap-8 "
+              : "pt-6 pb-14 gap-6 "
           }
           `}
         action={handleSubmit}
       >
-        <div className="w-full h-20  flex justify-end items-center ">
+        <div className="w-full h-16 flex justify-end items-center ">
           <button
-            className="h-full w-full font-secondary cursor-pointer hover:underline text-xl"
+            className="h-full w-full font-secondary cursor-pointer hover:underline text-lg"
             onClick={() => setMinimalForm((prev) => !prev)}
             type="button"
           >
@@ -186,7 +186,7 @@ export default function CateringForm({
           </label>
           <textarea
             name="notes"
-            className="border-2 border-beige-secondary w-full h-40 text-beige-secondary
+            className="border-2 border-beige-secondary w-full h-32 text-beige-secondary
                         outline-none! placeholder:italic mt-6 p-2"
             placeholder="e.g. We love lobster rolls!"
           />
@@ -194,7 +194,7 @@ export default function CateringForm({
           <button
             type="submit"
             disabled={submitState === "submitting"}
-            className="font-primary text-beige-primary bg-[#876E64] text-xl p-4 gap-3 mt-6
+            className="font-primary text-beige-primary bg-[#876E64] text-lg p-4 gap-3 mt-6
                         w-full h-12 flex justify-center items-center rounded-[4rem] cursor-pointer
                         duration-300 hover:bg-beige-primary hover:border  hover:text-[#876E64]"
           >
