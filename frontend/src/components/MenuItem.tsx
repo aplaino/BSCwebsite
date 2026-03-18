@@ -19,37 +19,37 @@ export default function MenuItem({ title, items }:MenuSectionProps) {
                   flex flex-col gap-14 border border-white/50 shadow-[0_14px_30px_rgba(17,27,54,0.16)]"
     >
       <h1 className="text-4xl font-extrabold">{title}</h1>
-      <div className="grid grid-flow-row gap-8 grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-flow-row gap-6 grid-cols-2 lg:grid-cols-4">
         {items.map((item, index) => (
           <div
             key={`${title}-${item.name}-${index}`}
-            className="w-full h-full flex flex-col gap-4 p-4 rounded-2xl bg-white/75 border border-black/10 shadow-[0_8px_18px_rgba(17,27,54,0.13)] hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(17,27,54,0.18)] transition-all duration-300"
+            className="w-full h-full flex flex-col gap-3 p-3 md:p-4 rounded-2xl bg-white/75 border border-black/10 shadow-[0_8px_18px_rgba(17,27,54,0.13)] hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(17,27,54,0.18)] transition-all duration-300"
           >
             <div className="w-full">
               {item.imageUrl ? (
                 <img
                   src={item.imageUrl}
                   alt={item.name}
-                  className="w-full h-44 md:h-52 object-cover rounded-xl border border-black/15"
+                  className="w-full aspect-square object-cover rounded-xl border border-black/15"
                   loading="lazy"
                 />
               ) : (
                 <img
                   src="/logo.svg"
                   alt="Buster's Sea Cove logo"
-                  className="w-full h-44 md:h-52 object-contain rounded-xl border border-dashed border-black/30 bg-beige-primary/50 p-5 md:p-6"
+                  className="w-full aspect-square object-contain rounded-xl border border-dashed border-black/30 bg-beige-primary/50 p-4 md:p-6"
                   loading="lazy"
                 />
               )}
             </div>
             <div className="w-full h-full flex flex-col gap-2">
-              <h2 className="font-bold text-lg md:text-xl">{item.name}</h2>
+              <h2 className="font-bold text-lg md:text-base lg:text-lg">{item.name}</h2>
               {item.description ? (
-                <h2 className="text-[0.95rem] md:text-md">{item.description}</h2>
+                <h2 className="text-[0.95rem] md:text-sm lg:text-[0.95rem]">{item.description}</h2>
               ) : null}
             </div>
 
-            <h2 className="text-[0.95rem] md:text-md text-right mt-auto">{item.price}</h2>
+            <h2 className="text-[0.95rem] md:text-sm lg:text-[0.95rem] text-right mt-auto">{item.price}</h2>
           </div>
         ))}
       </div>
