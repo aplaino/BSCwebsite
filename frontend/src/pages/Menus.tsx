@@ -134,7 +134,7 @@ export default function Menus() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="w-full max-w-[95vw] origin-top scale-[0.7] sm:scale-[0.8] md:scale-[0.9]"
+            className="w-full max-w-[95vw] md:max-w-[92vw]"
           >
             {/* --- Catering Menus --- */}
             {menuType === "catering" && (

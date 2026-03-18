@@ -1,8 +1,15 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header
       className="h-20 w-screen p-4
@@ -22,31 +29,55 @@ export default function Header() {
         </Link>
 
         {/* --- NAV BAR HIDDEN --- **/}
-        <button className="block md:hidden group">
+        <button
+          type="button"
+          aria-label="Open navigation menu"
+          aria-expanded={mobileMenuOpen}
+          className="block md:hidden cursor-pointer"
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+        >
           <RxHamburgerMenu className="cursor-pointer" />
+        </button>
 
+        <div
+          className={`fixed inset-0 z-110 md:hidden transition-opacity duration-300 ${
+            mobileMenuOpen
+              ? "pointer-events-auto opacity-100"
+              : "pointer-events-none opacity-0"
+          }`}
+        >
+          <button
+            type="button"
+            aria-label="Close navigation menu"
+            className="absolute inset-0 bg-black/25"
+            onClick={closeMobileMenu}
+          />
           <div
-            className="absolute top-0 -right-full opacity-0 h-screen w-66 bg-beige-secondary
-          transform transition-all duration-300
-          group-focus-within:right-0 group-focus-within:opacity-100
-          flex justify-center items-center"
+            className={`absolute top-0 right-0 h-screen w-66 bg-beige-secondary
+            transform transition-transform duration-300
+            flex justify-center items-center ${
+              mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
           >
             <nav className="h-full w-full flex flex-col gap-10 justify-center items-center text-2xl">
               <Link
                 to="/menus/catering"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 menu
               </Link>
               <Link
                 to="/catering"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 catering
               </Link>
               <Link
                 to="/schedule"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 schedule
               </Link>
@@ -55,18 +86,21 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 order
               </a>
               <Link
                 to="/about"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 about
               </Link>
               <Link
                 to="/contact"
                 className="hover:text-beige-primary duration-300 py-2"
+                onClick={closeMobileMenu}
               >
                 contact
               </Link>
@@ -75,6 +109,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
+                onClick={closeMobileMenu}
               >
                 <FaFacebook />
               </a>
@@ -83,12 +118,13 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
+                onClick={closeMobileMenu}
               >
                 <FaInstagram />
               </a>
             </nav>
           </div>
-        </button>
+        </div>
 
         {/* --- NAV BAR EXTENDED --- **/}
         <nav
