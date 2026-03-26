@@ -44,42 +44,53 @@ export default function Home() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative flex flex-col gap-2 w-full min-h-[32rem] p-4 justify-center items-center"
+          className="relative mx-auto grid w-full max-w-[110rem] gap-8 px-4 py-8 xl:grid-cols-[minmax(18rem,22rem)_minmax(0,1fr)_minmax(18rem,22rem)] xl:items-center xl:px-10"
         >
-          <motion.p
-            variants={itemVariants}
-            className="font-secondary text-[#876E64] text-xl"
-          >
-            S I N C E 1992:
-          </motion.p>
+          <div className="hidden xl:flex xl:justify-end xl:self-center">
+            <ReviewBubble />
+          </div>
 
-          <motion.h1
-            variants={itemVariants}
-            className="font-primary uppercase text-8xl md:text-9xl text-blue-primary text-center"
-          >
-            buster's sea cove
-          </motion.h1>
-
-          <motion.div
-            variants={itemVariants}
-            className="h-40 w-full flex justify-center items-center"
-          >
-            <p className="font-secondary text-[#876E64] text-md md:text-lg pr-10 border-r-beige-secondary border-r-2 text-right w-90">
-              The founders of Toronto's renowned seafood legacy. Restaurants,
-              food trucks & catering.
-            </p>
-            <Link
-              to="/catering"
-              className="font-primary text-beige-primary bg-blue-primary text-2xl p-2 ml-6 w-60 md:w-40 h-14 flex justify-center items-center rounded-[4rem] cursor-pointer hover:scale-105 duration-300 shadow-lg"
+          <div className="flex min-h-[32rem] flex-col items-center justify-center gap-2 text-center">
+            <motion.p
+              variants={itemVariants}
+              className="font-secondary text-xl text-[#876E64]"
             >
-              Book Now
-            </Link>
-          </motion.div>
-          <div className="mt-4 flex w-full flex-col items-center gap-4 px-4 sm:flex-row sm:justify-center min-[1815px]:contents">
-            <div className="order-1 sm:order-2 flex w-full justify-center min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:right-[5%] min-[1815px]:w-auto">
+              S I N C E 1992:
+            </motion.p>
+
+            <motion.h1
+              variants={itemVariants}
+              className="font-primary uppercase text-7xl text-blue-primary sm:text-8xl md:text-9xl"
+            >
+              buster&apos;s sea cove
+            </motion.h1>
+
+            <motion.div
+              variants={itemVariants}
+              className="mt-4 flex w-full max-w-3xl flex-col items-center justify-center gap-6 md:h-40 md:flex-row"
+            >
+              <p className="w-full max-w-[28rem] text-center font-secondary text-md text-[#876E64] md:border-r-2 md:border-r-beige-secondary md:pr-10 md:text-right md:text-lg">
+                The founders of Toronto&apos;s renowned seafood legacy.
+                Restaurants, food trucks & catering.
+              </p>
+              <Link
+                to="/catering"
+                className="flex h-14 w-60 cursor-pointer items-center justify-center rounded-[4rem] bg-blue-primary p-2 font-primary text-2xl text-beige-primary shadow-lg duration-300 hover:scale-105 md:ml-6 md:w-40"
+              >
+                Book Now
+              </Link>
+            </motion.div>
+          </div>
+
+          <div className="hidden xl:flex xl:justify-start xl:self-center">
+            <EventNewsBubble />
+          </div>
+
+          <div className="flex w-full flex-col items-center gap-4 px-4 xl:hidden">
+            <div className="flex w-full justify-center">
               <EventNewsBubble />
             </div>
-            <div className="order-2 sm:order-1 flex w-full justify-center min-[1815px]:absolute min-[1815px]:top-[24%] min-[1815px]:left-[5%] min-[1815px]:w-auto">
+            <div className="flex w-full justify-center">
               <ReviewBubble />
             </div>
           </div>
