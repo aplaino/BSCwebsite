@@ -3,6 +3,7 @@ import { MdOutlineVerified } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { submitContactForm } from "../services/api";
+import Seo from "../components/Seo";
 // 1. Framer Motion Imports
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
@@ -54,6 +55,12 @@ export default function Contact() {
       animate="visible"
       className="bg-blue-primary w-full min-h-screen px-8 pt-40 pb-20 flex flex-col gap-10 justify-center items-center overflow-x-hidden"
     >
+      <Seo
+        title="Contact Buster's Sea Cove"
+        description="Contact Buster's Sea Cove for restaurant questions, seafood catering inquiries, food truck bookings, and event planning across Toronto and the GTA."
+        path="/contact"
+        image="/Landing.png"
+      />
       {/** ------ Contact Card ------ */}
       <motion.div 
         variants={fadeInUp}

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion"; // Required for your strict TS settings
+import Seo from "../components/Seo";
 
 export default function Schedule() {
   useEffect(() => {
@@ -26,6 +27,12 @@ export default function Schedule() {
 
   return (
     <main className="w-full min-h-screen bg-beige-secondary flex flex-col items-center">
+      <Seo
+        title="Food Truck Schedule"
+        description="See the Buster's Sea Cove food truck schedule for Toronto and GTA stops, and check upcoming locations before booking food truck catering."
+        path="/schedule"
+        image="/foodtruck.svg"
+      />
       <motion.div 
         variants={staggerContainer}
         initial="initial"

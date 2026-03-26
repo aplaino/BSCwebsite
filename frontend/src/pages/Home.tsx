@@ -5,6 +5,7 @@ import Gallery from "../components/HomePage/Gallery";
 import ReviewBubble from "../components/HomePage/ReviewBubble";
 import { useEffect } from "react";
 import HomeNav from "../components/HomePage/HomeNav";
+import Seo from "../components/Seo";
 import { motion, type Variants} from "framer-motion"; // Add this
 
 export default function Home() {
@@ -38,6 +39,12 @@ export default function Home() {
 
   return (
     <main className="w-screen h-auto bg-beige-primary flex flex-col justify-center overflow-x-hidden">
+      <Seo
+        title="Seafood Restaurant, Catering & Food Truck in Toronto"
+        description="Buster's Sea Cove serves fresh seafood in Toronto with restaurant menus, food truck events, and catering for corporate functions, weddings, and private events across the GTA."
+        path="/"
+        image="/Landing.png"
+      />
       {/* -------------- LANDING ----------------- */}
       <section className="w-full h-full pt-20">
         <motion.article

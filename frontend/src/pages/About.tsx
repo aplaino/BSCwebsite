@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import Seo from "../components/Seo";
 
 export default function About() {
   useEffect(() => {
@@ -28,6 +29,12 @@ export default function About() {
 
   return (
     <main className="w-full h-auto bg-beige-primary flex flex-col items-center overflow-x-hidden">
+      <Seo
+        title="About Buster's Sea Cove"
+        description="Learn the story behind Buster's Sea Cove, from St. Lawrence Market roots to a Toronto seafood brand known for restaurants, food trucks, and catering."
+        path="/about"
+        image="/Images/stLawrence.jpg"
+      />
       
       {/* -------------- HERO SECTION ----------------- */}
       <section className="w-full pt-32 pb-10 px-4">

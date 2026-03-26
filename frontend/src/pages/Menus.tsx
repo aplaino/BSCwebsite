@@ -8,6 +8,7 @@ import MenuItem from "../components/MenuItem.tsx";
 import { fetchFoodTruckMenu, fetchRestaurantMenu, type RestaurantMenuSection } from "../services/api";
 import { type MenuType } from "../Types.ts";
 import { Navigate, useParams } from "react-router-dom";
+import Seo from "../components/Seo";
 import { motion, AnimatePresence } from "framer-motion"; // Added for animations
 
 // Reusable Order Button Component
@@ -32,36 +33,59 @@ const OrderButton = ({
 
 export default function Menus() {
   const validMenuTypes = ["restaurant", "catering", "foodTruck"] as const;
+  type ValidMenuType = (typeof validMenuTypes)[number];
   const { typeParam } = useParams<{ typeParam: string }>();
   if (
     typeParam === undefined ||
-    !validMenuTypes.includes(typeParam as (typeof validMenuTypes)[number])
+    !validMenuTypes.includes(typeParam as ValidMenuType)
   ) {
     return <Navigate to="/menus/restaurant" replace />;
   }
+  const currentType = typeParam as ValidMenuType;
 
   const [menus, setMenus] = useState<MenuType[]>([
     {
       type: "restaurant",
-      isActive: typeParam == "restaurant",
+      isActive: currentType == "restaurant",
       name: "Restaurant",
     },
     {
       type: "catering",
-      isActive: typeParam == "catering",
+      isActive: currentType == "catering",
       name: "Large Orders",
     },
 
     {
       type: "foodTruck",
-      isActive: typeParam == "foodTruck",
+      isActive: currentType == "foodTruck",
       name: "Food Truck Catering",
     },
   ]);
-  const [menuType, setMenuType] = useState(typeParam);
+  const [menuType, setMenuType] = useState<ValidMenuType>(currentType);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
   const [restaurantSections, setRestaurantSections] = useState<RestaurantMenuSection[]>([]);
   const [restaurantSectionsLoaded, setRestaurantSectionsLoaded] = useState(false);
+
+  const seoConfig = {
+    restaurant: {
+      title: "Seafood Restaurant Menu",
+      description:
+        "Browse the Buster's Sea Cove restaurant menu featuring Toronto seafood favourites, sandwiches, grilled fish, and fresh market classics.",
+      path: "/menus/restaurant",
+    },
+    catering: {
+      title: "Catering Menu",
+      description:
+        "Explore Buster's Sea Cove catering menu options for large orders, seafood platters, sides, and event-ready catering across Toronto and the GTA.",
+      path: "/menus/catering",
+    },
+    foodTruck: {
+      title: "Food Truck Catering Menu",
+      description:
+        "View the Buster's Sea Cove food truck catering menu for Toronto events, corporate functions, weddings, and private bookings.",
+      path: "/menus/foodTruck",
+    },
+  } as const;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -75,11 +99,11 @@ export default function Menus() {
   }, []);
 
   useEffect(() => {
-    setMenuType(typeParam);
+    setMenuType(currentType);
     setMenus((prev) =>
-      prev.map((m): MenuType => ({ ...m, isActive: m.type === typeParam }))
+      prev.map((m): MenuType => ({ ...m, isActive: m.type === currentType }))
     );
-  }, [typeParam]);
+  }, [currentType]);
 
   // Animation variants
   const fadeVariant = {
@@ -96,6 +120,12 @@ export default function Menus() {
 
   return (
     <main className="w-screen h-full min-h-screen flex flex-col bg-beige-primary">
+      <Seo
+        title={seoConfig[menuType].title}
+        description={seoConfig[menuType].description}
+        path={seoConfig[menuType].path}
+        image="/menu-background.svg"
+      />
       {/* --- MENU OPTIONS --- */}
       <section className="w-full bg-[url(/menu-background.svg)] bg-cover px-4 pt-28 pb-6 flex flex-col justify-center items-center gap-4 border-b-2 border-black">
         <div className="w-full h-20 flex justify-center items-center mt-10">
