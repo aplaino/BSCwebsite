@@ -56,7 +56,7 @@ export default function Schedule() {
           <div className="absolute -inset-1 bg-blue-primary/20 blur-2xl rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
           
           <iframe
-            src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America%2FToronto&showPrint=0&src=Y2hyaXN0b3BoZXJtYW9tYW9AZ21haWwuY29t&src=ZmFtaWx5MDcyNDc1NDc5MjY5MjI5NTE3NTlAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&src=ZW4uY2FuYWRpYW4jaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039be5&color=%23ad1457&color=%230b8043"
+            src="https://calendar.google.com/calendar/embed?src=ql48kmnogsq81db0vrvsbv958k%40group.calendar.google.com&ctz=America%2FToronto"
             title="Buster's Sea Cove food truck schedule"
             loading="lazy"
             /* FIXED: Tailwind v4 requires brackets for custom values like h-[800px] */

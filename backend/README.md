@@ -28,17 +28,7 @@ Use `backend/.env.example` as your reference for required Django and email setti
 
 Use a Railway service rooted at `backend/`.
 
-Build command:
-
-```bash
-pip install -r requirements.txt && python manage.py collectstatic --noinput
-```
-
-Start command:
-
-```bash
-gunicorn core.wsgi:application --bind 0.0.0.0:$PORT
-```
+This repo includes [railway.json](/Users/andreas/Projects/BSCwebsite/backend/railway.json) with the build and start commands preconfigured for a Railway service rooted at `backend/`.
 
 Required Railway variables:
 
@@ -48,6 +38,13 @@ Required Railway variables:
 - `DJANGO_CORS_ALLOWED_ORIGINS=<your-vercel-domain>`
 - `DJANGO_CSRF_TRUSTED_ORIGINS=<your-vercel-domain>`
 - `DATABASE_URL=<railway-postgres-url>`
+- `DJANGO_EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend`
+- `DJANGO_EMAIL_HOST=smtp.gmail.com`
+- `DJANGO_EMAIL_PORT=587`
+- `DJANGO_EMAIL_USE_TLS=True`
+- `DJANGO_EMAIL_HOST_USER=<your-gmail-address>`
+- `DJANGO_EMAIL_HOST_PASSWORD=<your-google-app-password>`
+- `DJANGO_DEFAULT_FROM_EMAIL=Buster's Sea Cove <your-gmail-address>`
 
 Recommended for persistent uploads:
 
@@ -61,3 +58,10 @@ After the first deploy, run:
 python manage.py migrate
 python manage.py createsuperuser
 ```
+
+Suggested service settings:
+
+- Source repo root: this repository
+- Root directory: `backend`
+- Watch paths: `backend/**`
+- Health check path: `/admin/`

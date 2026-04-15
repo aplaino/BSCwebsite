@@ -109,3 +109,45 @@ python manage.py migrate
 - Set a strong production `DJANGO_SECRET_KEY`.
 - Configure `DJANGO_ALLOWED_HOSTS`, `DJANGO_CORS_ALLOWED_ORIGINS`, and `DJANGO_CSRF_TRUSTED_ORIGINS` for your domain.
 - Use HTTPS in production and configure reverse proxy/static hosting accordingly.
+
+## Production Setup
+
+This repo is set up to deploy as:
+
+- `frontend/` on Vercel using [frontend/vercel.json](/Users/andreas/Projects/BSCwebsite/frontend/vercel.json)
+- `backend/` on Railway using [backend/railway.json](/Users/andreas/Projects/BSCwebsite/backend/railway.json)
+
+### Vercel
+
+- Create a project from this repo
+- Set the root directory to `frontend`
+- Add `VITE_API_BASE_URL=https://<your-railway-domain>/api`
+
+### Railway
+
+- Create a service from this repo
+- Set the root directory to `backend`
+- Add a Postgres database and copy its `DATABASE_URL`
+- Set:
+  - `DJANGO_SECRET_KEY`
+  - `DJANGO_DEBUG=False`
+  - `DJANGO_ALLOWED_HOSTS=<your-railway-domain>`
+  - `DJANGO_CORS_ALLOWED_ORIGINS=<your-vercel-domain>`
+  - `DJANGO_CSRF_TRUSTED_ORIGINS=<your-vercel-domain>`
+  - `DATABASE_URL=<railway-postgres-url>`
+  - `DJANGO_EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend`
+  - `DJANGO_EMAIL_HOST=smtp.gmail.com`
+  - `DJANGO_EMAIL_PORT=587`
+  - `DJANGO_EMAIL_USE_TLS=True`
+  - `DJANGO_EMAIL_HOST_USER=<your-gmail-address>`
+  - `DJANGO_EMAIL_HOST_PASSWORD=<your-google-app-password>`
+  - `DJANGO_DEFAULT_FROM_EMAIL=Buster's Sea Cove <your-gmail-address>`
+
+### After Backend Deploys
+
+Run once on Railway:
+
+```bash
+python manage.py migrate
+python manage.py createsuperuser
+```
