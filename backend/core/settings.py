@@ -69,6 +69,13 @@ INSTALLED_APPS = [
     'restaurant', 
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_RATES": {
+        "contact_submission": os.getenv("DJANGO_CONTACT_THROTTLE_RATE", "5/hour"),
+        "catering_submission": os.getenv("DJANGO_CATERING_THROTTLE_RATE", "5/hour"),
+    }
+}
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware', # Put this at the VERY TOP
     'django.middleware.security.SecurityMiddleware',

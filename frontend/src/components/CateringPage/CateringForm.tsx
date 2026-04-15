@@ -190,6 +190,15 @@ export default function CateringForm({
                         outline-none! placeholder:italic mt-6 p-2"
             placeholder="e.g. We love lobster rolls!"
           />
+          <div className="hidden" aria-hidden="true">
+            <label htmlFor="website">Website</label>
+            <input
+              tabIndex={-1}
+              autoComplete="off"
+              name="website"
+              type="text"
+            />
+          </div>
 
           <button
             type="submit"

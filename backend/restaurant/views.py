@@ -7,6 +7,8 @@ from django.core.mail import send_mail
 from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from rest_framework.throttling import AnonRateThrottle
+from rest_framework.decorators import throttle_classes
 
 from .models import (
     CateringRequest,
@@ -17,15 +19,24 @@ from .models import (
     RestaurantMenuItem,
     RestaurantMenuSection,
 )
+from .throttles import CateringSubmissionThrottle, ContactSubmissionThrottle
 
 logger = logging.getLogger(__name__)
 
 
+def _has_bot_honeypot(data) -> bool:
+    return bool((data.get("website") or "").strip())
+
+
 @api_view(['POST'])
+@throttle_classes([CateringSubmissionThrottle])
 def submit_catering(request):
     data = request.data
     
     try:
+        if _has_bot_honeypot(data):
+            return Response({"message": "Inquiry sent! Check your email."}, status=201)
+
         # 1. Save to Database
         new_lead = CateringRequest.objects.create(
             full_name=data.get('fullName', 'N/A'), # Default to 'N/A' if missing
@@ -83,9 +94,13 @@ def submit_catering(request):
 
 
 @api_view(['POST'])
+@throttle_classes([ContactSubmissionThrottle])
 def submit_contact(request):
     data = request.data
     try:
+        if _has_bot_honeypot(data):
+            return Response({"message": "Message sent successfully!"}, status=201)
+
         # 1. Save to Database
         inquiry = ContactInquiry.objects.create(
             name=data.get('name'),

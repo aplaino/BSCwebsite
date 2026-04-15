@@ -101,6 +101,15 @@ export default function Contact() {
               required
               className="border-2 border-beige-secondary w-full h-40 text-blue-primary bg-transparent outline-none placeholder:italic p-4 mt-4"
             />
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                tabIndex={-1}
+                autoComplete="off"
+                name="website"
+                type="text"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col w-full md:w-1/3 justify-between items-center gap-6">

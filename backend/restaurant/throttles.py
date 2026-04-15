@@ -1,0 +1,9 @@
+from rest_framework.throttling import AnonRateThrottle
+
+
+class ContactSubmissionThrottle(AnonRateThrottle):
+    scope = "contact_submission"
+
+
+class CateringSubmissionThrottle(AnonRateThrottle):
+    scope = "catering_submission"
