@@ -43,7 +43,7 @@ export default function Home() {
         title="Seafood Restaurant, Catering & Food Truck in Toronto"
         description="Buster's Sea Cove serves fresh seafood in Toronto with restaurant menus, food truck events, and catering for corporate functions, weddings, and private events across the GTA."
         path="/"
-        image="/Landing.png"
+        image="/Landing.webp"
       />
       {/* -------------- LANDING ----------------- */}
       <section className="w-full h-full pt-20">
@@ -111,7 +111,7 @@ export default function Home() {
           className="h-80 w-full flex justify-center items-center"
         >
           <img
-            src="/Landing.png"
+            src="/Landing.webp"
             alt="Buster's Sea Cove landing"
             className="max-h-80 w-full object-cover border-t-4 border-b-4 border-[#876E64]"
           />
@@ -134,7 +134,7 @@ export default function Home() {
       </div>
 
       {/* -------------- SERVING HOURS ----------------- */}
-      <section className="bg-[url('/Commerce%20Court%20Photo_edited.jpg')] bg-center w-full h-[70vh] min-h-[32rem] bg-cover flex justify-center items-center">
+      <section className="bg-[url('/Commerce%20Court%20Photo_edited.webp')] bg-center w-full h-[70vh] min-h-[32rem] bg-cover flex justify-center items-center">
         <motion.img
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

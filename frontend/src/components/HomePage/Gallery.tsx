@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 
 export default function Gallery() {
-  const modules = import.meta.glob("../../gallery/HomePageGallery/*.jpg");
+  const modules = import.meta.glob("../../gallery/HomePageGallery/*.webp");
   const menuGallery = [
-    "/Images/Menu/Calamari & Chips .jpg",
-    "/Images/Menu/Gr Calamari .jpg",
-    "/Images/Menu/Gr Halibut .jpg",
-    "/Images/Menu/Haddock & Chips .jpg",
-    "/Images/Menu/Halibut & Chips .jpg",
-    "/Images/Menu/Lobster Grilled Cheese Closeup .jpg",
-    "/Images/Menu/Lobster Roll .jpg",
-    "/Images/Menu/Octopus .jpg",
-    "/Images/Menu/Rainbow Trout .jpg",
-    "/Images/Menu/Rainbow Trout closeup.jpg",
-    "/Images/Menu/Salmon .jpg",
-    "/Images/Menu/Seared Ahi Tuna salad (1).jpg",
-    "/Images/Menu/Seared Ahi Tuna salad.jpg",
-    "/Images/Menu/Snapper .jpg",
-    "/Images/Menu/Snapper Sandwich .jpg",
-    "/Images/Menu/Soups .jpg",
-    "/Images/Menu/Swordfish .jpg",
-    "/Images/Menu/Tilapia .jpg",
+    "/Images/Menu/Calamari & Chips .webp",
+    "/Images/Menu/Gr Calamari .webp",
+    "/Images/Menu/Gr Halibut .webp",
+    "/Images/Menu/Haddock & Chips .webp",
+    "/Images/Menu/Halibut & Chips .webp",
+    "/Images/Menu/Lobster Grilled Cheese Closeup .webp",
+    "/Images/Menu/Lobster Roll .webp",
+    "/Images/Menu/Octopus .webp",
+    "/Images/Menu/Rainbow Trout .webp",
+    "/Images/Menu/Rainbow Trout closeup.webp",
+    "/Images/Menu/Salmon .webp",
+    "/Images/Menu/Seared Ahi Tuna salad (1).webp",
+    "/Images/Menu/Seared Ahi Tuna salad.webp",
+    "/Images/Menu/Snapper .webp",
+    "/Images/Menu/Snapper Sandwich .webp",
+    "/Images/Menu/Soups .webp",
+    "/Images/Menu/Swordfish .webp",
+    "/Images/Menu/Tilapia .webp",
   ];
   const [gallery, setGallery] = useState<string[]>(menuGallery);
 

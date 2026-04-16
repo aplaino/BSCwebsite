@@ -59,7 +59,7 @@ export default function Contact() {
         title="Contact Buster's Sea Cove"
         description="Contact Buster's Sea Cove for restaurant questions, seafood catering inquiries, food truck bookings, and event planning across Toronto and the GTA."
         path="/contact"
-        image="/Landing.png"
+        image="/Landing.webp"
       />
       {/** ------ Contact Card ------ */}
       <motion.div 

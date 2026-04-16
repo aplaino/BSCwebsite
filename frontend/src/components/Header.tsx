@@ -24,7 +24,7 @@ export default function Header() {
       w-full max-w-300"
       >
         <Link to="/" className="flex justify-center items-center gap-3 w-60">
-          <img src="/logo.svg" className="size-18" alt="site-logo" />
+          <img src="/logo.svg" className="size-18" alt="site-logo" style={{ imageRendering: "high-quality" }} />
           <h1 className="">buster's sea cove</h1>
         </Link>
 

@@ -48,7 +48,7 @@ export default function Catering() {
       "@type": "Restaurant",
       name: "Buster's Sea Cove",
       url: "https://www.bustersseacove.com/",
-      image: "https://www.bustersseacove.com/Landing.png",
+      image: "https://www.bustersseacove.com/Landing.webp",
       telephone: "+1-416-319-2957",
       email: "bustersheadoffice@gmail.com",
       servesCuisine: ["Seafood", "Catering"],
@@ -67,7 +67,7 @@ export default function Catering() {
       "@type": "CateringService",
       name: "Buster's Sea Cove Catering",
       url: "https://www.bustersseacove.com/catering",
-      image: "https://www.bustersseacove.com/cateringzfp.jpg",
+      image: "https://www.bustersseacove.com/cateringzfp.webp",
       description:
         "Seafood catering, food truck catering, drop-off catering, and full-service event catering for weddings, corporate events, film sets, golf courses, and private parties in Toronto and the GTA.",
       provider: {
@@ -96,7 +96,7 @@ export default function Catering() {
         title="Toronto Catering, Seafood Catering & Food Truck Catering"
         description="Book Buster's Sea Cove for seafood catering in Toronto and the GTA, including food truck catering, corporate catering, weddings, golf events, film sets, and private parties."
         path="/catering"
-        image="/cateringzfp.jpg"
+        image="/cateringzfp.webp"
         jsonLd={cateringSchema}
       />
       {/** --------- Form (Hero Section) ------------- */}

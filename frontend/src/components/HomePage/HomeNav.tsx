@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 
 export default function HomeNav() {
   const navCards = [
-    { title: "Menus", route: "/menus/restaurant", image: "/Images/Menu/Lobster Roll .jpg" },
-    { title: "Catering", route: "/catering", image: "/cateringzfp.jpg" },
-    { title: "About", route: "/about", image: "/Images/stLawrence.jpg" },
-    { title: "Contact", route: "/contact", image: "/Images/Buster Sea Cove (51).jpg" },
+    { title: "Menus", route: "/menus/restaurant", image: "/Images/Menu/Lobster Roll .webp" },
+    { title: "Catering", route: "/catering", image: "/cateringzfp.webp" },
+    { title: "About", route: "/about", image: "/Images/stLawrence.webp" },
+    { title: "Contact", route: "/contact", image: "/Images/Buster Sea Cove (51).webp" },
   ];
 
   return (

@@ -94,7 +94,7 @@ export default function CateringInfo() {
                 <span className="flex items-center gap-3">
                   <FaArrowRightLong />
                   <img
-                    src="/IceCreamLogo.png"
+                    src="/IceCreamLogo.webp"
                     alt="Dessert service logo"
                     className="w-12 h-12 object-contain"
                     loading="lazy"
