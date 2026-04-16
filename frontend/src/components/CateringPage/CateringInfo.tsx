@@ -71,6 +71,12 @@ export default function CateringInfo() {
                 <span>See our menu</span>
                 <span className="flex items-center gap-3">
                   <FaArrowRightLong />
+                  <img
+                    src="/logo.svg"
+                    alt="Buster's Sea Cove logo"
+                    className="w-12 h-12 object-contain"
+                    loading="lazy"
+                  />
                 </span>
               </h3>
             </Link>
