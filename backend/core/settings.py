@@ -53,6 +53,7 @@ MEDIA_ROOT = Path(os.getenv("DJANGO_MEDIA_ROOT", BASE_DIR / "media"))
 SERVE_MEDIA_FILES = (
     os.getenv("DJANGO_SERVE_MEDIA_FILES", str(DEBUG)).lower() == "true"
 )
+FRONTEND_SITE_URL = os.getenv("DJANGO_FRONTEND_SITE_URL", "http://localhost:5173")
 
 
 # Application definition

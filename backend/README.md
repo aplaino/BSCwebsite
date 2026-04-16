@@ -38,6 +38,7 @@ Required Railway variables:
 - `DJANGO_CORS_ALLOWED_ORIGINS=<your-vercel-domain>`
 - `DJANGO_CSRF_TRUSTED_ORIGINS=<your-vercel-domain>`
 - `DATABASE_URL=<railway-postgres-url>`
+- `DJANGO_FRONTEND_SITE_URL=<your-vercel-domain>`
 - `DJANGO_EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend`
 - `DJANGO_EMAIL_HOST=smtp.gmail.com`
 - `DJANGO_EMAIL_PORT=587`
