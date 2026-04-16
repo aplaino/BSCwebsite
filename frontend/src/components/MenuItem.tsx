@@ -32,6 +32,10 @@ export default function MenuItem({ title, items }:MenuSectionProps) {
                   alt={item.name}
                   className="w-full aspect-square object-cover rounded-xl border border-black/15"
                   loading="lazy"
+                  onError={(e) => {
+                    e.currentTarget.src = "/logo.svg";
+                    e.currentTarget.className = "w-full aspect-square object-contain rounded-xl border border-dashed border-black/30 bg-beige-primary/50 p-4 md:p-6";
+                  }}
                 />
               ) : (
                 <img

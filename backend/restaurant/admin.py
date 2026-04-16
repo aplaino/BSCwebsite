@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.db.models import Count
 from django.utils.html import format_html
 
 from .models import (
@@ -207,9 +208,12 @@ class RestaurantMenuSectionAdmin(admin.ModelAdmin):
         }),
     )
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(_item_count=Count("items"))
+
     @admin.display(description="Items")
     def item_count(self, obj):
-        return obj.items.count()
+        return obj._item_count
 
 
 @admin.register(RestaurantMenuItem)

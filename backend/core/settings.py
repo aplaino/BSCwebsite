@@ -54,6 +54,7 @@ SERVE_MEDIA_FILES = (
     os.getenv("DJANGO_SERVE_MEDIA_FILES", str(DEBUG)).lower() == "true"
 )
 FRONTEND_SITE_URL = os.getenv("DJANGO_FRONTEND_SITE_URL", "http://localhost:5173")
+CONTACT_RECIPIENT_EMAIL = os.getenv("DJANGO_CONTACT_RECIPIENT_EMAIL", "bustersheadoffice@gmail.com")
 
 
 # Application definition
@@ -67,7 +68,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'restaurant', 
+    'anymail',
+    'restaurant',
 ]
 
 REST_FRAMEWORK = {
@@ -89,9 +91,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# Allow embedding media/PDF previews in local frontend during development.
-# Do not keep this in production without tighter framing rules.
-X_FRAME_OPTIONS = "ALLOWALL" if DEBUG else "DENY"
+X_FRAME_OPTIONS = "SAMEORIGIN"
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
@@ -180,14 +180,40 @@ EMAIL_BACKEND = os.getenv(
     "DJANGO_EMAIL_BACKEND",
     "django.core.mail.backends.console.EmailBackend",
 )
-EMAIL_HOST = os.getenv("DJANGO_EMAIL_HOST", "smtp.gmail.com")
-EMAIL_PORT = int(os.getenv("DJANGO_EMAIL_PORT", "587"))
-EMAIL_USE_TLS = os.getenv("DJANGO_EMAIL_USE_TLS", "True").lower() == "true"
-EMAIL_HOST_USER = os.getenv("DJANGO_EMAIL_HOST_USER", "your-restaurant-email@gmail.com")
-EMAIL_HOST_PASSWORD = os.getenv("DJANGO_EMAIL_HOST_PASSWORD", "your-app-specific-password")
 DEFAULT_FROM_EMAIL = os.getenv(
     "DJANGO_DEFAULT_FROM_EMAIL",
     "Buster's Sea Cove <your-restaurant-email@gmail.com>",
 )
+ANYMAIL = {
+    "RESEND_API_KEY": os.getenv("RESEND_API_KEY", ""),
+}
 
 MEDIA_URL = '/media/'
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "verbose": {
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+    "loggers": {
+        "restaurant": {
+            "handlers": ["console"],
+            "level": "INFO",
+            "propagate": False,
+        },
+    },
+}

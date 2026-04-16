@@ -1,4 +1,12 @@
+from django.core.validators import FileExtensionValidator, URLValidator
 from django.db import models
+
+
+def validate_file_size(value):
+    limit = 10 * 1024 * 1024  # 10 MB
+    if value.size > limit:
+        raise ValueError("File size must not exceed 10 MB.")
+
 
 class CateringRequest(models.Model):
     SERVICE_OPTIONS = [
@@ -49,7 +57,13 @@ class ContactInquiry(models.Model):
 
 class FoodTruckMenu(models.Model):
     title = models.CharField(max_length=100, default="Current Food Truck Menu")
-    pdf_file = models.FileField(upload_to='menus/pdf/')
+    pdf_file = models.FileField(
+        upload_to='menus/pdf/',
+        validators=[
+            FileExtensionValidator(allowed_extensions=['pdf']),
+            validate_file_size,
+        ],
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
@@ -64,10 +78,14 @@ class EventNews(models.Model):
     title = models.CharField(max_length=120)
     summary = models.TextField()
     badge = models.CharField(max_length=40, blank=True, default="Coming Up")
-    event_date = models.DateField(blank=True, null=True)
+    event_date = models.DateField(blank=True, null=True, db_index=True)
     cta_label = models.CharField(max_length=40, blank=True)
-    cta_url = models.CharField(max_length=255, blank=True)
-    is_active = models.BooleanField(default=True)
+    cta_url = models.CharField(
+        max_length=255,
+        blank=True,
+        validators=[URLValidator()],
+    )
+    is_active = models.BooleanField(default=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -84,7 +102,7 @@ class RestaurantMenuSection(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True)
     display_order = models.PositiveIntegerField(default=0)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["display_order", "title"]
@@ -106,7 +124,7 @@ class RestaurantMenuItem(models.Model):
     price = models.CharField(max_length=40)
     image_url = models.CharField(max_length=255, blank=True)
     display_order = models.PositiveIntegerField(default=0)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
 
     class Meta:
         ordering = ["display_order", "name"]
@@ -122,7 +140,7 @@ class HeroReview(models.Model):
     attribution = models.CharField(max_length=80, default="Google Reviews")
     rating = models.PositiveSmallIntegerField(default=5)
     display_order = models.PositiveIntegerField(default=0)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True, db_index=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

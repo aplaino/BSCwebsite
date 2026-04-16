@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { fetchEventNews, type EventNewsItem } from "../../services/api";
 
 function formatEventDate(dateValue: string | null) {
-  if (!dateValue) {
+  if (!dateValue || !/^\d{4}-\d{2}-\d{2}$/.test(dateValue)) {
     return null;
   }
 
@@ -16,32 +16,38 @@ function formatEventDate(dateValue: string | null) {
   }).format(new Date(`${dateValue}T00:00:00`));
 }
 
+function isSafeUrl(url: string): boolean {
+  if (url.startsWith("/")) return true;
+  try {
+    const parsed = new URL(url);
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  } catch {
+    return false;
+  }
+}
+
 export default function EventNewsBubble() {
   const [story, setStory] = useState<EventNewsItem | null>(null);
 
   useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
 
-    fetchEventNews()
-      .then((data) => {
-        if (isMounted) {
-          setStory(data);
-        }
-      })
-      .catch(() => {
-        if (isMounted) {
+    fetchEventNews(controller.signal)
+      .then((data) => setStory(data))
+      .catch((err: unknown) => {
+        if (err instanceof Error && err.name !== "AbortError") {
           setStory(null);
         }
       });
 
-    return () => {
-      isMounted = false;
-    };
+    return () => controller.abort();
   }, []);
 
   if (!story) {
     return null;
   }
+
+  const hasCta = story.cta_label && story.cta_url && isSafeUrl(story.cta_url);
 
   const content = (
     <motion.aside
@@ -66,7 +72,7 @@ export default function EventNewsBubble() {
       <p className="mt-2.5 font-secondary text-sm leading-relaxed text-[#4b5563]">
         {story.summary}
       </p>
-      {story.cta_label && story.cta_url && (
+      {hasCta && (
         <span className="mt-3 inline-flex rounded-full border border-black/10 bg-[rgba(247,243,235,0.65)] px-4 py-1.5 font-primary text-base uppercase text-[#4f5968] transition-colors duration-300 hover:bg-[rgba(178,150,139,0.2)] hover:text-[#374151]">
           {story.cta_label}
         </span>
@@ -74,7 +80,7 @@ export default function EventNewsBubble() {
     </motion.aside>
   );
 
-  if (story.cta_label && story.cta_url) {
+  if (hasCta) {
     const isInternalLink = story.cta_url.startsWith("/");
 
     if (isInternalLink) {

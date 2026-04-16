@@ -76,8 +76,8 @@ export const fetchFoodTruckMenu = async () => {
   return data[0]?.pdf_file || null;
 };
 
-export const fetchEventNews = async (): Promise<EventNewsItem | null> => {
-  const response = await fetch(`${BASE_URL}/news/event/`);
+export const fetchEventNews = async (signal?: AbortSignal): Promise<EventNewsItem | null> => {
+  const response = await fetch(`${BASE_URL}/news/event/`, { signal });
   if (!response.ok) {
     throw new Error("Failed to fetch event news");
   }

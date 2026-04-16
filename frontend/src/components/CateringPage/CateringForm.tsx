@@ -75,49 +75,53 @@ export default function CateringForm({
             First & Last Name
           </label>
           <input
+            id="fullName"
             name="fullName"
             type="text"
             placeholder="e.g. Helena Eagan"
             required
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="email" className="font-bold">
             Email
           </label>
           <input
+            id="email"
             name="email"
             type="email"
             placeholder="e.g. helena123@gmail.com"
             required
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="phone" className="font-bold">
             Phone Number
           </label>
           <input
+            id="phone"
             name="phone"
             type="text"
             placeholder="e.g. 1234567890"
             required
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="companyName" className="font-bold">
             Company Name (if applicable)
           </label>
           <input
+            id="companyName"
             name="companyName"
             type="text"
             placeholder="e.g. Lumon Industries"
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="serviceType" className="font-bold">
             I am interested in (select one):
           </label>
-          <select name="serviceType">
+          <select id="serviceType" name="serviceType">
             <option value="FOOD_TRUCK">
               Food Truck Catering (20 ft parking spots and that's it! We will
               take it from there)
@@ -135,56 +139,62 @@ export default function CateringForm({
             Event Date
           </label>
           <input
+            id="eventDate"
             name="eventDate"
             type="date"
             placeholder="e.g. 2025-07-20"
             required
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="eventAddress" className="font-bold">
             Event Address
           </label>
           <input
+            id="eventAddress"
             name="eventAddress"
             type="text"
             placeholder="e.g. 123 Bay St, Toronto"
             required
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="startTime" className="font-bold">
             Start Time
           </label>
           <input
+            id="startTime"
             name="startTime"
             type="time"
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="endTime" className="font-bold">
             End Time
           </label>
           <input
+            id="endTime"
             name="endTime"
             type="time"
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="budget" className="font-bold">
             Budget (Canadian dollars)
           </label>
           <input
+            id="budget"
             name="budget"
             type="number"
             placeholder="2000"
-            className="border-b-2 border-beige-secondary w-full h-8 
+            className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
           <label htmlFor="notes" className="font-bold">
             Notes
           </label>
           <textarea
+            id="notes"
             name="notes"
             className="border-2 border-beige-secondary w-full h-32 text-beige-secondary
                         outline-none! placeholder:italic mt-6 p-2"
