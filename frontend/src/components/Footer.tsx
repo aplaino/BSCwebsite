@@ -9,14 +9,14 @@ export default function Footer() {
         <section className="w-full flex flex-col gap-10 md:gap-0 md:flex-row justify-between">
           <div className="w-auto h-full flex flex-col gap-2 font-secondary ">
             <h2 className=" font-bold">Services</h2>
-            <Link to={`/menus/foodTruck`}>Food Truck Catering</Link>
+            <Link to="/catering">Food Truck Catering</Link>
             <a href="https://sites.ambassador.ai/?s=busterscommissary">
               Drop Off Catering
             </a>
             <a href="https://sites.ambassador.ai/?s=busterscommissary">
               Pick Up Catering
             </a>
-            <Link to={`/menus/catering`}>Full-Service Catering</Link>
+            <Link to="/catering">Full-Service Catering</Link>
           </div>
           <div className="w-auto h-full flex flex-col gap-2 font-secondary">
             <h2 className=" font-bold">Contact</h2>
@@ -29,11 +29,25 @@ export default function Footer() {
           <div className="w-auto h-full flex flex-col gap-2 font-secondary">
             <h2 className=" font-bold">Locations</h2>
             <p>Commerce Court</p>
-            <p>199 Bay St. SUITE C-150, Toronto, ON M5L 1E9</p>
+            <a
+              href="https://maps.google.com/?q=199+Bay+St+Suite+C-150,+Toronto,+ON+M5L+1E9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-beige-secondary transition-colors"
+            >
+              199 Bay St. SUITE C-150, Toronto, ON M5L 1E9
+            </a>
             <p>Mon - Fri 11:00 am - 3:00 pm</p>
             <p>Closed Weekends & Stat Holidays</p>
             <p>Head Office</p>
-            <p>305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7</p>
+            <a
+              href="https://maps.google.com/?q=305+Industrial+Pkwy+S+Unit+6,+Aurora,+ON+L4G+6X7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-beige-secondary transition-colors"
+            >
+              305 Industrial Pkwy S Unit 6, Aurora, ON L4G 6X7
+            </a>
           </div>
         </section>
       </article>
