@@ -7,21 +7,21 @@ export default function Footer() {
         <h1 className="font-primary uppercase text-4xl">buster's sea cove</h1>
 
         <section className="w-full flex flex-col gap-10 md:gap-0 md:flex-row justify-between">
-          <div className="w-auto h-full flex flex-col gap-2 font-secondary ">
-            <h2 className=" font-bold">Services</h2>
-            <Link to="/catering">Food Truck Catering</Link>
-            <a href="https://sites.ambassador.ai/?s=busterscommissary">
+          <div className="w-auto h-full flex flex-col gap-2 font-secondary">
+            <h2 className="font-bold">Services</h2>
+            <Link to="/catering" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">Food Truck Catering</Link>
+            <a href="https://sites.ambassador.ai/?s=busterscommissary" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">
               Drop Off Catering
             </a>
-            <a href="https://sites.ambassador.ai/?s=busterscommissary">
+            <a href="https://sites.ambassador.ai/?s=busterscommissary" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">
               Pick Up Catering
             </a>
-            <Link to="/catering">Full-Service Catering</Link>
+            <Link to="/catering" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">Full-Service Catering</Link>
           </div>
           <div className="w-auto h-full flex flex-col gap-2 font-secondary">
-            <h2 className=" font-bold">Contact</h2>
-            <a href="tel:4163192957">416-319-2957</a>
-            <a href="mailto:bustersheadoffice@gmail.com">
+            <h2 className="font-bold">Contact</h2>
+            <a href="tel:4163192957" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">416-319-2957</a>
+            <a href="mailto:bustersheadoffice@gmail.com" className="underline underline-offset-2 hover:text-beige-secondary transition-colors">
               bustersheadoffice@gmail.com
             </a>
           </div>

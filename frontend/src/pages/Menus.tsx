@@ -63,6 +63,7 @@ export default function Menus() {
   ]);
   const [menuType, setMenuType] = useState<ValidMenuType>(currentType);
   const [pdfUrl, setPdfUrl] = useState<string | null>(null);
+  const [pdfLoaded, setPdfLoaded] = useState(false);
   const [restaurantSections, setRestaurantSections] = useState<RestaurantMenuSection[]>([]);
   const [restaurantSectionsLoaded, setRestaurantSectionsLoaded] = useState(false);
 
@@ -89,14 +90,22 @@ export default function Menus() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchFoodTruckMenu()
-      .then((url) => setPdfUrl(url))
-      .catch(() => setPdfUrl(null));
-    fetchRestaurantMenu()
-      .then((sections) => setRestaurantSections(sections))
-      .catch(() => setRestaurantSections([]))
-      .finally(() => setRestaurantSectionsLoaded(true));
   }, []);
+
+  useEffect(() => {
+    if (menuType === "restaurant" && !restaurantSectionsLoaded) {
+      fetchRestaurantMenu()
+        .then((sections) => setRestaurantSections(sections))
+        .catch(() => setRestaurantSections([]))
+        .finally(() => setRestaurantSectionsLoaded(true));
+    }
+    if (menuType === "foodTruck" && !pdfLoaded) {
+      fetchFoodTruckMenu()
+        .then((url) => setPdfUrl(url))
+        .catch(() => setPdfUrl(null))
+        .finally(() => setPdfLoaded(true));
+    }
+  }, [menuType]);
 
   useEffect(() => {
     setMenuType(currentType);
