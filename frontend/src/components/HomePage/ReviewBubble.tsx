@@ -36,17 +36,17 @@ export default function ReviewBubble() {
       initial={{ opacity: 0, y: 18, scale: 0.96 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.5, ease: "easeOut", delay: 0.28 }}
-      className="w-full max-w-[22rem] rounded-[2rem] border border-[#D1CDC0] bg-[rgba(247,243,235,0.82)] p-5 shadow-[0_8px_18px_rgba(17,27,54,0.08)] backdrop-blur-sm"
+      className="w-full max-w-[15.5rem] rounded-[1.4rem] border border-[#D1CDC0] bg-[rgba(247,243,235,0.82)] p-3.5 shadow-[0_8px_18px_rgba(17,27,54,0.08)] backdrop-blur-sm"
     >
-      <div className="mb-3 flex items-center gap-1 text-[#a89d73]">
+      <div className="mb-2.5 flex items-center gap-1 text-[#a89d73]">
         {Array.from({ length: review.rating }).map((_, index) => (
-          <FaStar key={index} className="h-4 w-4" />
+          <FaStar key={index} className="h-3 w-3" />
         ))}
       </div>
-      <p className="font-secondary text-base leading-relaxed text-[#555555]">
+      <p className="font-secondary text-sm leading-relaxed text-[#555555]">
         {review.quote}
       </p>
-      <p className="mt-4 font-secondary text-sm font-semibold uppercase tracking-[0.16em] text-[#7b8491]">
+      <p className="mt-3 font-secondary text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[#7b8491]">
         {review.attribution}
       </p>
     </motion.aside>
