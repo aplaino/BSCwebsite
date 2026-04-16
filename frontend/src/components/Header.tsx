@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
@@ -24,7 +24,7 @@ export default function Header() {
       w-full max-w-300"
       >
         <Link to="/" className="flex justify-center items-center gap-3 w-60">
-          <img src="/logo.svg" className="size-18" alt="site-logo" style={{ imageRendering: "high-quality" }} />
+          <img src="/logo.svg" className="size-18" alt="site-logo" style={{ imageRendering: "optimizeQuality" as React.CSSProperties["imageRendering"] }} />
           <h1 className="">buster's sea cove</h1>
         </Link>
 
