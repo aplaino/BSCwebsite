@@ -25,6 +25,21 @@ from .throttles import CateringSubmissionThrottle, ContactSubmissionThrottle
 logger = logging.getLogger(__name__)
 
 
+_CATERING_KEY_MAP = {
+    "fullName": "full_name",
+    "companyName": "company_name",
+    "serviceType": "service_type",
+    "eventDate": "event_date",
+    "eventAddress": "event_address",
+    "startTime": "start_time",
+    "endTime": "end_time",
+}
+
+
+def _normalize_catering_data(data: dict) -> dict:
+    return {_CATERING_KEY_MAP.get(k, k): v for k, v in data.items()}
+
+
 def _has_bot_honeypot(data) -> bool:
     return bool((data.get("website") or "").strip())
 
@@ -37,7 +52,7 @@ def submit_catering(request):
     if _has_bot_honeypot(data):
         return Response({"message": "Inquiry sent! Check your email."}, status=201)
 
-    serializer = CateringRequestSerializer(data=data)
+    serializer = CateringRequestSerializer(data=_normalize_catering_data(data))
     if not serializer.is_valid():
         return Response({"error": "Invalid form data.", "details": serializer.errors}, status=400)
 
