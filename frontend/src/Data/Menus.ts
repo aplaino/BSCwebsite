@@ -156,41 +156,35 @@ export const RESTAURANT_grilledSandwiches = [
     description:
       "Atlantic Salmon grilled to perfection & served atop a scrumptious sandwich.",
     price: "$13.95",
-    imageUrl: "/Images/Menu/Salmon .webp",
   },
   {
     name: "Grilled Swordfish Sandwich",
     description:
       "Sashimi grade Swordfish grilled to perfection & served atop a delicious sandwich.",
     price: "$14.95",
-    imageUrl: "/Images/Menu/Swordfish .webp",
   },
   {
     name: "Grilled Tilapia Sandwich",
     description:
       "Fresh Tilapia, grilled to perfection & served atop a scrumptious sandwich.",
     price: "$12.95",
-    imageUrl: "/Images/Menu/Tilapia .webp",
   },
   {
     name: "Grilled Rainbow Trout Sandwich",
     description:
       "Fresh rainbow Trout, grilled to perfection & served as a delicious sandwich.",
     price: "$14.95",
-    imageUrl: "/Images/Menu/Rainbow Trout closeup.webp",
   },
   {
     name: "Grilled Snapper Sandwich",
     description:
       "Fresh Red Snapper, grilled to perfection & served atop a scrumptious sandwich.",
     price: "$13.95",
-    imageUrl: "/Images/Menu/Snapper Sandwich .webp",
   },
   {
     name: "Grilled Halibut Sandwich",
     description: "Perfectly grilled halibut. Served as a delicious sandwich.",
     price: "$15.95",
-    imageUrl: "/Images/Menu/Gr Halibut .webp",
   },
 ];
 
