@@ -5,7 +5,7 @@ from django.db.models import Prefetch
 from django.db.utils import OperationalError, ProgrammingError
 from django.core.mail import send_mail
 from django.http import JsonResponse
-from django.views.decorators.cache import cache_page
+from django.views.decorators.cache import never_cache
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.throttling import AnonRateThrottle
@@ -134,7 +134,6 @@ def submit_contact(request):
     return Response({"message": "Message sent successfully!"}, status=201)
 
 
-@cache_page(60 * 10)  # cache for 10 minutes
 @api_view(['GET'])
 def get_food_truck_menu(request):
     menu = FoodTruckMenu.objects.order_by('-updated_at').first()
@@ -151,7 +150,6 @@ def get_food_truck_menu(request):
     return JsonResponse([], safe=False)
 
 
-@cache_page(60 * 5)  # cache for 5 minutes
 @api_view(['GET'])
 def get_event_news(request):
     try:
@@ -175,6 +173,7 @@ def get_event_news(request):
     return JsonResponse(data)
 
 
+@never_cache
 @api_view(['GET'])
 def get_restaurant_menu(request):
     try:
@@ -209,7 +208,6 @@ def get_restaurant_menu(request):
     return JsonResponse(data, safe=False)
 
 
-@cache_page(60 * 5)  # cache for 5 minutes
 @api_view(['GET'])
 def get_hero_review(request):
     try:
