@@ -175,7 +175,6 @@ def get_event_news(request):
     return JsonResponse(data)
 
 
-@cache_page(60 * 10)  # cache for 10 minutes
 @api_view(['GET'])
 def get_restaurant_menu(request):
     try:

@@ -229,3 +229,4 @@ class RestaurantMenuItemAdmin(admin.ModelAdmin):
             "fields": ("section", "name", "description", "price", "image_url", "display_order", "is_active")
         }),
     )
+
