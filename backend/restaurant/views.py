@@ -139,10 +139,17 @@ def get_food_truck_menu(request):
     menu = FoodTruckMenu.objects.order_by('-updated_at').first()
 
     if menu:
+        if menu.pdf_url:
+            pdf = menu.pdf_url
+        elif menu.pdf_file:
+            pdf = request.build_absolute_uri(menu.pdf_file.url)
+        else:
+            return JsonResponse([], safe=False)
+
         data = [{
             "id": menu.id,
             "title": menu.title,
-            "pdf_file": request.build_absolute_uri(menu.pdf_file.url),
+            "pdf_file": pdf,
             "updated_at": menu.updated_at
         }]
         return JsonResponse(data, safe=False)

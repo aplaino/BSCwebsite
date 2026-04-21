@@ -122,7 +122,7 @@ class FoodTruckMenuAdmin(admin.ModelAdmin):
     readonly_fields = ('updated_at', 'menu_link')
     fieldsets = (
         ('Menu File', {
-            'fields': ('title', 'pdf_file', 'menu_link')
+            'fields': ('title', 'pdf_url', 'pdf_file', 'menu_link')
         }),
         ('Admin', {
             'fields': ('updated_at',)

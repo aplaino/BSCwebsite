@@ -59,10 +59,17 @@ class FoodTruckMenu(models.Model):
     title = models.CharField(max_length=100, default="Current Food Truck Menu")
     pdf_file = models.FileField(
         upload_to='menus/pdf/',
+        blank=True,
+        default='',
         validators=[
             FileExtensionValidator(allowed_extensions=['pdf']),
             validate_file_size,
         ],
+    )
+    pdf_url = models.URLField(
+        blank=True,
+        default='',
+        help_text="Paste a direct PDF URL (e.g. Google Drive embed link) to use instead of uploading a file.",
     )
     updated_at = models.DateTimeField(auto_now=True)
 
