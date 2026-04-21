@@ -25,20 +25,19 @@ export default function Catering() {
   // 2. Define reusable animation variants
   // Standard fade-up used across the site for consistency
   const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 60 },
-    visible: { 
-      opacity: 1, 
+    hidden: { opacity: 0, y: 16 },
+    visible: {
+      opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" } 
+      transition: { duration: 0.4, ease: "easeOut" }
     }
   };
 
-  // A container variant to stagger the initial load if needed
   const pageContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 }
+      transition: { staggerChildren: 0.08, delayChildren: 0 }
     }
   };
 
