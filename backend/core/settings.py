@@ -51,7 +51,7 @@ CORS_ALLOWED_ORIGINS = get_env_list(
 DATABASE_URL = os.getenv("DATABASE_URL")
 MEDIA_ROOT = Path(os.getenv("DJANGO_MEDIA_ROOT", BASE_DIR / "media"))
 SERVE_MEDIA_FILES = (
-    os.getenv("DJANGO_SERVE_MEDIA_FILES", str(DEBUG)).lower() == "true"
+    os.getenv("DJANGO_SERVE_MEDIA_FILES", "true").lower() == "true"
 )
 FRONTEND_SITE_URL = os.getenv("DJANGO_FRONTEND_SITE_URL", "http://localhost:5173")
 CONTACT_RECIPIENT_EMAIL = os.getenv("DJANGO_CONTACT_RECIPIENT_EMAIL", "bustersheadoffice@gmail.com")
