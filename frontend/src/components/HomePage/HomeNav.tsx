@@ -10,19 +10,23 @@ export default function HomeNav() {
   ];
 
   return (
-    <section className="w-full grid grid-cols-2 lg:grid-cols-4 gap-4 p-6">
+    <section className="w-full grid grid-cols-2 lg:grid-cols-4 gap-2 p-3 md:gap-3 md:p-4">
       {navCards.map((card) => (
         <Link
           key={card.title}
           to={card.route}
           style={{ backgroundImage: `url('${encodeURI(card.image)}')` }}
-          className="aspect-square w-full bg-cover bg-center rounded-2xl flex flex-col justify-between hover:scale-105 duration-300 cursor-pointer"
+          className="group relative aspect-[3/2] w-full overflow-hidden rounded-2xl bg-cover bg-center cursor-pointer"
         >
-          <div className="w-full h-auto flex justify-end">
-            <GoArrowUpRight className="text-5xl bg-beige-primary p-2 rounded-md" />
-          </div>
-          <div className="w-full min-h-20 h-auto flex items-end bg-black/40 rounded-2xl p-4">
-            <h2 className="font-primary text-3xl md:text-5xl uppercase text-beige-primary">
+          {/* Gradient overlay — deepens on hover */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent transition-all duration-500 group-hover:from-black/80" />
+
+          {/* Arrow — fades in top-right on hover */}
+          <GoArrowUpRight className="absolute top-4 right-4 text-white text-xl opacity-0 translate-x-1 -translate-y-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0" />
+
+          {/* Title — lifts slightly on hover */}
+          <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-1 transition-transform duration-300 group-hover:translate-y-0">
+            <h2 className="font-primary text-3xl uppercase leading-none text-white md:text-4xl xl:text-5xl">
               {card.title}
             </h2>
           </div>

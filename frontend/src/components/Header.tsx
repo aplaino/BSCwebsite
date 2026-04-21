@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
@@ -12,12 +19,14 @@ export default function Header() {
 
   return (
     <header
-      className="h-20 w-screen p-4
-        bg-beige-primary border-b-2 border-beige-secondary
+      className={`h-20 w-screen px-4
         flex justify-center items-center
         font-primary uppercase text-xl
-        fixed top-0 z-100
-        "
+        fixed top-0 z-100 transition-all duration-300
+        ${scrolled
+          ? "bg-beige-primary/85 backdrop-blur-md border-b border-beige-secondary/60 shadow-sm"
+          : "bg-beige-primary border-b-2 border-beige-secondary"
+        }`}
     >
       <div
         className="flex justify-between items-center h-full
@@ -61,7 +70,7 @@ export default function Header() {
           >
             <nav className="h-full w-full flex flex-col gap-10 justify-center items-center text-2xl">
               <Link
-                to="/menus/catering"
+                to="/menus/restaurant"
                 className="hover:text-beige-primary duration-300 py-2"
                 onClick={closeMobileMenu}
               >

@@ -39,12 +39,12 @@ export default function Gallery() {
   return (
     <section
       className="bg-beige-primary w-screen min-h-screen h-full
-        flex flex-col px-8 gap-12 pb-20 pt-40 "
+        flex flex-col px-6 md:px-10 gap-10 pb-20 pt-16 md:pt-24"
     >
-      <div className="flex flex-col w-full h-full gap-2 text-[#876E64]">
-        <h1 className="font-primary text-6xl ">Buster's Gallery</h1>
-        <p className="font-secondary">
-          Check out our favourite photographs of the food we serve!
+      <div className="flex flex-col w-full gap-3 text-[#111B36] border-b border-beige-secondary pb-8">
+        <h1 className="font-primary text-5xl md:text-7xl uppercase leading-none">Buster's Gallery</h1>
+        <p className="font-secondary text-sm md:text-base max-w-md">
+          Our favourite photographs of the food we serve.
         </p>
       </div>
 

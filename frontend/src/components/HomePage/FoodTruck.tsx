@@ -1,42 +1,38 @@
-import Scroll from "./Scroll";
 import { Link } from "react-router-dom";
+
 export default function FoodTruck() {
   return (
-    <section className="w-full h-240 flex flex-col relative bg-black py-5 md:py-10 ">
-      <img
-        src="/foodtruck.svg"
-        alt=""
-        className="absolute w-170 z-50
-        top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/3"
-      />
-
-      <Scroll text="available now" rep={5} />
-      <Scroll text="buster's sea cove" rep={3} />
-      <Scroll text="call us" rep={9} />
-      <Scroll text="unforgettable experience" rep={3} />
-      <Scroll text="available now" rep={6} />
-      <div
-        className="w-full h-100 bg-black text-beige-primary p-6
-      flex flex-col text-left justify-center"
-      >
-        <h1 className="font-secondary font-bold text-6xl ">
-          Our{" "}
-          <Link
-            to="/schedule"
-            className="text-blue-secondary underline decoration-3 underline-offset-4 hover:text-blue-primary transition-colors"
-          >
-            food truck
-          </Link>{" "}
-          is always on the move.{" "}
+    <section className="w-full">
+      {/* Foreground — truck image + text layered over the scroll rows */}
+      <div className="relative z-10 flex flex-col md:flex-row md:items-center px-8 pt-10 pb-12 gap-8 md:px-16 md:pt-14 md:pb-16">
+        <img
+          src="/foodtruck.svg"
+          alt=""
+          className="w-full max-w-sm md:max-w-md lg:max-w-xl flex-shrink-0 pointer-events-none"
+        />
+        <div className="flex flex-col gap-6">
+          <h2 className="font-primary uppercase text-6xl leading-tight text-beige-primary md:text-6xl lg:text-7xl">
+            Our{" "}
+            <Link
+              to="/schedule"
+              className="text-blue-secondary underline decoration-2 underline-offset-4 hover:text-blue-primary transition-colors duration-300"
+            >
+              food truck
+            </Link>
+            <br />
+            is always on the
+            <br />
+            move.
+          </h2>
           <Link
             to="/catering"
-            className="bg-blue-primary text-beige-primary text-2xl md:text-4xl w-auto whitespace-nowrap rounded-[3rem] px-7 py-3 md:px-8 md:py-4 ml-2
-            border-2 border-beige-primary shadow-[0_8px_20px_rgba(0,0,0,0.35)] duration-300 hover:bg-blue-secondary hover:scale-105
-            inline-flex justify-center items-center gap-2"
+            className="self-start bg-blue-primary text-beige-primary font-primary uppercase text-xl rounded-[3rem] px-8 py-4
+            border-2 border-beige-primary shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:bg-blue-secondary hover:scale-105
+            inline-flex items-center"
           >
-            Click Here!
+            Book the Truck
           </Link>
-        </h1>
+        </div>
       </div>
     </section>
   );
