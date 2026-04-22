@@ -33,7 +33,7 @@ export default function About() {
         title="About Buster's Sea Cove"
         description="Learn the story behind Buster's Sea Cove, from St. Lawrence Market roots to a Toronto seafood brand known for restaurants, food trucks, and catering."
         path="/about"
-        image="/Images/stLawrence.webp"
+        image="/cateringzfp.webp"
       />
       
       {/* -------------- HERO SECTION ----------------- */}
@@ -68,15 +68,14 @@ export default function About() {
           viewport={{ once: true, amount: 0.2 }}
           className="relative group z-10"
         >
-          <div className="absolute -inset-4 border-2 border-blue-primary/10 rounded-sm translate-x-3 translate-y-3 transition-all duration-700 ease-out group-hover:translate-x-1 group-hover:translate-y-1 group-hover:border-blue-primary/30" />
-          
-          <div className="relative rounded-sm overflow-hidden shadow-[0_20px_50px_rgba(8,_112,_184,_0.1)] transition-all duration-700 group-hover:shadow-[0_20px_60px_rgba(8,_112,_184,_0.2)]">
-            <img 
-              src="/Images/stLawrence.webp" 
-              alt="St. Lawrence Market" 
+          <div className="relative overflow-hidden border border-blue-primary/20 shadow-[0_8px_30px_rgba(42,68,132,0.12)]">
+            <img
+              src="/cateringzfp.webp"
+              alt="Catering"
               className="w-full h-[400px] md:h-[500px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"
             />
           </div>
+          <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
         </motion.div>
 
         <motion.div 
