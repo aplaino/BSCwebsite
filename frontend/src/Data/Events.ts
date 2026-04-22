@@ -55,8 +55,8 @@ export const companies = [
     website: "https://www.livenation.com/",
   },
   {
-    name: "Quadrel",
-    imageUrl: "/Images/Sponsors/quadrel.webp",
-    website: "https://www.quadrel.com/",
+    name: "QuadReal",
+    imageUrl: "/Images/Sponsors/quadreal.webp",
+    website: "https://quadreal.com/",
   },
 ];
