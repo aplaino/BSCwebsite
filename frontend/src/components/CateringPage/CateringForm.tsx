@@ -1,4 +1,5 @@
 import { FaCheck } from "react-icons/fa6";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { submitCateringForm } from "../../services/api";
 
@@ -26,9 +27,9 @@ export default function CateringForm({
 
   return (
     <section
-      className={`w-full min-h-160 h-full bg-[url(/catering-background.svg)] bg-cover px-6
-          flex flex-col gap-10 justify-center items-center ${
-            minimalForm ? "" : "pt-40 pb-20"
+      className={`w-full min-h-screen bg-[url(/catering-background.svg)] bg-cover px-4 md:px-6
+          flex flex-col gap-6 md:gap-10 justify-center items-center relative ${
+            minimalForm ? "py-24" : "pt-28 pb-16"
           }
           `}
     >
@@ -231,6 +232,28 @@ export default function CateringForm({
           )}
         </div>
       </form>
+
+      {minimalForm && (
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="text-beige-primary/70"
+          >
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        </motion.div>
+      )}
     </section>
   );
 }

@@ -31,7 +31,7 @@ export default function About() {
     <main className="w-full h-auto bg-beige-primary flex flex-col items-center overflow-x-hidden">
       <Seo
         title="About Buster's Sea Cove"
-        description="Learn the story behind Buster's Sea Cove, from St. Lawrence Market roots to a Toronto seafood brand known for restaurants, food trucks, and catering."
+        description="Buster's Sea Cove - Toronto's premier seafood catering and food truck company. Serving high-profile public and private events across the GTA since 1992."
         path="/about"
         image="/cateringzfp.webp"
       />
@@ -50,12 +50,15 @@ export default function About() {
           <h1 className="font-primary uppercase text-7xl md:text-9xl text-blue-primary leading-[0.8] text-balance">
             Our Story <br /> & Legacy
           </h1>
-          <motion.div 
+          <motion.div
             initial={{ width: 0 }}
             animate={{ width: "120px" }}
             transition={{ delay: 0.5, duration: 1 }}
-            className="h-1 bg-blue-primary mt-6" 
+            className="h-1 bg-blue-primary mt-6"
           />
+          <p className="font-secondary text-blue-primary/70 text-lg max-w-2xl mt-6 leading-snug">
+            For over 30 years, Buster's Sea Cove has been Toronto's trusted name in fresh seafood - from our roots at St. Lawrence Market to a full-scale restaurant, food truck, and catering brand serving the Greater Toronto Area and beyond.
+          </p>
         </motion.article>
       </section>
 
@@ -71,8 +74,8 @@ export default function About() {
           <div className="relative overflow-hidden border border-blue-primary/20 shadow-[0_8px_30px_rgba(42,68,132,0.12)]">
             <img
               src="/cateringzfp.webp"
-              alt="Catering"
-              className="w-full h-[400px] md:h-[500px] object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700 ease-in-out"
+              alt="Buster's Sea Cove seafood catering setup at a Toronto event"
+              className="w-full h-[400px] md:h-[500px] object-cover group-hover:scale-110 transition-all duration-700 ease-in-out"
             />
           </div>
           <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
@@ -90,6 +93,9 @@ export default function About() {
           </h2>
           <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
             Buster’s Sea Cove embarked on its culinary journey in 1992 within the vibrant surroundings of Toronto’s renowned St. Lawrence Market. From its humble beginnings as a boutique market stall, the brand steadily gained momentum, but it was the visionary leadership of Tom Antonarakis that saw Buster’s truly flourish. Infused with Tom’s unwavering dedication to delivering the freshest and most delectable seafood, the brand swiftly captured the hearts and palates of enthusiasts across the GTA, evolving from a local favorite into a definitive household name.
+          </p>
+          <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
+            What set Buster’s apart from the very beginning was a refusal to compromise on quality. Every piece of fish was sourced fresh daily, every dish prepared to order. That standard - established at a small market counter in downtown Toronto - is the same standard that defines the Buster’s Sea Cove experience today, whether you’re visiting one of our restaurants, flagging down the food truck, or booking our catering team for your next event.
           </p>
         </motion.div>
       </section>
@@ -135,7 +141,10 @@ export default function About() {
             The Evolution of <br /> A Legacy
           </h2>
           <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
-            Over the years, Buster’s Sea Cove evolved and expanded into far more than just a collection of restaurants. Today, the brand continues to thrive as a hospitality leader, offering an extensive history of full-scale production experience that reaches well beyond the scope of traditional event catering.
+            Over the years, Buster’s Sea Cove evolved and expanded into far more than just a collection of restaurants. Recognizing an opportunity to bring the same fresh seafood experience directly to Toronto’s events and communities, the brand launched its food truck and dedicated catering division - becoming one of the first seafood-focused food truck caterers operating across the GTA.
+          </p>
+          <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
+            Today, the Buster’s Sea Cove brand spans restaurant dining, mobile food truck service, and full-scale event catering. We have served at hundreds of corporate events, sports tournaments, music festivals, private parties, and community gatherings across Toronto, Mississauga, Scarborough, North York, and the broader Greater Toronto Area. Our reputation for showing up on time, serving with professionalism, and delivering food that wows has made us a go-to choice for event planners, production companies, and private clients alike.
           </p>
           <div className="pt-4">
             <Link
@@ -157,12 +166,64 @@ export default function About() {
         >
           <img 
             src="/Images/Buster Sea Cove (51).webp" 
-            alt="Busters Truck" 
+            alt="Buster's Sea Cove food truck serving at a Toronto event" 
             className="w-full h-auto max-h-[400px] object-contain 
               filter drop-shadow-[0_25px_35px_rgba(42,68,132,0.4)]
               antialiased relative z-20"
           />
           
+          <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
+        </motion.div>
+      </section>
+
+      {/* -------------- SECTION 4: CATERING & FOOD TRUCK ----------------- */}
+      <section className="w-full max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="space-y-6 order-2 md:order-1"
+        >
+          <p className="font-secondary text-beige-secondary uppercase tracking-[0.4em] text-xs">
+            Toronto's Premier Seafood Caterer
+          </p>
+          <h2 className="font-primary text-5xl text-blue-primary uppercase leading-none text-balance">
+            Catering & Food Truck <br /> Services Across Toronto
+          </h2>
+          <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
+            What began as a beloved restaurant brand at St. Lawrence Market grew into one of Toronto's most sought-after seafood catering and food truck operations. Buster's Sea Cove launched its dedicated catering division to meet the growing demand for premium, restaurant-quality seafood at events of every scale - from intimate private gatherings to large-scale corporate functions serving thousands of guests.
+          </p>
+          <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
+            The Buster's Sea Cove food truck brings the same fresh, made-to-order seafood that built our reputation directly to your event. Whether you're planning a corporate lunch, a community festival, a wedding reception, or a private birthday celebration, our food truck catering team delivers a full-service experience that guests remember long after the last bite. We've proudly served at some of Toronto's highest-profile public and private events, partnering with leading corporations, sports organizations, entertainment venues, and event producers across the GTA.
+          </p>
+          <p className="font-secondary text-blue-primary/80 text-lg leading-snug text-justify max-w-prose">
+            Our catering division offers flexible service formats - including full-service event catering, drop-off catering, and food truck activation - all anchored by our commitment to sourcing the freshest sustainable seafood available. From grilled halibut and lobster rolls to our signature fish and chips, every dish is prepared fresh on-site with the care and craftsmanship Buster's Sea Cove has been known for since 1992. If you're searching for seafood catering in Toronto or food truck catering for your next event, Buster's Sea Cove is the team you can trust to deliver.
+          </p>
+          <div className="pt-2">
+            <Link
+              to="/catering"
+              className="font-primary text-beige-primary bg-blue-primary text-xl px-10 py-3 rounded-[4rem] hover:bg-beige-secondary duration-300 inline-block"
+            >
+              Get a Catering Quote
+            </Link>
+          </div>
+        </motion.div>
+
+        <motion.div
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="relative group z-10 order-1 md:order-2"
+        >
+          <div className="relative overflow-hidden border border-blue-primary/20 shadow-[0_8px_30px_rgba(42,68,132,0.12)]">
+            <img
+              src="/FoodTruckParked.webp"
+              alt="Buster's Sea Cove food truck parked and ready to serve at a Toronto event"
+              className="w-full h-[400px] md:h-[560px] object-cover group-hover:scale-110 transition-all duration-700 ease-in-out"
+            />
+          </div>
           <div className="absolute inset-0 bg-blue-primary/10 blur-[80px] -z-10 rounded-full scale-75" />
         </motion.div>
       </section>

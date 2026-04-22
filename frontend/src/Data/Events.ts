@@ -10,6 +10,11 @@ export const companies = [
     website: "https://www.presidentschoice.ca/",
   },
   {
+    name: "CIBC",
+    imageUrl: "/Images/Sponsors/cibc.webp",
+    website: "https://www.cibc.com/en/personal-banking.html",
+  },
+  {
     name: "IBM",
     imageUrl: "/Images/Sponsors/IBM-802332088.webp",
     website: "https://www.ibm.com/ca-en",
@@ -43,5 +48,15 @@ export const companies = [
     name: "Branksome Hall",
     imageUrl: "/Images/Sponsors/BranksomeHall.webp",
     website: "https://branksome.on.ca/",
+  },
+  {
+    name: "Live Nation",
+    imageUrl: "/Images/Sponsors/liveNation.webp",
+    website: "https://www.livenation.com/",
+  },
+  {
+    name: "Quadrel",
+    imageUrl: "/Images/Sponsors/quadrel.webp",
+    website: "https://www.quadrel.com/",
   },
 ];

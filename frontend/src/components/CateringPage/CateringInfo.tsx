@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function CateringInfo() {
   return (
-    <section className="w-full py-14 px-6 bg-[#111B36] text-beige-primary">
-      <div className="max-w-5xl mx-auto flex flex-col gap-12">
+    <section className="w-full py-10 md:py-14 px-6 bg-[#111B36] text-beige-primary">
+      <div className="max-w-5xl mx-auto flex flex-col gap-8 md:gap-12">
         <article className="flex flex-col lg:flex-row gap-8 items-start lg:justify-center lg:items-center ">
           <div className="lg:w-1/2">
             <h2 className="font-primary text-3xl md:text-5xl uppercase leading-tight">
@@ -66,7 +66,7 @@ export default function CateringInfo() {
             >
               <h3
                 className="font-primary flex w-full justify-between items-center
-             text-2xl uppercase w-full leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
+             text-xl md:text-2xl uppercase leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
               >
                 <span>See our menu</span>
                 <span className="flex items-center gap-3">
@@ -88,7 +88,7 @@ export default function CateringInfo() {
             >
               <h3
                 className="font-primary flex w-full justify-between items-center
-             text-2xl uppercase leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
+             text-xl md:text-2xl uppercase leading-none text-beige-secondary group-hover:text-beige-primary transition-colors "
               >
                 <span>Our dessert service</span>
                 <span className="flex items-center gap-3">

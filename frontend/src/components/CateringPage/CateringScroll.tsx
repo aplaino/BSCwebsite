@@ -1,10 +1,10 @@
 export default function CateringScroll() {
   return (
     <section
-      className="w-full h-100 md:h-140 flex flex-col gap-12  justify-center items-center
+      className="w-full h-auto flex flex-col gap-6 py-8 justify-center items-center
     border-y-4 border-beige-secondary"
     >
-      <h1 className="font-primary uppercase text-6xl text-[#876E64]">
+      <h1 className="font-primary uppercase text-4xl md:text-6xl text-[#876E64]">
         Past Clients
       </h1>
 

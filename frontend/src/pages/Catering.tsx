@@ -3,6 +3,7 @@ import CateringScroll from "../components/CateringPage/CateringScroll";
 import CateringForm from "../components/CateringPage/CateringForm";
 import CateringInfo from "../components/CateringPage/CateringInfo";
 import CateringEvents from "../components/CateringPage/CateringEvents";
+import CateringWhy from "../components/CateringPage/CateringWhy";
 import Seo from "../components/Seo";
 // 1. Import Framer Motion utilities
 import { motion } from "framer-motion";
@@ -22,8 +23,16 @@ export default function Catering() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  // 2. Define reusable animation variants
-  // Standard fade-up used across the site for consistency
+  // Section-level fade — no Y movement to prevent background bleed-through
+  const sectionFade: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.5, ease: "easeOut" }
+    }
+  };
+
+  // Content-level fade-up for elements inside sections
   const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 16 },
     visible: {
@@ -37,7 +46,7 @@ export default function Catering() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 0 }
+      transition: { duration: 0.3 }
     }
   };
 
@@ -99,46 +108,50 @@ export default function Catering() {
         jsonLd={cateringSchema}
       />
       {/** --------- Form (Hero Section) ------------- */}
-      {/** This uses 'animate' instead of 'whileInView' so it loads immediately */}
-      <motion.div variants={fadeInUp} className="w-full z-20">
+      <motion.div
+          variants={sectionFade}
+          initial="hidden"
+          animate="visible"
+          className="w-full z-20"
+      >
         <CateringForm minimalForm={minimalForm} setMinimalForm={setMinimalForm} />
       </motion.div>
 
       {/** --------- PARTNERS SCROLL ------------- */}
-      {/** Subsequent sections use 'whileInView' to trigger on scroll */}
-      <motion.div 
-          variants={fadeInUp}
+      <motion.div
+          variants={sectionFade}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0 }}
           className="w-full z-10 relative"
       >
         <CateringScroll />
       </motion.div>
 
-      {/* -------------- NEW SECTION 2: INFORMATION / SERVICE TIERS ----------------- */}
-      <motion.div 
-          variants={fadeInUp}
+      {/** --------- WHY BUSTER'S + SERVICE TIERS — single dark block ------------- */}
+      <motion.div
+          variants={sectionFade}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="w-full z-10 relative"
-       >
+          viewport={{ once: true, amount: 0 }}
+          className="w-full z-10 relative flex flex-col"
+      >
+        <CateringWhy />
         <CateringInfo />
       </motion.div>
 
       {/** --------- RECENT EVENTS ------------- */}
-      <motion.div 
-          variants={fadeInUp}
+      <motion.div
+          variants={sectionFade}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0 }}
           className="w-full z-0 relative"
       >
         <CateringEvents />
       </motion.div>
 
-      <div className="w-full bg-beige-primary py-8 flex justify-center items-center">
+      <div className="w-full py-4 flex justify-center items-center">
         <button
           type="button"
           onClick={scrollToTop}
