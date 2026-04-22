@@ -32,16 +32,6 @@ export default function Catering() {
     }
   };
 
-  // Content-level fade-up for elements inside sections
-  const fadeInUp: Variants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" }
-    }
-  };
-
   const pageContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
