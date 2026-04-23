@@ -112,7 +112,7 @@ export default function About() {
           {[
             { val: "100%", label: "Always Fresh Catch" },
             { val: "30+", label: "Years of Heritage" },
-            { val: "1M+", label: "Meals Served Across GTA" },
+            { val: "1M+", label: "Meals Served A Year" },
             { val: "00", label: "Shortcuts Taken" }
           ].map((stat, i) => (
             <motion.div key={i} variants={fadeInUp} className="flex flex-col">

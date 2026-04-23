@@ -22,7 +22,7 @@ const whyPoints = [
   },
   {
     title: "Flexible Menus & Full Commissary Support",
-    body: "Every event is different, and our menus reflect that. We work with clients to build a menu that fits their crowd, budget, and event format. Backed by full commissary support, we can scale from a small private lunch to a 2,000-person outdoor festival without missing a beat.",
+    body: "Every event is different, and our menus reflect that. We work with clients to build a menu that fits their crowd, budget, and event format. Backed by full commissary support, we can scale from a small private lunch to a 2,000-person corporate party without missing a beat.",
   },
   {
     title: "Premium Seafood - No Shortcuts",
@@ -120,7 +120,7 @@ export default function CateringWhy() {
               Events We've Catered
             </h3>
             <p className="font-secondary text-beige-primary/80 text-base leading-snug">
-              We've catered everything from intimate office lunches to large-scale events drawing thousands of guests across Toronto, Mississauga, North York, Scarborough, and the broader GTA. No event is too big or too small.
+              We've catered everything from intimate office lunches to large-scale events drawing thousands of guests across Toronto, Mississauga, North York, King City, Rhill, Aurora and the broader GTA. No event is too big or too small.
             </p>
             <div className="flex flex-wrap gap-2">
               {eventTypes.map((type, i) => (
