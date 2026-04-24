@@ -31,7 +31,7 @@ export default function Schedule() {
         title="Food Truck Schedule"
         description="See the Buster's Sea Cove food truck schedule for Toronto and GTA stops, and check upcoming locations before booking food truck catering."
         path="/schedule"
-        image="/foodtruck.svg"
+        image="/foodtruck.webp"
       />
       <motion.div 
         variants={staggerContainer}

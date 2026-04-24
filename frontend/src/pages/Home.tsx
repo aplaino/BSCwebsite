@@ -61,7 +61,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center gap-6 text-center">
             <motion.span
               variants={itemVariants}
-              className="inline-flex items-center rounded-full border border-slate-300 px-4 py-1.5 font-secondary text-xs tracking-[0.22em] text-slate-500 uppercase"
+              className="inline-flex items-center rounded-full border border-slate-400 px-4 py-1.5 font-secondary text-xs tracking-[0.22em] text-slate-700 uppercase"
             >
               Since 1992
             </motion.span>
@@ -111,6 +111,9 @@ export default function Home() {
           <img
             src="/Landing.webp"
             alt="Buster's Sea Cove landing"
+            fetchPriority="high"
+            width="1920"
+            height="1080"
             className="h-full w-full object-cover border-t-4 border-b-4 border-black/15"
           />
         </motion.div>
@@ -149,8 +152,10 @@ export default function Home() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          src="/serving-hours.svg"
+          src="/serving-hours.webp"
           alt="serving hours"
+          width="560"
+          height="544"
           className="h-72 md:h-96 lg:h-[34rem] w-auto"
         />
       </section>
