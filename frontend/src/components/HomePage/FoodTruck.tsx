@@ -6,9 +6,12 @@ export default function FoodTruck() {
       {/* Foreground — truck image + text layered over the scroll rows */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-center px-8 pt-10 pb-12 gap-8 md:px-16 md:pt-14 md:pb-16">
         <img
-          src="/foodtruck.svg"
+          src="/foodtruck.webp"
           alt=""
+          fetchPriority="high"
+          decoding="sync"
           className="w-full max-w-sm md:max-w-md lg:max-w-xl flex-shrink-0 pointer-events-none"
+          style={{ boxShadow: "inset 0 0 0 17px white" }}
         />
         <div className="flex flex-col gap-6">
           <h2 className="font-primary uppercase text-6xl leading-tight text-beige-primary md:text-6xl lg:text-7xl">
