@@ -7,12 +7,12 @@ export default function Footer() {
 
         <div className="flex flex-col gap-1">
           <h1 className="font-primary uppercase text-4xl md:text-5xl tracking-wide">buster's sea cove</h1>
-          <p className="font-secondary text-sm text-beige-primary/70">Toronto's seafood legacy since 1992.</p>
+          <p className="font-secondary text-sm text-beige-primary/50">Toronto's seafood legacy since 1992.</p>
         </div>
 
         <section className="w-full grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6 border-t border-beige-primary/10 pt-10">
           <div className="flex flex-col gap-3 font-secondary">
-            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/70 font-semibold mb-1">Services</h2>
+            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/50 font-semibold mb-1">Services</h2>
             <Link to="/catering" className="text-sm hover:text-beige-secondary transition-colors duration-200">Food Truck Catering</Link>
             <a href="https://sites.ambassador.ai/?s=busterscommissary" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-beige-secondary transition-colors duration-200">
               Drop Off Catering
@@ -24,7 +24,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3 font-secondary">
-            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/70 font-semibold mb-1">Contact</h2>
+            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/50 font-semibold mb-1">Contact</h2>
             <a href="tel:4163192957" className="text-sm hover:text-beige-secondary transition-colors duration-200">416-319-2957</a>
             <a href="mailto:bustersheadoffice@gmail.com" className="text-sm hover:text-beige-secondary transition-colors duration-200">
               bustersheadoffice@gmail.com
@@ -32,7 +32,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3 font-secondary">
-            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/70 font-semibold mb-1">Locations</h2>
+            <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/50 font-semibold mb-1">Locations</h2>
             <div className="flex flex-col gap-1">
               <p className="text-sm font-semibold">Commerce Court</p>
               <a
@@ -43,7 +43,7 @@ export default function Footer() {
               >
                 199 Bay St. Suite C-150, Toronto, ON
               </a>
-              <p className="text-xs text-beige-primary/60">Mon–Fri 11:00 am–3:00 pm</p>
+              <p className="text-xs text-beige-primary/40">Mon–Fri 11:00 am–3:00 pm</p>
             </div>
             <div className="flex flex-col gap-1 mt-2">
               <p className="text-sm font-semibold">Head Office</p>
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
         </section>
 
-        <p className="font-secondary text-xs text-beige-primary/50 border-t border-beige-primary/10 pt-6">
+        <p className="font-secondary text-xs text-beige-primary/30 border-t border-beige-primary/10 pt-6">
           © {new Date().getFullYear()} Buster's Sea Cove. All rights reserved.
         </p>
       </article>

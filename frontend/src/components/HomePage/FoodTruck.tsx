@@ -6,10 +6,8 @@ export default function FoodTruck() {
       {/* Foreground — truck image + text layered over the scroll rows */}
       <div className="relative z-10 flex flex-col md:flex-row md:items-center px-8 pt-10 pb-12 gap-8 md:px-16 md:pt-14 md:pb-16">
         <img
-          src="/foodtruck.webp"
+          src="/foodtruck.svg"
           alt=""
-          width="600"
-          height="450"
           className="w-full max-w-sm md:max-w-md lg:max-w-xl flex-shrink-0 pointer-events-none"
         />
         <div className="flex flex-col gap-6">

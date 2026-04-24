@@ -57,7 +57,7 @@ export default function Gallery() {
             src={encodeURI(p)}
             key={`${p}-${index}`}
             alt={`Gallery item ${index + 1}`}
-            loading="lazy"
+            loading={index < 8 ? "eager" : "lazy"}
             decoding="async"
             className="w-full rounded-2xl"
           />

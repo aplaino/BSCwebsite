@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -116,21 +117,19 @@ export default function Header() {
                 href="https://www.facebook.com/bustersseacove/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Buster's Sea Cove on Facebook"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
                 onClick={closeMobileMenu}
               >
-                <img src="/facebook.svg" className="size-6" alt="" aria-hidden="true" width="24" height="24" />
+                <FaFacebook />
               </a>
               <a
                 href="https://www.instagram.com/bustersseacove/?hl=en"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Buster's Sea Cove on Instagram"
                 className="hover:text-beige-primary duration-300 py-2 flex justify-center items-center"
                 onClick={closeMobileMenu}
               >
-                <img src="/instagram.svg" className="size-6" alt="" aria-hidden="true" width="24" height="24" />
+                <FaInstagram />
               </a>
             </nav>
           </div>
@@ -192,17 +191,15 @@ export default function Header() {
             href="https://www.facebook.com/bustersseacove/"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Follow Buster's Sea Cove on Facebook"
           >
-            <img src="/facebook.svg" className="size-6" alt="" aria-hidden="true" width="24" height="24" />
+            <img src="/facebook.svg" className="size-6" alt="facebook" />
           </a>
           <a
             href="https://www.instagram.com/bustersseacove/?hl=en"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Follow Buster's Sea Cove on Instagram"
           >
-            <img src="/instagram.svg" className="size-6" alt="" aria-hidden="true" width="24" height="24" />
+            <img src="/instagram.svg" className="size-6" alt="instagram" />
           </a>
         </nav>
       </div>
