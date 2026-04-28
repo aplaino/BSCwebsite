@@ -73,7 +73,7 @@ export const fetchFoodTruckMenu = async () => {
   }
   const data = await response.json();
   // Returns the latest PDF URL
-  return data[0]?.pdf_file || null;
+  return data[0]?.pdf_url || data[0]?.pdf_file || null;
 };
 
 export const fetchEventNews = async (signal?: AbortSignal): Promise<EventNewsItem | null> => {
