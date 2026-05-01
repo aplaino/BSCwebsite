@@ -30,6 +30,7 @@ class CateringRequest(models.Model):
     
     # Financials & Details
     budget = models.CharField(max_length=100, blank=True, null=True)
+    number_of_people = models.PositiveIntegerField(blank=True, null=True)
     notes = models.TextField(verbose_name="Tell Us More")
 
     # Metadata

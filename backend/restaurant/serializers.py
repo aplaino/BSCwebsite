@@ -17,6 +17,7 @@ class CateringRequestSerializer(serializers.ModelSerializer):
             "start_time",
             "end_time",
             "budget",
+            "number_of_people",
             "notes",
         ]
         extra_kwargs = {
@@ -29,6 +30,7 @@ class CateringRequestSerializer(serializers.ModelSerializer):
             "end_time": {"required": True},
             "company_name": {"required": False, "allow_blank": True, "allow_null": True},
             "budget": {"required": False, "allow_blank": True, "allow_null": True},
+            "number_of_people": {"required": False, "allow_null": True},
             "notes": {"required": False, "allow_blank": True},
         }
 

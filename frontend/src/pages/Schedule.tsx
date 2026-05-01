@@ -63,10 +63,6 @@ export default function Schedule() {
             className="relative z-10 w-full h-[600px] md:h-[800px] rounded-2xl shadow-2xl border-none grayscale hover:grayscale-0 transition-all duration-700"
           />
           
-          {/* Legend / Info under calendar */}
-          <p className="mt-6 font-secondary text-beige-primary/60 text-sm italic text-center">
-            * Locations are subject to weather conditions. Check our Instagram for live updates.
-          </p>
         </motion.div>
       </motion.div>
     </main>

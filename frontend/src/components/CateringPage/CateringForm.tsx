@@ -180,6 +180,18 @@ export default function CateringForm({
             className="border-b-2 border-beige-secondary w-full h-8
                         outline-none! placeholder:italic mb-8"
           />
+          <label htmlFor="numberOfPeople" className="font-bold">
+            Estimated Number of People
+          </label>
+          <input
+            id="numberOfPeople"
+            name="numberOfPeople"
+            type="number"
+            min="1"
+            placeholder="e.g. 50"
+            className="border-b-2 border-beige-secondary w-full h-8
+                        outline-none! placeholder:italic mb-8"
+          />
           <label htmlFor="budget" className="font-bold">
             Budget (Canadian dollars)
           </label>

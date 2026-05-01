@@ -34,6 +34,7 @@ _CATERING_KEY_MAP = {
     "eventAddress": "event_address",
     "startTime": "start_time",
     "endTime": "end_time",
+    "numberOfPeople": "number_of_people",
 }
 
 
@@ -75,6 +76,7 @@ def submit_catering(request):
     Location: {new_lead.event_address}
     Time: {new_lead.start_time} to {new_lead.end_time}
     Budget: {new_lead.budget or 'Not specified'}
+    Number of People: {new_lead.number_of_people or 'Not specified'}
 
     NOTES:
     {new_lead.notes}
