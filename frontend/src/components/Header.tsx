@@ -77,7 +77,7 @@ export default function Header() {
                 menu
               </Link>
               <Link
-                to="/catering"
+                to="/FoodTruckCatering"
                 className="hover:text-beige-primary duration-300 py-2"
                 onClick={closeMobileMenu}
               >
@@ -149,7 +149,7 @@ export default function Header() {
             menu
           </NavLink>
           <NavLink
-            to="/catering"
+            to="/FoodTruckCatering"
             className={({ isActive }) =>
               isActive ? "underline text-blue-secondary" : undefined
             }

@@ -138,7 +138,7 @@ export default function CateringWhy() {
         {/* CTA */}
         <div className="flex flex-col sm:flex-row gap-4 items-start">
           <Link
-            to="/catering"
+            to="/FoodTruckCatering"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="font-primary text-[#111B36] bg-beige-primary text-xl px-10 py-3 rounded-[4rem] hover:bg-beige-secondary duration-300 inline-block"
           >

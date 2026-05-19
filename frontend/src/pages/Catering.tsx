@@ -4,6 +4,7 @@ import CateringForm from "../components/CateringPage/CateringForm";
 import CateringInfo from "../components/CateringPage/CateringInfo";
 import CateringEvents from "../components/CateringPage/CateringEvents";
 import CateringWhy from "../components/CateringPage/CateringWhy";
+import CateringFaq from "../components/CateringPage/CateringFaq";
 import Seo from "../components/Seo";
 // 1. Import Framer Motion utilities
 import { motion } from "framer-motion";
@@ -64,7 +65,7 @@ export default function Catering() {
       "@context": "https://schema.org",
       "@type": "CateringService",
       name: "Buster's Sea Cove Catering",
-      url: "https://www.bustersseacove.com/catering",
+      url: "https://www.bustersseacove.com/FoodTruckCatering",
       image: "https://www.bustersseacove.com/cateringzfp.webp",
       description:
         "Seafood catering, food truck catering, drop-off catering, and full-service event catering for weddings, corporate events, film sets, golf courses, and private parties in Toronto and the GTA.",
@@ -81,6 +82,60 @@ export default function Catering() {
         "Wedding catering",
       ],
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What is food truck catering?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Food truck catering brings a fully equipped mobile kitchen to your event location. Buster's Sea Cove food truck arrives, sets up, and serves fresh seafood directly to your guests — all you need to provide is a 20 ft parking spot. We handle everything else: cooking, serving, and cleanup.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What areas does Buster's Sea Cove serve for food truck catering?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We provide food truck catering across Toronto and the Greater Toronto Area, including Mississauga, North York, Scarborough, Etobicoke, Aurora, King City, Markham, Richmond Hill, Vaughan, and Oakville.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much does food truck catering cost in Toronto?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Food truck catering pricing depends on guest count, menu selections, event duration, and travel distance. We work with a wide range of budgets — from intimate office lunches to large corporate events with thousands of guests. Fill out our catering request form for a custom quote.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How far in advance should I book food truck catering?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "We recommend booking at least 4–6 weeks in advance for most events, and 2–3 months ahead for peak summer dates, weddings, and large corporate events.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What types of events can I book food truck catering for?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Buster's Sea Cove food truck has catered corporate events, weddings, private parties, golf tournaments, film and TV sets, music festivals, university events, sports tournaments, office lunches, and community events across the GTA.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Do you offer catering options other than the food truck?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. In addition to food truck catering, we offer drop-off catering (delivered at peak temperature to your door) and full-service catering (buffet-style with chefs on site).",
+          },
+        },
+      ],
+    },
   ];
 
   return (
@@ -93,7 +148,7 @@ export default function Catering() {
       <Seo
         title="Toronto Catering, Seafood Catering & Food Truck Catering"
         description="Book Buster's Sea Cove for seafood catering in Toronto and the GTA, including food truck catering, corporate catering, weddings, golf events, film sets, and private parties."
-        path="/catering"
+        path="/FoodTruckCatering"
         image="/cateringzfp.webp"
         jsonLd={cateringSchema}
       />
@@ -139,6 +194,17 @@ export default function Catering() {
           className="w-full z-0 relative"
       >
         <CateringEvents />
+      </motion.div>
+
+      {/** --------- FAQ ------------- */}
+      <motion.div
+          variants={sectionFade}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0 }}
+          className="w-full z-0 relative"
+      >
+        <CateringFaq />
       </motion.div>
 
       <div className="w-full py-4 flex justify-center items-center">

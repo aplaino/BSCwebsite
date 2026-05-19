@@ -83,7 +83,7 @@ export default function Home() {
 
             <motion.div variants={itemVariants}>
               <Link
-                to="/catering"
+                to="/FoodTruckCatering"
                 className="inline-flex h-12 w-44 cursor-pointer items-center justify-center rounded-[4rem] bg-black font-primary text-xl text-beige-primary shadow-md transition-all duration-300 hover:scale-105 hover:shadow-lg"
               >
                 Book Now

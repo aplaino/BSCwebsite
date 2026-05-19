@@ -125,7 +125,7 @@ export default function Menus() {
   // Define your different links here
   const RESTAURANT_ORDER_URL =
     "https://sites.ambassador.ai/?s=bustercommercecourt";
-  const CATERING_ORDER_URL = "/catering"; // Or a full URL
+  const CATERING_ORDER_URL = "/FoodTruckCatering";
 
   return (
     <main className="w-screen h-full min-h-screen flex flex-col bg-beige-primary">

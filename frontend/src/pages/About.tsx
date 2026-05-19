@@ -148,7 +148,7 @@ export default function About() {
           </p>
           <div className="pt-4">
             <Link
-              to="/catering"
+              to="/FoodTruckCatering"
               className="font-primary text-beige-primary bg-blue-primary text-xl px-10 py-3 rounded-[4rem] hover:bg-beige-secondary duration-300 inline-block"
             >
               Book Catering
@@ -202,7 +202,7 @@ export default function About() {
           </p>
           <div className="pt-2">
             <Link
-              to="/catering"
+              to="/FoodTruckCatering"
               className="font-primary text-beige-primary bg-blue-primary text-xl px-10 py-3 rounded-[4rem] hover:bg-beige-secondary duration-300 inline-block"
             >
               Get a Catering Quote

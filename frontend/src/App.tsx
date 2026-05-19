@@ -20,7 +20,8 @@ function App() {
             <Route path="/menus/:typeParam" element={<Menus />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
-            <Route path="/catering" element={<Catering />} />
+            <Route path="/FoodTruckCatering" element={<Catering />} />
+            <Route path="/catering" element={<Navigate to="/FoodTruckCatering" replace />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>

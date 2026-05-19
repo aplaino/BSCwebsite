@@ -13,14 +13,14 @@ export default function Footer() {
         <section className="w-full grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-6 border-t border-beige-primary/10 pt-10">
           <div className="flex flex-col gap-3 font-secondary">
             <h2 className="text-xs uppercase tracking-[0.18em] text-beige-primary/50 font-semibold mb-1">Services</h2>
-            <Link to="/catering" className="text-sm hover:text-beige-secondary transition-colors duration-200">Food Truck Catering</Link>
+            <Link to="/FoodTruckCatering" className="text-sm hover:text-beige-secondary transition-colors duration-200">Food Truck Catering</Link>
             <a href="https://sites.ambassador.ai/?s=busterscommissary" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-beige-secondary transition-colors duration-200">
               Drop Off Catering
             </a>
             <a href="https://sites.ambassador.ai/?s=busterscommissary" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-beige-secondary transition-colors duration-200">
               Pick Up Catering
             </a>
-            <Link to="/catering" className="text-sm hover:text-beige-secondary transition-colors duration-200">Full-Service Catering</Link>
+            <Link to="/FoodTruckCatering" className="text-sm hover:text-beige-secondary transition-colors duration-200">Full-Service Catering</Link>
           </div>
 
           <div className="flex flex-col gap-3 font-secondary">

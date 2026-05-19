@@ -28,7 +28,7 @@ export default function FoodTruck() {
             move.
           </h2>
           <Link
-            to="/catering"
+            to="/FoodTruckCatering"
             className="self-start bg-blue-primary text-beige-primary font-primary uppercase text-xl rounded-[3rem] px-8 py-4
             border-2 border-beige-primary shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:bg-blue-secondary hover:scale-105
             inline-flex items-center"
