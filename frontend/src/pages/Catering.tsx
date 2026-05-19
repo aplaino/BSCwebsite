@@ -146,8 +146,8 @@ export default function Catering() {
         className="w-full min-h-screen flex flex-col gap-0 justify-center items-center overflow-x-hidden"
     >
       <Seo
-        title="Toronto Catering, Seafood Catering & Food Truck Catering"
-        description="Book Buster's Sea Cove for seafood catering in Toronto and the GTA, including food truck catering, corporate catering, weddings, golf events, film sets, and private parties."
+        title="Toronto Food Truck Catering | Best Seafood Food Truck - Buster's Sea Cove"
+        description="Toronto's best seafood food truck catering since 1992. Buster's Sea Cove brings fresh lobster rolls, fish & chips, and premium seafood directly to your event. Corporate events, weddings, golf courses & more across the GTA."
         path="/FoodTruckCatering"
         image="/cateringzfp.webp"
         jsonLd={cateringSchema}
