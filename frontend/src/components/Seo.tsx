@@ -10,7 +10,7 @@ interface SeoProps {
 }
 
 const SITE_NAME = "Buster's Sea Cove";
-const SITE_URL = "https://www.bustersseacove.com";
+const SITE_URL = "https://www.bustersseacove.ca";
 const DEFAULT_IMAGE = "/logo.svg";
 
 function upsertMeta(selector: string, attributes: Record<string, string>) {
